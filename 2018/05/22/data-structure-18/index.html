@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>基数排序 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="基数排序要求比较数字的位数要一直，所以8要写成008,83要写成083等。">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="基数排序">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>基数排序</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/22/data-structure-18/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-22T04:05:45.000Z">
+          2018-05-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>基数排序要求比较数字的位数要一直，所以8要写成008,83要写成083等。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu1.png?raw=true" width="600" height="350" alt="jishupaixu" align="center"><br><a id="more"></a><br>按照关键字的最低位进行分配得到如下图：<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu2.png?raw=true" width="600" height="350" alt="jishupaixu2" align="center"><br>分配过后，我们按照从左到右的循序将他们收集，在遇到有两个元素在一个桶中的时候，按照从下往上的顺序将他们收集出来。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu3.png?raw=true" width="600" height="350" alt="jishupaixu3" align="center"><br>收集过后，然后再从左到右，按照关键字的第二位进行分配。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu4.png?raw=true" width="600" height="350" alt="jishupaixu4" align="center"><br>然后再对其进行收集关键字。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu5.png?raw=true" width="600" height="350" alt="jishupaixu5" align="center"><br>然后我们再对其按照关键字的第三位进行分配。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu6.png?raw=true" width="600" height="350" alt="jishupaixu6" align="center"><br>然后再对其进行收集关键字。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu7.png?raw=true" width="600" height="350" alt="jishupaixu7" align="center"><br>然后就得到了有序序列。</p>
+<hr>
+<p>各个排序的稳定性问题：<br>气泡排序是稳定的</p>
+<p>基于交换的简单选择排序是不稳定的（默认），基于插入的简单选择排序是稳定的。</p>
+<p>直接插入排序是稳定的</p>
+<p>快速排序是不稳定的</p>
+<p>希尔排序是不稳定的</p>
+<p>归并排序是稳定的</p>
+<p>堆排序是不稳定的</p>
+<p>基数排序是稳定的</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

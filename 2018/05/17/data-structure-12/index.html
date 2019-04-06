@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>直接插入，简单选择和冒泡排序 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="直接插入排序
+
+insertSort[]数组用来存储我们要排的关键字，n为关键字的个数，temp用来暂时存储我们当前要插入的排序的关键字。第一个for循环是从i=1开始，是因为我们规定认为初始状态的第0个元素为有序序列，第0个元素之后的元素为无序序列。我们的思路是从无序序列中逐次扫描，与有序序列中的大小进行比较，从而将他们插入到合适的位置中去。因为箭头总是指向带插入位置的前一个位置，所以我们要arr[j+1]=temp
+12345678910111213141516void insertSort(int arr[],int n) &amp;#123; 	int temp,i,j;	for(i=1;i&amp;lt;n;++i)	&amp;#123;		temp=arr[i]；		j=i-1; //j指向有序序列中的最右边的一个元素		while(j&amp;gt;=0&amp;amp;&amp;amp;temp&amp;lt;arr[j])		&amp;#123;			arr[j+1]=arr[j];			--j; //j是从右往左扫描有序序列		&amp;#125;		arr[j+1]=temp; //将temp中的待排关键字插入	&amp;#125;&amp;#125;">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure,algorithm">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="直接插入，简单选择和冒泡排序">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>直接插入，简单选择和冒泡排序</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/17/data-structure-12/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-17T01:53:57.000Z">
+          2018-05-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <ul>
+<li>直接插入排序</li>
+</ul>
+<p>insertSort[]数组用来存储我们要排的关键字，n为关键字的个数，temp用来暂时存储我们当前要插入的排序的关键字。<br>第一个for循环是从i=1开始，是因为我们规定认为初始状态的第0个元素为有序序列，第0个元素之后的元素为无序序列。我们的思路是从无序序列中逐次扫描，与有序序列中的大小进行比较，从而将他们插入到合适的位置中去。<br>因为箭头总是指向带插入位置的前一个位置，所以我们要arr[j+1]=temp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="keyword">int</span> temp,i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		temp=arr[i]；</span><br><span class="line">		j=i<span class="number">-1</span>; <span class="comment">//j指向有序序列中的最右边的一个元素</span></span><br><span class="line">		<span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;&amp;temp&lt;arr[j])</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j+<span class="number">1</span>]=arr[j];</span><br><span class="line">			--j; <span class="comment">//j是从右往左扫描有序序列</span></span><br><span class="line">		&#125;</span><br><span class="line">		arr[j+<span class="number">1</span>]=temp; <span class="comment">//将temp中的待排关键字插入</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>简单选择排序</li>
+</ul>
+<p>首先这个排序的思想是：首先初始状态是从这个所有元素中选择出最小的元素，将他与这个整体中的第一个元素互换，这样，这个元素就为有序序列，然后再从已经除去被排序好的那个元素的无序序列中再选择出一个最小的元素，将这个元素与当前无序序列的第一个元素交换位置，此时有序序列的长度变为2，以此循环，将其变为有序。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		k=i; <span class="comment">//循环取最值</span></span><br><span class="line">		<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;n;++j)</span><br><span class="line">			<span class="keyword">if</span>(arr[k]&gt;arr[j])</span><br><span class="line">				k=j;<span class="comment">//只是用k来存储最小元素在数组中的下标</span></span><br><span class="line">		temp=arr[i]; <span class="comment">//将当前元素的最小值与无序序列中的第一元素互换位置</span></span><br><span class="line">		arr[i]=arr[k];</span><br><span class="line">		arr[k]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>冒泡排序</li>
+</ul>
+<p>首先我们从一个序列中依次从左往右扫描，如果当前的元素，比当前元素的前一个元素小的话，那么就交换这两个元素，这样一直扫描到最后，这样一趟扫描下来，目前最大的元素就会被移动到最右边，此时，就将最右边设为有序序列。接着，如此循环，将前面的无序序列的元素扫描，将最大的元素又移动到最右边，并入有序序列。以此即可。<br>不过我们为了提高效率，发现，如果我们在扫描的时候，如果没有发生元素的交换的话，就说明无序序列也变为有序了。所以我们可以设置一个标记去标记（flag）这种情况是否发生。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubleSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,flag;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;--i) <span class="comment">//无序序列逐渐缩小</span></span><br><span class="line">	&#123;</span><br><span class="line">		flag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;++j)</span><br><span class="line">			<span class="keyword">if</span>(arr[j<span class="number">-1</span>]&gt;arr[j]])</span><br><span class="line">			&#123;</span><br><span class="line">				temp=arr[j];</span><br><span class="line">				arr[j]=arr[j<span class="number">-1</span>];</span><br><span class="line">				arr[j<span class="number">-1</span>]=temp;</span><br><span class="line">				flag=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a><a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

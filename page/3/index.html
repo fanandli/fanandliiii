@@ -1,0 +1,748 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Page 3 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/30/data-structure-7/"><span>data structure——图</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/30/data-structure-7/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-30T01:17:32.000Z">
+          2018-04-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>图的存储结构：</strong></p>
+<ul>
+<li>图的顺序存储结构：邻接矩阵的结构型<br>有两个数组：一个一维数组存储图中的顶点信息；一个二维数组存储图中的边或弧的信息。<br>缺点：如果边数相对于顶点数较少，那么边数组的存储空间是一个很大的浪费。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> no;  <span class="comment">//顶点编号</span></span><br><span class="line">	<span class="keyword">char</span> info;  <span class="comment">//顶点的其他信息，视情况而定写不写</span></span><br><span class="line">&#125;VertexType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> //图的定义</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> edges[maxSize][maxSize];  <span class="comment">//邻接矩阵定义，可看做边表</span></span><br><span class="line">	<span class="keyword">int</span> n,e;  <span class="comment">//顶点数和边数</span></span><br><span class="line">	VertexType vex[maxSize];  <span class="comment">//顶点表，存放结点信息</span></span><br><span class="line">&#125;MGraph;  <span class="comment">//图的邻接矩阵类型</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/28/data-sturcture-practise-1/"><span>data structure——树的例题</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/28/data-sturcture-practise-1/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-28T01:21:50.000Z">
+          2018-04-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>1.假设二叉树采用二叉链表存储结构，设计一个算法，计算一棵给定二叉树的所有结点数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">count</span><span class="params">(BTNode *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		++n;</span><br><span class="line">		count(p-&gt;lChild);</span><br><span class="line">		count(p-&gt;rChild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/14/data-structure-5/"><span>data structure——数组、矩阵与广义表</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/14/data-structure-5/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-14T06:48:10.000Z">
+          2018-04-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>数组：</strong></p>
+<p><em>1.两种逻辑结构</em></p>
+<ul>
+<li>一维数组<br><code>dataType a[n];</code></li>
+</ul>
+<ul>
+<li>二维数组<br><code>dataType a[m][n];</code><br>元素为一维数组的数组</li>
+</ul>
+<p><em>2.行优先和列优先储存</em><br>这里要区分数组在定义的时候例如：<code>int a[2][3]</code>中<code>2</code>和<code>3</code>就是又两行，有三列的意思，<br>而在说数组中的某一个元素是例如<code>a[2][1]</code>这里的<code>2</code>和<code>1</code>编号，是不一样的，因为编号是从<code>0</code>开始编号的。</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/13/plan/"><span>计划表</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/13/plan/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-13T09:08:35.000Z">
+          2018-04-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <a id="more"></a>
+<hr>
+<p>2018年硕士研究生入学考试专业基础课程考试大纲及题型分布</p>
+<p>题型分布</p>
+<p>一、选择题：（40道题，每题2分，共80分）</p>
+<p>操作系统：16道题<br>数据结构：12道题<br>组成原理：12道题</p>
+<p>二、综合问答题：（7道题，平均10分，共70分）<br>操作系统：3道题（共28分）<br>数据结构：2道题（共21分）<br>组成原理：2道题（共21分）</p>
+<p>考试大纲</p>
+<p>操作系统<br>【考查目标】</p>
+<ol>
+<li>掌握操作系统的基本概念、基本原理和基本功能，理解操作系统的整体运行。</li>
+<li>掌握操作系统进程、内存、文件和I/O管理的策略、算法、机制以及互相关系。</li>
+<li>能够运用所学的操作系统原理、方法与技术分析问题和解决问题，并能利用C或C++等高级语言描述相关算法。</li>
+</ol>
+<p>一、操作系统概述<br>（一）操作系统的概念、特征、功能和提供的服务<br>（二）操作系统的发展与分类<br>（三）操作系统的运行环境</p>
+<ol>
+<li>内核态与用户态</li>
+<li>中断、异常</li>
+<li>系统调用<br>（四）操作系统的结构</li>
+</ol>
+<p>二、进程管理<br>（一）进程与线程</p>
+<ol>
+<li>进程概念</li>
+<li>进程的状态与转换</li>
+<li>进程控制和组织<br>进程控制块；调度队列和调度器；进程的创建和终止。<br>4.线程概念与多线程模型<br>（二）CPU调度</li>
+<li>调度的基本概念</li>
+<li>调度时机、切换与过程</li>
+<li>调度的基本准则</li>
+<li>调度方式</li>
+<li>典型调度算法<br>先来先服务调度算法；短作业（短进程、短线程）优先调度算法；时间片轮转调度算法；优先级调度算法；多级反馈队列调度算法。<br>（三）同步与互斥</li>
+<li>进程同步和临界区的基本概念</li>
+<li>信号量</li>
+<li>使用信号量描述和解决经典同步问题</li>
+</ol>
+<p>（四）死锁</p>
+<ol>
+<li>死锁的概念</li>
+<li>死锁处理策略</li>
+<li>死锁预防</li>
+<li>死锁避免<br>系统安全状态；银行家算法。</li>
+<li>死锁检测和解除</li>
+</ol>
+<p>三、内存管理<br>（一）内存管理基础</p>
+<ol>
+<li>内存管理概念<br>程序装入与链接；逻辑地址与物理地址空间；内存保护。</li>
+<li>连续分配管理方式</li>
+<li>非连续分配管理方式<br>分页管理方式；分段管理方式；段页式管理方式。<br>（二）虚拟内存管理</li>
+<li>虚拟内存基本概念</li>
+<li>请求分页管理方式</li>
+<li>页面置换算法<br>最佳置换算法（OPT）；先进先出置换算法（FIFO）；最近最少使用置换算法（LRU）。</li>
+<li>页面分配策略</li>
+<li>工作集</li>
+<li>抖动</li>
+</ol>
+<p>四、文件管理<br>（一）文件系统基础</p>
+<ol>
+<li>文件概念</li>
+<li>文件的逻辑结构<br>顺序文件；索引文件；索引顺序文件。</li>
+<li>目录结构<br>文件控制块和索引节点；单级目录结构和两级目录结构；树形目录结构；图形目录结构。</li>
+<li>文件共享</li>
+<li>文件保护<br>访问类型；访问控制。<br>（二）文件系统实现</li>
+<li>文件系统层次结构</li>
+<li>目录实现</li>
+<li>文件实现<br>（三）磁盘组织与管理</li>
+<li>磁盘的结构</li>
+<li>磁盘调度算法</li>
+<li>磁盘的管理</li>
+</ol>
+<p>五、输入输出（I/O）管理<br>（一）I/O管理概述</p>
+<ol>
+<li>I/O控制方式</li>
+<li>I/O软件层次结构<br>（二）I/O核心子系统</li>
+<li>I/O调度概念</li>
+<li>高速缓存与缓冲区</li>
+</ol>
+<p>数据结构<br>【考查目标】<br>　　1. 理解数据结构的基本概念；掌握数据的逻辑结构、存储结构及其差异以及各种基本操作的实现。<br>　　2. 掌握基本的数据处理原理和方法的基础上，能够对算法进行设计与分析。<br>　　3. 能够选择合适的数据结构和方法进行问题求解；具备采用c或c++语言设计与实现算法的能力。<br>【考查范围】<br>　　一、线性表<br>　　(一) 线性表的定义和基本操作<br>　　(二) 线性表的实现<br>　　1. 顺序存储结构<br>　　2. 链式存储结构<br>　　3. 线性表的应用<br>　　二、栈、队列和数组<br>　　(一) 栈和队列的基本概念<br>　　(二) 栈和队列的顺序存储结构<br>　　(三) 栈和队列的链式存储结构<br>　　(四) 栈和队列的应用<br>　　(五) 特殊矩阵的压缩存储<br>　　三、树与二叉树<br>　　(一) 树的基本概念<br>　　(二) 二叉树<br>　　1. 二叉树的定义及其主要特征<br>　　2. 二叉树的顺序存储结构和链式存储结构<br>　　3. 二叉树的遍历<br>　　4. 线索二叉树的基本概念和构造<br>　　(三) 树、森林<br>　　1. 树的存储结构<br>　　2. 森林与二叉树的转换<br>　　3. 树和森林的遍历<br>(四) 树和二叉树的应用</p>
+<ol>
+<li>二叉排序树<br>　　2. 平衡二叉树<br>　　3. 哈夫曼(Huffman)树和哈夫曼编码<br>　　三、图<br>　　(一) 图的概念<br>　　(二) 图的存储及基本操作<br>　　1. 邻接矩阵法<br>　　2. 邻接表法<br>　　(三) 图的遍历<br>　　1. 深度优先搜索<br>　　2. 广度优先搜索<br>(四) 图的基本应用<br>　　1. 最小(代价)生成树<br>　　2. 最短路径<br>　　3. 拓扑排序<br>　　4. 关键路径<br>　　四、查找<br>　　(一) 查找的基本概念<br>　　(二) 顺序查找法<br>　　(三) 折半查找法<br>　　(四) B-树及其基本操作、B+树的基本概念<br>(五) 散列(Hash)表<br>　　(六) 查找算法的分析及应用<br>　　五、内部排序<br>　　(一) 排序的基本概念<br>　　(二) 插入排序<br>　　1. 直接插入排序<br>　　2. 折半插入排序<br>　　(三) 冒泡排序(bubble sort)<br>　　(四) 简单选择排序<br>　　(五) 希尔排序(shell sort)<br>　　(六) 快速排序<br>　　(七) 堆排序<br>　　(八) 二路归并排序(merge sort)<br>　　(九) 基数排序<br>　　(十) 各种内部排序算法的比较<br>　　(十一) 内部排序算法的应用</li>
+</ol>
+<p>计算机组成原理<br>　　【考查目标】<br>　　1. 理解单处理器计算机系统中各部件的内部工作原理、组成结构以及相互连接方式，具有完整的计算机系统的整机概念。<br>　　2. 理解计算机系统层次化结构的概念，熟悉硬件与软件之间的界面，掌握指令集体系结构的基本知识和基本实现方法。</p>
+<ol start="3">
+<li>能够运用计算机组成的基本原理和基本方法，对有关计算机硬件系统中的理论和实际问题进行计算、分析，并能对一些基本部件进行简单设计。</li>
+</ol>
+<p>　　一、计算机系统概述<br>　　(一)计算机发展历程<br>　　(二)计算机系统层次结构<br>　　1.计算机硬件的基本组成<br>　　2.计算机软件的分类<br>　　3.计算机的工作过程<br>　　(三)计算机性能指标<br>　　响应时间、吞吐率，CPU时钟周期、主频、CPI、CPU执行时间，MIPS、MFLOPS<br>　　二、数据的表示和运算<br>　　(一)数制与编码<br>　　1.进位计数制及其相互转换<br>　　2.数据编码：机器数及其编码，BCD码，字符编码<br>　　3.校验码<br>(二)数据的表示</p>
+<ol>
+<li>数值数据的定点表示：无符号数的表示，有符号数的表示</li>
+<li>数值数据的浮点表示：浮点表示方法，IEEE754标准</li>
+<li>非数值数据的表示：字符与字符串的表示，逻辑数的表示<br>(三) 定点数的运算<br>　　位移运算，位扩展运算，原码加/减运算，补码加/减运算，原码一位乘法运算，补码一位乘法运算，溢出概念和判别方法<br>　　(四)浮点数的运算<br>　　加/减运算<br>　　(五)算术逻辑单元ALU<br>　　1.串行进位加法器和并行进位加法器<br>　　2.算术逻辑单元ALU的功能和结构<br>　　三、存储器层次结构<br>　　(一)存储器的分类<br>　　(二)存储器的层次化结构<br>　　(三)半导体随机存取存储器<br>　　1. SRAM存储器的工作原理<br>　　2. DRAM存储器的工作原理<br>　　3.只读存储器<br>(四)主存储器<br>主存的逻辑设计，主存与CPU的连接，提高访存速度的措施<br>　　(五)高速缓冲存储器(Cache)<br>　　1.Cache的基本工作原理<br>　　2.Cache和主存之间的映射方式<br>　　3. Cache中主存块的替换算法<br>　　4. Cache写策略<br>　　(六)虚拟存储器<br>　　1.虚拟存储器的基本概念<br>　　2.虚拟存储器的实现<br>　　页式虚拟存储器，段式虚拟存储器，段页式虚拟存储器，TLB(快表)<br>　　四、指令系统<br>　　(一)指令格式<br>指令的功能，指令的基本格式，操作码字段的功能及表示，地址码字段的功能及表示，指令字的相关概念<br>　　(二)指令的寻址方式<br>　　1.有效地址的概念<br>　　2.数据寻址和指令寻址<br>　3.常见寻址方式<br>　　(三) CISC和RISC的基本概念<br>　　五、中央处理器(CPU)<br>　　(一) CPU的功能和基本结构<br>(二) 指令执行过程<br>  CPU的工作流程，指令的执行过程，CPU基本操作与微操作的关系，指令执行过程的微操作序列<br>(三)数据通路的功能和基本结构<br>数据通路的类型，单总线数据通路的基本结构，微操作与微操作命令的关系，指令执行过程的微操作命令序列<br>　　(四)控制器的功能和工作原理<br>　　1.硬布线控制器<br>基本结构，时序系统组成，信号时序控制方式，微操作控制信号形成<br>　　2.微程序控制器<br>　　微程序相关概念，微指令的编码方式，微地址的形成方式<br>　　(五)指令流水线<br>　　1.指令流水线的基本概念<br>　　2.指令流水线的基本实现<br>　　3.超标量和动态流水线的基本概念<br>　　(六)多核处理器的基本概念<br>　　六、总线<br>　　(一)总线概述<br>　　1.总线的基本概念<br>　　2.总线的分类<br>　　3.总线的组成及性能指标</li>
+<li>总线的操作过程<br>　　(二)总线仲裁<br>　　1.集中仲裁方式：链式查询，计数器定时查询，独立请求<br>　　2.分布仲裁方式的基本概念<br>　　(三)总线操作定时<br>　　同步定时方式，异步定时方式，半同步定时方式<br>　　(四)总线标准<br>　　七、输入输出(I/O)系统<br>　　(一)I/O系统基本概念<br>　　(二)外部设备<br>　　输入设备，输出设备，外存储器<br>　　(三) I/O接口(I/O控制器)<br>　　1.I/O接口的功能和基本结构<br>　　2.I/O端口及其编址<br>　　3.I/O地址空间及其编码<br>　　(四)I/O方式<br>　　1.程序查询方式<br>　　2.程序中断方式<br>　　中断的基本概念，中断响应过程，中断处理过程，多重中断和中断屏蔽的概念<br>　　3.DMA方式<br>　　DMA控制器的组成，DMA传送过程<br>4.通道方式</li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/life/">life</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/13/data-structure-4/"><span>data structure——串</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/13/data-structure-4/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-13T01:16:54.000Z">
+          2018-04-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p><strong>生存还是毁灭，这是一个值得思考的问题。</strong><br>　　　　　　　　　　　——莎士比亚《哈姆雷特》</p>
+</blockquote>
+<p><strong>特点：</strong><br>串的逻辑结构和线性表类似，串是限定了元素为字符串的线性表，但是，两者在操作上有很大区别：线性表的操作主要是针对的表内的某一个元素，而串操作主要是对串内的一个子串。</p>
+<p><strong>定义：</strong><br>定长顺序存储定义：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> str[maxsize+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;Str;</span><br></pre></td></tr></table></figure></p>
+<p>定长存储结构不需要分配和释放空间，但是如果想要改变空间大小，需要重新定义结构体。<br>
+      
+    </p></div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/10/data-structure-3/"><span>data structure——栈和队列</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/10/data-structure-3/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-10T02:17:25.000Z">
+          2018-04-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>栈和队列的特点是：栈(stack)是先进后出，而队列是先进先出。</p>
+<p><strong>栈的不同形式的定义：</strong></p>
+<ul>
+<li><p>顺序栈的定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data[maxsize];  <span class="comment">//存放栈中元素</span></span><br><span class="line">	<span class="keyword">int</span> top;  <span class="comment">//注意这是栈顶指针，这个指针是用来指数组中的元素的，不是在结点中的指针域</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链栈结点定义：(即用链表来存储栈)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;  <span class="comment">//数据域</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span>  <span class="comment">//指针域</span></span><br><span class="line">&#125;LNode;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/06/data-structure-2/"><span>data structure——线性表</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/06/data-structure-2/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-06T15:08:04.000Z">
+          2018-04-06
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>顺序表定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxsize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data[maxsize];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;sqList;</span><br></pre></td></tr></table></figure>
+<p>或者可以这样：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> A[maxsize];</span><br><span class="line"><span class="keyword">int</span> n;</span><br></pre></td></tr></table></figure></p>
+<p>单链表结点定义：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LNode;</span><br></pre></td></tr></table></figure></p>
+<p>双链表结点定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DLNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">DLNode</span> *<span class="title">prior</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">DLNode</span> *<span class="title">next</span>;</span>	</span><br><span class="line">&#125;DLNode;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/06/data-structure-1/"><span>data structure 杂物间</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/06/data-structure-1/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-06T01:47:57.000Z">
+          2018-04-06
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>小插曲：写作风格想渐渐地由便于理解的语言向最精简的叙述方式转变。（严谨的风格保持不变且在努力提高中：））</p>
+</blockquote>
+<p>整理一下数据结构所涉及到的一些<code>C</code>或<code>C++</code>中的基础知识。</p>
+<ul>
+<li>结构型</li>
+</ul>
+<p>结构型的作用就是满足对数据类型的需求的补充，我们可以自己创造合适自己的数据类型，例如现有<code>int</code>,<code>char</code>等数据类型，我们可以：<br>
+      
+    </p></div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/03/Requests-webscraping/"><span>Requests库详解</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/03/Requests-webscraping/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-03T01:52:53.000Z">
+          2018-04-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>真正危险的不是计算机开始像人那样去思考，而是人类开始像计算机一样思考。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——西德尼·哈里斯（Sydney Harris）</p>
+</blockquote>
+<p><code>python</code><strong><em>爬虫之旅之第二站~~</em></strong></p>
+<p><code>Requests</code>库是经常用的库，比<code>urllib</code>更加方便。<br>首先先领略一下使用<code>Requests</code>的方便之处：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">response=requests.get(<span class="string">'http://aisleep.xyz'</span>)</span><br><span class="line">print(type(response))</span><br><span class="line">print(response.status_code)</span><br><span class="line">print(type(response.text))</span><br><span class="line">print(response.text)</span><br><span class="line">print(response.cookies)</span><br></pre></td></tr></table></figure></p>
+<p>这里的第6行和在<code>urllib</code>中使用<code>read</code>的作用是一样的，在<code>urllib</code>中还要使用<code>.decode</code>使得其变成字符串类型。在<code>Requests</code>中就很方便了，直接使用<code>text</code>就可以了。在最后一行中的<code>cookies</code>获取中也比在<code>urllib</code>中方便很多。</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python/">python</a><a href="/tags/web-scraping/">web-scraping</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/01/web-scraping-1/"><span>urllib库详解</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/01/web-scraping-1/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-01T01:56:48.000Z">
+          2018-04-01
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>&nbsp;&nbsp;非常明显，技术已经超越我们的人性。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——阿尔伯特·爱因斯坦（Albert Einstein）</p>
+</blockquote>
+<p><code>python</code><strong><em>爬虫之旅之第一站~~</em></strong></p>
+<p>首先讲一下<code>urllib</code>库，他是python内置的一个<code>http</code>请求库，他有以下主要的四个模块：</p>
+<ul>
+<li><code>urllib.request</code>        请求模块，我们通过他来模拟发送一个请求</li>
+<li><code>urllib.error</code>        异常处理模块</li>
+<li><code>urllib.parse</code>        <code>url</code>解析模块，可以对<code>url</code>进行拆分，合并等操作</li>
+<li><code>urllib.robotparser</code>    <code>robots.txt</code>解析模块，主要是对网站的<code>robots.txt</code>文件进行解析    </li>
+</ul>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python/">python</a><a href="/tags/web-scraping/">web-scraping</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/page/2/" class="pagination-prev">Prev</a>
+  
+  
+  <a href="/page/4/" class="pagination-next">Next</a>
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

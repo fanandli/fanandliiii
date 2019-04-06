@@ -1,0 +1,621 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Page 2 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/22/data-structure-17/"><span>归并排序</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/22/data-structure-17/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-22T02:02:05.000Z">
+          2018-05-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>arr[]存储所有待排关键字的数组，low到high的关键字为一个子表，从mid+1到high为另一个关键字的子表。所以可以看出，归并排序<strong>可以对一个序列中任意一部分的元素进行排序</strong>，通过指定范围low-high就行。int n1=mid-low+1;显然n1为low到high范围里的关键字的个数。int n2=high-mid;显然n2是mid+1到high的关键字的个数。 </p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/guibing1.png?raw=true" width="600" height="350" alt="guibingpaixu" align="center"><br>
+      
+    </p></div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/21/data-structure-16/"><span>堆排序</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/21/data-structure-16/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-21T06:44:09.000Z">
+          2018-05-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>逻辑结构是完全二叉树，其左右孩子结点都小于或者都大于父结点的结构叫做<strong>堆</strong>，一个叫小顶堆，还有一个叫大顶堆。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/duipaixu1.png?raw=true" width="365" height="250" alt="duipaixu1" align="center"><img src="https://github.com/fanandli/picblog/blob/master/duipaixu2.png?raw=true" width="365" height="250" alt="duipaixu2" align="center"></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/20/data-structure-15/"><span>快速排序</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/20/data-structure-15/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-20T08:39:30.000Z">
+          2018-05-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>首先以几个图片大致说一下这个算法的思路是什么：<br><img src="https://github.com/fanandli/picblog/blob/master/kuaisupaixu1.png?raw=true" width="250" height="200" alt="kuaipai" align="center"><img src="https://github.com/fanandli/picblog/blob/master/kuaipai2.png?raw=true" width="250" height="200" alt="kuaipai2" align="center"><img src="https://github.com/fanandli/picblog/blob/master/kuaipai3.png?raw=true" width="250" height="200" alt="kuaipai3" align="center"></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/18/data-structure-14/"><span>希尔排序</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/18/data-structure-14/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-18T02:35:05.000Z">
+          2018-05-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>首先我们来先看一个过程，</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/sier2.png?raw=true" width="300" height="200" alt="xier" align="center"><img src="https://github.com/fanandli/picblog/blob/master/xier3.png?raw=true" width="300" height="200" alt="xier2" align="center"></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/17/data-structure-12/"><span>直接插入，简单选择和冒泡排序</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/17/data-structure-12/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-17T01:53:57.000Z">
+          2018-05-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <ul>
+<li>直接插入排序</li>
+</ul>
+<p>insertSort[]数组用来存储我们要排的关键字，n为关键字的个数，temp用来暂时存储我们当前要插入的排序的关键字。<br>第一个for循环是从i=1开始，是因为我们规定认为初始状态的第0个元素为有序序列，第0个元素之后的元素为无序序列。我们的思路是从无序序列中逐次扫描，与有序序列中的大小进行比较，从而将他们插入到合适的位置中去。<br>因为箭头总是指向带插入位置的前一个位置，所以我们要arr[j+1]=temp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="keyword">int</span> temp,i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		temp=arr[i]；</span><br><span class="line">		j=i<span class="number">-1</span>; <span class="comment">//j指向有序序列中的最右边的一个元素</span></span><br><span class="line">		<span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;&amp;temp&lt;arr[j])</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j+<span class="number">1</span>]=arr[j];</span><br><span class="line">			--j; <span class="comment">//j是从右往左扫描有序序列</span></span><br><span class="line">		&#125;</span><br><span class="line">		arr[j+<span class="number">1</span>]=temp; <span class="comment">//将temp中的待排关键字插入</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a><a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/15/data-structure-11/"><span>图——关键路径</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/15/data-structure-11/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-15T06:00:07.000Z">
+          2018-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>关键路径</strong><br>AOE网，(activate on edge)<br>1为源点，6为汇点。所谓关键路径，就是在AOE网中从源点开始到汇点结束的具有最大路径长度的那个路径就为关键路径。<br><img src="https://github.com/fanandli/picblog/blob/master/AOE.png?raw=true" width="600" height="350" alt="AOE" align="center"></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/15/data-structure-10/"><span>图——拓扑排序</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/15/data-structure-10/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-15T02:20:29.000Z">
+          2018-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>拓扑排序</strong></p>
+<p>AOV网，描述了一种有实际意义的过程，所以结点之间有了先后顺序，其次是结点之间是没有环的。<br>如何导出正确的结点之间的顺序，就需要拓扑排序。三个步骤:</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/AOV1.png?raw=true" width="600" height="350" alt="tuopu" align="center"></p>
+<p>用邻接表来存储图，且修改顶点结构体为<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">int</span> count; <span class="comment">//指示当前结点的入度</span></span><br><span class="line">	ArcNode* first;</span><br><span class="line">&#125;VNode;</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/15/data-structure-9/"><span>图——Floyd算法</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/15/data-structure-9/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-15T01:00:44.000Z">
+          2018-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>最短路径：<br><strong>弗洛伊德算法</strong><br>我们先看一下我们举例的图，如下图中右边的图，其中左边的Av[]数组存储的任意两个顶点之间的当前最短路径长度，pathv[]数组存储了任意两个顶点他们所在最短路径之间的中间点(v为下标)。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B71.png?raw=true" width="600" height="350" alt="floyd1" align="center"></p>
+<p>执行思路：<br>对于每个顶点v，和任意一顶点对（i,j）,i不等于j,v不等于i,v不等于j，如果A[i][j]&gt;A[i][v]+A[v][j],则将A[i][j]更新为A[i][v]+A[v][j]的值，并将path[i][j]改为v。<br>
+      
+    </p></div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/11/data-structure-8/"><span>图——Dijkstra算法</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/11/data-structure-8/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-11T01:48:43.000Z">
+          2018-05-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>最短路径问题</p>
+<p><strong>迪杰斯特拉算法</strong><br>求某一个顶点到其余各顶点的最短路径，也为单元最短路径算法。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/ef0e63b9977341e4513cd67239c5b25.png?raw=true" width="600" height="350" alt="Dijkstra1" align="center"></p>
+<p>dict[]数组存储了当前起点到其余各顶点的最短路径长度（是长度，数值），path[]存储了当前起点到其余各顶点的最短路径（是上一个顶点的下标）。set[]标记哪些顶点被选入了最短路径（是标记）。</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/01/data-structure-13/"><span>图——最小生成树</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/01/data-structure-13/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-01T11:27:29.000Z">
+          2018-05-01
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>由一个图按照某种规则导出的一个树，叫生成树。最小生成树：构成这个生成树的所有分支的权值和最小。</p>
+<p><strong>prime算法</strong><br>求最小生成树的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span> n ,<span class="keyword">float</span> MGraph[][n],<span class="keyword">int</span> v0,<span class="keyword">float</span> &amp;sum)</span>  <span class="comment">//顶点个数，带权图，构造生成树的起始顶点，存储最小权值和（代价）</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lowCost[n],vSet[n];  </span><br><span class="line">	<span class="keyword">int</span> v,k,min;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		lowCost[i]=MGraph[v0][i];  <span class="comment">//lowCost[]指向vo初始点的同一行的不同列的顶点</span></span><br><span class="line">		vSet[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	v=v0;  <span class="comment">//v指向第一个结点，</span></span><br><span class="line">	vSet[v]=<span class="number">1</span>;  <span class="comment">//已经并入，所以标记设置为1</span></span><br><span class="line">	sum=<span class="number">0</span>;  <span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		min=INF; <span class="comment">//min初始化为无穷大</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n,++j)</span><br><span class="line">			<span class="keyword">if</span>(vSet[j]==<span class="number">0</span>&amp;&amp;lowCost[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				min=lowCost[j];</span><br><span class="line">				k=j;</span><br><span class="line">			&#125;</span><br><span class="line">			vSet[k]=<span class="number">1</span>;</span><br><span class="line">			v=k;  <span class="comment">//v指向如今刚进入的结点</span></span><br><span class="line">			sum+=min;  <span class="comment">//min的值累加到sum</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j)  <span class="comment">//更新lowCost数组</span></span><br><span class="line">				<span class="keyword">if</span>(vSet[j]==<span class="number">0</span>&amp;&amp;MGraph[v][j]&lt;lowCost[j])</span><br><span class="line">					lowCost[j]=MGraph[v][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/" class="pagination-prev">Prev</a>
+  
+  
+  <a href="/page/3/" class="pagination-next">Next</a>
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

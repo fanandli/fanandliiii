@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>归并排序 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="arr[]存储所有待排关键字的数组，low到high的关键字为一个子表，从mid+1到high为另一个关键字的子表。所以可以看出，归并排序可以对一个序列中任意一部分的元素进行排序，通过指定范围low-high就行。int n1=mid-low+1;显然n1为low到high范围里的关键字的个数。int n2=high-mid;显然n2是mid+1到high的关键字的个数。">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="归并排序">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>归并排序</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/22/data-structure-17/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-22T02:02:05.000Z">
+          2018-05-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>arr[]存储所有待排关键字的数组，low到high的关键字为一个子表，从mid+1到high为另一个关键字的子表。所以可以看出，归并排序<strong>可以对一个序列中任意一部分的元素进行排序</strong>，通过指定范围low-high就行。int n1=mid-low+1;显然n1为low到high范围里的关键字的个数。int n2=high-mid;显然n2是mid+1到high的关键字的个数。 </p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/guibing1.png?raw=true" width="600" height="350" alt="guibingpaixu" align="center"><br><a id="more"></a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> mid,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">	<span class="keyword">int</span> n1=mid-low+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> n2=high-mid;</span><br><span class="line">	<span class="keyword">int</span> L[n1],R[n2];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n1;i++)</span><br><span class="line">		L[i]=arr[low+i]; <span class="comment">//将arr[]中的low到mid的元素赋给L[]中</span></span><br><span class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n2;j++)</span><br><span class="line">		R[j]=arr[mid+<span class="number">1</span>+j]; <span class="comment">//将arr[]中的mid+1到high的元素赋给R[]中</span></span><br><span class="line">	i=<span class="number">0</span>; </span><br><span class="line">	j=<span class="number">0</span>;</span><br><span class="line">	k=low;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;n1&amp;&amp;j&lt;n2)  </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(L[i]&lt;=R[j])   <span class="comment">//L数组和R数组中相对应的元素进行大小比较</span></span><br><span class="line">			arr[k]=L[i++]; <span class="comment">//此时L数组的元素较小，赋给arr数组中，且i加一</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			arr[k]=R[j++]; <span class="comment">// R数组中的元素较小</span></span><br><span class="line">		k++; <span class="comment">//k指向arr数组中的元素，被赋过值了，所以加一</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;n1)  <span class="comment">//L数组中若是比较完之后有剩余就将他加到arr数组的后面</span></span><br><span class="line">		arr[k++]=L[i++];</span><br><span class="line">	<span class="keyword">while</span>(j&lt;n2)  <span class="comment">//同理是R数组中若有剩余</span></span><br><span class="line">		arr[k++]=R[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>; <span class="comment">//计算出中间位置</span></span><br><span class="line">		mergeSort(arr,low,mid); </span><br><span class="line">		mergeSort(arr,mid+<span class="number">1</span>,high);</span><br><span class="line">		merge(arr,low,mid,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

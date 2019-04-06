@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>windump使用注意事项 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="之前在准备的时候需要用到windump这个软件，这里就主要记录一下使用过程中遇到的坑吧。。
+首先使用windump是需要安装winpcap的，安装就好，然后在命令行下直接使用windump。（要先打开到windump所处的位置）">
+  
+
+  
+  
+  <meta name="keywords" content="network,windump">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="windump使用注意事项">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>windump使用注意事项</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/03/09/windump-use/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-03-09T08:15:32.000Z">
+          2018-03-09
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>之前在准备的时候需要用到windump这个软件，这里就主要记录一下使用过程中遇到的坑吧。。</p>
+<p>首先使用windump是需要安装winpcap的，安装就好，然后在命令行下直接使用windump。（要先打开到windump所处的位置）<br><a id="more"></a><br>接着windump是直接监听网卡，所以你要选择你监听的网卡，这里也需要注意，你无线上网或者有线上网是不一样的，不然是捕获不到包的。有代理服务器的话也会多出来另外一个选择，所以最好要先运行windump -D先把网卡列表显示出来。（这里切记是大写的D,坑~）之后你再选择了哪一个网卡之后在进行针对性操作。例如，你可以键入：</p>
+<p><code>windump -i 2 -q -w C:\perflogs\filename\ -n -C 30 -W 10 -U -s 0</code></p>
+<p>其中，</p>
+<ul>
+<li>-i是选择你需要监听的网卡号，这里选择的是2号。</li>
+<li>-q是指在安静（quiet）模式下。</li>
+<li>-w是要创建的文件的前缀。</li>
+<li>-n是指不会解析主机名称，以ip地址存储。</li>
+<li>-C是此文件大小为百万字节，多了就转移到下一个文件。</li>
+<li>-W是指将抓取的包存在一个位于perflogs处的文件中，文件名可以自己起。</li>
+<li>-U是指随着每个数据包的保存，它将被写入输出文件。</li>
+<li>-s减少了数据包缓冲量，将其设置为零。</li>
+</ul>
+<p><strong>（注意:一定要区分大小写，空格.）</strong></p>
+<p>抓包成功后，我们可以使用wireshark去分析，wireshark的安装等就不说了，这里主要介绍一下，在你选定一条数据包的时候，双击去查看他的详细信息。</p>
+<p><img src="http://cdn.ttgtmedia.com/rms/misc/Wireshark-tutorial-Screenshot-3.jpg" alt><br>(图片来源网络)</p>
+<p>这里有：</p>
+<ul>
+<li><strong><strong>帧</strong></strong>：这里告诉用户帧号，与数据包有关的时间相关信息，帧长度，帧内的协议以及着色规则。</li>
+<li><strong><strong>以太网II</strong></strong>：指示数据包的来源和目的地。<!--more--></li>
+<li><strong><strong>Internet协议</strong></strong>：包含了源和目标信息以及版本，标题详细信息和生命周期。可以看到源ip地址和目的ip地址。</li>
+<li><strong><strong>TCP（transmission control protocol）</strong></strong>:这里捕获有关通信中涉及的源端口和目标端口的信息，下一个要查找的序列号以及不同的标记。</li>
+<li><strong><strong>HTTP(Hypertext Transfer Protocol)</strong></strong>:包含http的版本，服务器信息，超时值，连接状态，内容类型和字符集的信息。</li>
+<li><strong><strong>基于行的文本数据</strong></strong>：这包含了HTML的源代码。</li>
+</ul>
+<p>还有一些根据你具体不同的协议有所不同。</p>
+<p>windump的使用信息在百度搜索都很有限，感觉少数人是总结的，大部分都是复制黏贴，嗯。。。</p>
+<p>为了能够让更多的人快速，更好的上手windump,本文会持续更新。</p>
+<hr>
+<p>2018.5.12更新<br>一、关键字<br>表达式是一个正则表达式，Windump利用它作为过滤报文的条件，如果一个报文满足表达式的条件，则这个报文将会被捕获。如果没有给出任何条件，则网络上所有的信息包将会被截获。在表达式中一般如下几种类型的关键字。</p>
+<p>1、<br>第一种是关于类型的关键字，主要包括host，net，port, 例如 host 192.168.0.111，指明 192.168.0.111是一台主机，net 192.168.0.0 指明 192.168.0.0是一个网络地址，port 23 指明端口号是23。如果没有指定类型，缺省的类型是host.</p>
+<p>2、<br>第二种是确定传输方向的关键字，主要包括src , dst ,dst or src, dst and src ,这些关键字指明了传输的方向。举例说明，src192.168.0.94 ,指明ip包中源地址是192.168.0.94 , dst net 192.168.0.0 指明目的网络地址是192.168.0.0。如果没有指明方向关键字，则缺省是src or dst关键字。</p>
+<p>3、<br>第三种是协议的关键字，主要包括fddi,ip,arp,rarp,tcp,udp等类型。Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是”ether”的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则Windump将会监听所有协议的信息包。</p>
+<p>4、<br>除了这三种类型的关键字之外，其他重要的关键字如下：gateway, broadcast,less,greater,还有三种逻辑运算，取非运算是 ‘not ‘ ‘! ‘, 与运算是’and’,’&amp;&amp;’;或运算 是’or’ ,’││’；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。<br>A想要截获所有192.168.0.94 的主机收到的和发出的所有的数据包：</p>
+<p>#Windump host 192.168.0.94<br>B想要截获主机192.168.0.94 和主机192.168.0.168 或192.168.0.111的通信，使用命令：（在命令行中适用括号时，一定要</p>
+<p>#Windump host 192.168.0.94 and (192.168.0.168 or 192.168.0.111)<br>C如果想要获取主机192.168.0.94除了和主机192.168.0.111之外所有主机通信的ip包，使用命令：</p>
+<p>#Windump ip host 192.168.0.94 and ! 192.168.0.111<br>D如果想要获取主机192.168.0.94接收或发出的telnet包，使用如下命令：</p>
+<p>#Windump tcp port 23 host 192.168.0.94</p>
+<p>二、Windump的输出结果介绍<br>1、数据链路层头信息</p>
+<p>使用命令</p>
+<p>#Windump –e host test100</p>
+<p>16:20:51.602645 arp who-has TEST100 tell wh<br>16:20:51.602931 arp reply TEST100 is-at 0:1:2:9a:d:24<br>16:20:51.602979 wh.137 &gt; TEST100.137:<br>16:29:26.397806 TEST100.139 &gt; wh.1226: . 4218060367:4218060368(1) ack 4122708076 win 17223<br>分析：16:20:51是显示的时间， 602645是ID号，首先主机wh发出arp请求test100的MAC地址,接着test100返回了它的MAC地址,wh的137与test100 的137端口发送.test100的139端口向wh的1226端口发送数据, ack 4122708076 表明对序列号是4122708076的包进行响应. win 17223表明发送窗口的大小是17223</p>
+<p>2、ARP包的WINDUMP输出信息</p>
+<p>使用命令</p>
+<p>#Windump arp<br>得到的输出结果是：<br>22:32:42.802509 arp who-has 192.168.0.168 tell 192.168.0.94<br>22:32:42.802902 arp reply 192.168.0.168 is-at 0:1:2:9a:d:24<br>分析: 22:32:42是时间戳, 802509是ID号, arp表明是ARP请求包, who-has 192.168.0.168 tell 192.168.0.94 表示主机192.168.0.94请求主机192.168.0.168的MAC地址.接着arp reply 192.168.0.168 is-at 0:1:2:9a:d:24表示主机192.168.0.168收到请求并返回自己的MAC地址.</p>
+<p>3、TCP包的输出信息</p>
+<p>用WINDUMP捕获的TCP包的一般输出信息是：<br>时间戳&amp;ID号 src.port1&gt;dst.port2 : flags data-seqno ack window urgent options<br>02:53:03是时间戳, 541838是ID号,src &gt; dst:表明从源地址到目的地址, port1,port2代表端口号,flags是TCP包中的标志信息,S 是SYN标志, F (FIN), P (PUSH) , R (RST) “.” (没有标记); data-seqno是数据包中的数据的顺序号, ack是下次期望的顺序号, window是接收缓存的窗口大小, urgent表明数据包中是否有紧急指针. Options是选项.</p>
+<p>4、UDP包的输出信息</p>
+<p>用WINDUMP捕获的UDP包的一般输出信息是：<br>时间戳&amp;ID号 src.port1&gt;dst.port2: udp length<br>UDP十分简单，上面的输出行表明从主机src的port1端口发出的一个UDP数据包到主机dst的port2端口，类型是UDP， 包的长度是length</p>
+<p>三、Windump网络数据的过滤<br>不带任何参数的Windump将搜索系统中所有的网络接口，并显示它截获的所有数据，这些数据对我们不一定全都需要，而且数据太多不利于分析。所以，我们应当先想好需要哪些数据，Windump提供以下参数供我们选择数据：</p>
+<p>1、Windump后直接跟 数据-链路层上选择协议</p>
+<p>包括ip、arp、rarp、ipx都是这一层的。<br>例如：D:>Windump arp //将只显示网络中的arp即地址转换协议信息。</p>
+<p>2、-i选择过滤的网络接口</p>
+<p>如果是作为路由器至少有两个网络接口，通过这个选项，就可以只过滤指定的接口上通过的数据。<br>例如：<br>src、dst、port、host、net、ether、gateway这几个选项又分别包含src、dst、port、host、net、ehost 等附加选项。他们用来分辨数据包的来源和去向，src host 192.168.0.1指定源主机IP地址是192.168.0.1，dst net 192.168.0.0/24指定目标是网络192.168.0.0。以此类推，host是与其指定主机相关无论它是源还是目的，net是与其指定网络相关的，ether后面跟的不是IP地址而是物理地址，而gateway则用于网关主机。可能有点复杂，看下面例子就知道了：<br>D:>Windump src host 192.168.0.1 and dst net 192.168.0.0/24<br>过滤的是源主机为192.168.0.1与目的网络为192.168.0.0的报头。<br>D:>Windump ether src 00:50:04:BA:9B and dst……<br>过滤源主机物理地址为XXX的报头(为什么ether src后面没有host或者net？物理地址当然不可能有网络喽)。<br>D:>Windump src host 192.168.0.1 and dst port not telnet<br>过滤源主机192.168.0.1和目的端口不是telnet的报头。</p>
+<p>3、ip icmp arp rarp和tcp、udp、icmp这些选项等都要放到第一个参数的位置</p>
+<p>用来过滤数据报的类型。例如：<br>D:>Windump ip src……<br>只过滤数据-链路层上的IP报头。<br>D:>Windump udp and src host 192.168.0.1<br>只过滤源主机192.168.0.1的所有udp报头</p>
+<p>4、-n不进行IP地址到主机名的转换</p>
+<p>四、Windump实战解析</p>
+<p>我经常用的命令是windump –n –S,或者windump –n –S –v 或者windump –n-S-vv.-n表示源地址和目的地址不采用主机名的形式显示而采用IP地址的形式;<br>-S是显示TCP/IP的实际进程数,如果不选择这个选项,可能出现的就是近似值,比如:如果现在的进程数是87334271,下一秒变成了多了一个,就会显示出来是87334272.-v和-vv是让机器显示更加全面的信息,显示诸如存活时间/IP的ID等信息.,上一节1.2.2中已经对各参数的详细功能做了介绍.<br>接着我们对TCP握手过程进行嗅探分析,在windows命令行界面下,运行windump,如下:<br>D:>windump –n<br>windump: listening on\Device\Packet_{9D9A4413-7F41-463A-BA3C-B17145F4A626}<br>02:53:03.541838 192.168.0.194.4423 &gt; 192.168.0.168.80: S 4057648491:4057648491(0) win 16384 <mss 1460,nop,nop,sackok> (DF)</mss></p>
+<p>02:53:03.542005 192.168.0.168.1234 &gt; 192.168.0.194.4423: S 1391008532:1391008532(0) ack 4057648492 win 17520 <mss 1460,nop,nop,sackok> (DF)</mss></p>
+<p>02:53:03.542167 192.168.0.194.4423 &gt; 192.168.0.168.1234: . ack 1 win 17520 (DF)</p>
+<p>当TCP三次握手不成功又是怎么样的呢?接着telnet到一台没有开telnet服务的计算机上面,插看windump抓获的数据包<br>C:\Documents and Settings\wh&gt;telnet 192.168.0.194<br>Connecting To 192.168.0.194…Could not open a connection to host on port 23 : Connect failed</p>
+<p>D:>windump –n<br>windump: listening on\Device\Packet_{9D9A4413-7F41-463A-BA3C-B17145F4A626}<br>18:19:45.278916 arp who-has 192.168.0.194 tell 192.168.0.168</p>
+<p>18:19:45.279090 arp reply 192.168.0.194 is-at 0:d0:f8:38:de:ab</p>
+<p>18:19:45.279108 192.168.0.168.1148 &gt; 192.168.0.194.23: S 2869223552:2869223552(0) win 16384 <mss 1460,nop,nop,sackok> (DF)</mss></p>
+<p>18:19:45.279269 192.168.0.194.23 &gt; 192.168.0.168.1148: R 0:0(0) ack 2869223553 win 0</p>
+<p>18:19:45.769542 192.168.0.168.1148 &gt; 192.168.0.194.23: S 2869223552:2869223552(0) win 16384 <mss 1460,nop,nop,sackok> (DF)<br>18:19:45.769757 192.168.0.194.23 &gt; 192.168.0.168.1148: R 0:0(0) ack 1 win 0<br>18:19:46.316397 192.168.0.168.1148 &gt; 192.168.0.194.23: S 2869223552:2869223552(0) win 16384 <mss 1460,nop,nop,sackok> (DF)<br>18:19:46.316636 192.168.0.194.23 &gt; 192.168.0.168.1148: R 0:0(0) ack 1 win 0<br>以上是利用Windump对TCP的三次握手过程进行分析,Windump的参数很多，功能也非常强大,实际运用中根据实际的需求,来设置参数,获得你所需要的信息.相信每次使用都会有不同的收获．</mss></mss></p>
+<p>五、命令参数<br>-a<br>将网络和广播地址转化为名称<br>-c<br>接收指定数据包后退出<br>-d<br>接收人可读的包匹配编译代码到标准输出，然后停止<br>-dd<br>以C程序分段方式捕获包匹配代码<br>-ddd<br>以十进制数据形式捕获包匹配代码<br>-e<br>在每个捕获行打印链路层头标<br>-E<br>algo:secret为解密IPSE ESP包使用算法。算法可以是des-cbc, 3des-cbc, blowfish-cbc, rc3-cbc, cast128-cbc, 或none。默认值是desc-cbc。只有当TCPDUMP编译时使用激活加密选项时，才可以解密数据包。Secret是ESP密匙是ASCII码。当前还不能认为一定是二进制值。该选项是以RFC2406ESP为假设，而不是RFC1827 ESP。只用于调试，不鼓励用真正的密码作为选项。当你在PS或其他场合，把IPSEC密码写在命令行上时，会被他人看到。<br>-f<br>不用符号而用数字方式输出外部英特网地址<br>-F<br>使用文件作为过滤表达式的输入。命令行的其他部分会被忽略。<br>-i<br>在接口上监听。如果没有指定，TCPDUMP将搜索系统接口列表中最小，被配置激活的接口（LOOPBACK接口除外）。可用最先匹配替换这种关系。在WINDOWS中接口可以是网卡的名称，或是网卡的号码（-D参数可显示该号码）。 </p>
+<p>内核为2。2或其后的LINUX系统，参数“ANY”可以获取所有接口的数据。应注意的是在混乱模式下不能使用“ANY”参数。<br>-l<br>标准输出行缓存。如果你想在捕获数据时查看的话，这个参数很有用。例如：“tcpdump -l │ tee dat or <code>tcpdump -l &gt; dat &amp; tail -f dat.” 
+n 
+不要将地址（如主机地址，端口号）转换为名称 
+-N 
+不要打印主机名称的域名限定。如：如果你使用该参数，TCPDUMP会输出“NIC”而不是“NIC。DDN。MIL”。 
+-m 
+从文件模块中载入SMI MIB 模块定义。这个选项可以为TCPDUMP载入多个MIB模块 
+-O 
+不要运行包匹配代码优化器。只有在你怀疑优化器有问题时可以使用这个参数。 
+-p 
+不要让接口处于“混乱”模式。注意接口可能由于其他原因处于“混乱”模式；因此“-p”不能用作以太网络主机或广播的缩写。 
+-q 
+快速（安静？）输出。打印较少的协议信息，因此输出行更短。 
+-r 
+从文件中读取包（与参数据-W一起使用）。如果文件是“-”就使用标准输入。 
+-s 
+不使用默认的68个字节，更改从每个包中获取数据的字节数量（ SunOS系统实际最小为96）。对于IP，ICMP，TCP和UDP包68个字节已足够，但是对命名服务和NFS包，他们的协议会被截断（见下面）。包被截断是因为在使用参数</code>[│proto]输出时指定受限制的快照，proto是被截断协议层的名称。注意如果使用大的快照会增加处理包的时间，并且明显地减少包的缓存数量。也许会导致包的丢失。你应该将snaplen 设置成你感兴趣协议的最小数。当snaplen 为0时接收整个包。<br>-T<br>根据表达式将选中的数据包表达成指定的类型。当前已有的类型有CNFP（Cisco的网络流量协议），rpc（远端程序调用），rtp（实时程序协议），rtcp（实时程序控制协议），snmp（简单网络管理协议），vat（可视单频工具），和wb（分布式白板）。<br>-R<br>假设ESP/AH包遵守旧的说明（RFC1825到RFC1829）。如果该参数被指定，TCPDUMP不打输出域。因为在ESP/AH说明中没有协议版本，TCPDUMP就无法推断出其版本号。<br>-S<br>输出绝对TCP序列号，而不是相对号。<br>-t<br>每个捕获行不要显示时间戳。<br>-tt<br>每个捕获行显示非格式化的时间时间戳。<br>-v<br>详细输出。例如，显示生存时间TTL，标识符，总长度和IP数据包的选项。也进行额外的包完整性较验，如验证IP和ICMP的头标较验值。<br>-vv<br>更为详细的输出。例如，显示NFS中继包中的其他域。<br>-vvv<br>很详细的输出。如，完全输出TELNET SB… SE选项。带-X参数的TELNET，打印并以十六进制输出。<br>-w<br>不对原始数据包解析打印而是转到文件中去。以后可用-r选项打印。当文件名为“-”表示标准输出。<br>-x<br>以十六进制（去除链路层头标）输出每个数据包。输出整个包的小部分或snaplen 个字节。<br>-X<br>输出十六进制同时，输出ASCII码。如果-x也被设置，数据包会以十六制/ASCII码显示。这对于分析新协议非常方便。如果-x也没有设置，一些数据包的部分会以十六制/ASCII码显示。<br>Win32特殊扩展<br>-B<br>以千字节为单位设置驱动缓存。默认缓存为1M（即1000）。如果在获取数据包时有数据丢失，建议使用该参数增大核心缓存大小，因为驱动缓存大小对数据捕获性能有很大影响。<br>-D<br>显示系统上可用的网卡列表。该参数将返回每块网卡的号码，名称和描述。用户可以输入“WinDump –i 网卡名称”或“WinDump –i 网卡号码”。如果机器有多块网卡，不带参数的WINDUMP命令会从系统的第一块可用网卡开始。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/network/">network</a><a href="/tags/windump/">windump</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

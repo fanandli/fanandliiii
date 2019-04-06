@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>data-structure-huffman树及其编码 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="二叉树的确定：
+举例：如果我们知道了先序序列abdecfgh和中序序列dbeacgfh，求确定这个二叉树的结构12345678910111213141516BTNode *createBT(char pre[],char in[],int L1,int R1,int L2,int R2) &amp;#123;	if(L1&amp;gt;R1)		return NULL;  //递归出口	BTNode *s=(BTNode *)malloc(sizeof(BTNode)); 	s-&amp;gt;lChild=s-&amp;gt;rChild=NULL;	s-&amp;gt;data=pre[L1];  //先序序列的第一个结点是根结点	int i;  //找出根结点在中序序列中的位置	for(i=L2;i&amp;lt;=R2;++i)		if(in[i]==pre[L1])			break;	s-&amp;gt;lChild=createBT(pre,in,L1+1，L1+i-L2,L2,i-1); 	s-&amp;gt;rChild=createBT(pre,in,L1+i-L2+1,R1,i+1,R2);	return s;&amp;#125;">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="data-structure-huffman树及其编码">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>data-structure-huffman树及其编码</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/10/15/data-structure-huffman/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-10-15T11:05:29.000Z">
+          2018-10-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>二叉树的确定：</strong></p>
+<p>举例：如果我们知道了先序序列abdecfgh和中序序列dbeacgfh，求确定这个二叉树的结构<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BTNode *<span class="title">createBT</span><span class="params">(<span class="keyword">char</span> pre[],<span class="keyword">char</span> in[],<span class="keyword">int</span> L1,<span class="keyword">int</span> R1,<span class="keyword">int</span> L2,<span class="keyword">int</span> R2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L1&gt;R1)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">//递归出口</span></span><br><span class="line">	BTNode *s=(BTNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BTNode)); </span><br><span class="line">	s-&gt;lChild=s-&gt;rChild=<span class="literal">NULL</span>;</span><br><span class="line">	s-&gt;data=pre[L1];  <span class="comment">//先序序列的第一个结点是根结点</span></span><br><span class="line">	<span class="keyword">int</span> i;  <span class="comment">//找出根结点在中序序列中的位置</span></span><br><span class="line">	<span class="keyword">for</span>(i=L2;i&lt;=R2;++i)</span><br><span class="line">		<span class="keyword">if</span>(in[i]==pre[L1])</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	s-&gt;lChild=createBT(pre,in,L1+<span class="number">1</span>，L1+i-L2,L2,i<span class="number">-1</span>); </span><br><span class="line">	s-&gt;rChild=createBT(pre,in,L1+i-L2+<span class="number">1</span>,R1,i+<span class="number">1</span>,R2);</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>其中<code>pre[]</code>是先序序列，<code>in[]</code>是中序序列，<code>L1,R1</code>是先序序列的范围，<code>L2,R2</code>是中序序列的范围<br>这里就使用了一个递归，分别处理根结点下的左右子树，子树下的左右子树,如此递归下去。<br>其中12和13行的理由见下面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pre:</span><br><span class="line">————————————————————————————————————————————————————————————————————</span><br><span class="line">   a   |   b   |   d   |   e   |   c   |   f   |   g   |   h   |</span><br><span class="line">————————————————————————————————————————————————————————————————————</span><br><span class="line">  L1     L1+1           L1+i-L2                           R1</span><br><span class="line"></span><br><span class="line">in：</span><br><span class="line">————————————————————————————————————————————————————————————————————</span><br><span class="line">   d   |   b   |   e   |   a   |   c   |   g   |   f   |   h   |</span><br><span class="line">————————————————————————————————————————————————————————————————————</span><br><span class="line">  L2               i-1     i                              R2</span><br></pre></td></tr></table></figure></p>
+<p>举例：如果我们知道了中序遍历序列debghfca和后序遍历序列dbeacgfh，请确定二叉树<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BTNode *<span class="title">createBT2</span><span class="params">(<span class="keyword">char</span> post[],<span class="keyword">char</span> in[],<span class="keyword">int</span> L1,<span class="keyword">int</span> R1,<span class="keyword">int</span> L2,<span class="keyword">int</span> R2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L1&gt;R1)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">//递归出口</span></span><br><span class="line">	BTNode *s=(BTNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BTNode)); </span><br><span class="line">	s-&gt;lChild=s-&gt;rChild=<span class="literal">NULL</span>;</span><br><span class="line">	s-&gt;data=post[R1];  <span class="comment">//后序序列的最后一个结点是根结点</span></span><br><span class="line">	<span class="keyword">int</span> i;  <span class="comment">//找出根结点在中序序列中的位置</span></span><br><span class="line">	<span class="keyword">for</span>(i=L2;i&lt;=R2;++i)</span><br><span class="line">		<span class="keyword">if</span>(in[i]==post[R1])</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	s-&gt;lChild=createBT2(post,in,L1，L1+i-L2<span class="number">-1</span>,L2,i<span class="number">-1</span>); </span><br><span class="line">	s-&gt;rChild=createBT2(post,in,L1+i-L2,R1<span class="number">-1</span>,i+<span class="number">1</span>,R2);</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>层次遍历序列和中序遍历序列确定二叉树：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">char</span> arr[],<span class="keyword">char</span> key,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span>  <span class="comment">//查找函数，传入一个数组arr，key是要查找的值,L,R是范围</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> idx;  <span class="comment">//下标</span></span><br><span class="line">	<span class="keyword">for</span>(idx=L;idx&lt;=R;++idx)</span><br><span class="line">		<span class="keyword">if</span>(arr[idx]==key)</span><br><span class="line">			<span class="keyword">return</span> idx;  <span class="comment">//找到这个值就返回下标，找不到就返回-1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getSubLevel</span><span class="params">(<span class="keyword">char</span> subLevel[],<span class="keyword">char</span> level[],<span class="keyword">char</span> in[],<span class="keyword">int</span> n,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span> <span class="comment">//</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">		<span class="keyword">if</span>(search(in,level[i],L,R)!=<span class="number">-1</span>)</span><br><span class="line">			subLevel[k++]=level[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">BTNode *<span class="title">CreateBT3</span><span class="params">(<span class="keyword">char</span> level[],<span class="keyword">char</span> in[],<span class="keyword">int</span> n,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L&gt;R)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	BTNode *s=(BTNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BTNode));</span><br><span class="line">	s-&gt;lChild=s-&gt;rChild=<span class="literal">NULL</span>;</span><br><span class="line">	s-&gt;data=level[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i=search(in,level[<span class="number">0</span>],L,R); <span class="comment">//要在中序遍历序列in中查找level[0]这个结点的位置，在范围L,R中</span></span><br><span class="line">	<span class="keyword">int</span> LN=i-L;<span class="keyword">char</span> LLevel[LN];  <span class="comment">//LN,RN是数组长度</span></span><br><span class="line">	<span class="keyword">int</span> RN=R-i;<span class="keyword">char</span> RLevel[RN];</span><br><span class="line"></span><br><span class="line">	getSubLevel(LLevel,level,in,n,L,i<span class="number">-1</span>);</span><br><span class="line">	getSubLevel(RLevel,level,in,n,i+<span class="number">1</span>,R);</span><br><span class="line"></span><br><span class="line">	s-&gt;lChild=createBT3(LLevel,in,LN,L,i<span class="number">-1</span>);  <span class="comment">//递归处理</span></span><br><span class="line">	s-&gt;rChild=createBT3(RLevel,in,Rn,i+<span class="number">1</span>,R);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在先序和中序序列来确定儿二叉树的情况时，知道了根结点之后，就可以在中序序列中，划分出左右子树是什么，因为他们是连续的，而在层次遍历中，他们是分散开来的，所以就有了getsubLevel函数，去查找他们，然后放到LLevel和RLevel数组中。这个函数具体是怎么做的呢，如图：</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/erchashudequeding.jpg?raw=true" alt><br>首先i将in数组（中序遍历序列）分成了左右不同的两个部分，分别是左右子树，下面是左右部分的元素在level数组中的分布情况，互相交错。我们是这样做的：在in数组中的L-i-1范围，用关键字t在level中扫描，看有和在数组in中L到i-1相同的值，有就把他们存到LLevel中。</p>
+<p>getsublevel中sublevel是存储结果的数组，n是代表level的长度，L,R是要取的元素的范围。k是辅助从sublevel中插入元素。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

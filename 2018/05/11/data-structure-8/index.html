@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>图——Dijkstra算法 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="最短路径问题
+迪杰斯特拉算法求某一个顶点到其余各顶点的最短路径，也为单元最短路径算法。
+
+dict[]数组存储了当前起点到其余各顶点的最短路径长度（是长度，数值），path[]存储了当前起点到其余各顶点的最短路径（是上一个顶点的下标）。set[]标记哪些顶点被选入了最短路径（是标记）。">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="图——Dijkstra算法">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>图——Dijkstra算法</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/11/data-structure-8/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-11T01:48:43.000Z">
+          2018-05-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>最短路径问题</p>
+<p><strong>迪杰斯特拉算法</strong><br>求某一个顶点到其余各顶点的最短路径，也为单元最短路径算法。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/ef0e63b9977341e4513cd67239c5b25.png?raw=true" width="600" height="350" alt="Dijkstra1" align="center"></p>
+<p>dict[]数组存储了当前起点到其余各顶点的最短路径长度（是长度，数值），path[]存储了当前起点到其余各顶点的最短路径（是上一个顶点的下标）。set[]标记哪些顶点被选入了最短路径（是标记）。</p>
+<a id="more"></a>
+<p>dict[]数组中，将与其顶点直接相连的顶点的值直接记录下来，与其顶点没有直接相连的点就设为无穷大，自身就设为0。然后通过循环不断的更新其中的值。（存储的是起点和当前未被并入的顶点之间的距离）</p>
+<p>path[]存储了顶点到其所在最短路径上前一个顶点的信息 。如果某一个顶点的的path[]数组的值为-1，则说明，在此顶点之前没有其他顶点了。图中1,2,3对应的path[]数组的值为0，则说明1,2,3定点的前一个顶点为0。而4,5,6顶底在path[]数组中的值也为-1，是因为他们现在和当前最短路径上的顶点（现在为初始状态，此时最短路径上只有一个顶点0）没有直接关系。</p>
+<p>set[]数组中，当前只有顶点0已经被选为最短路径中的顶点，所以将他标记为1其他的顶点还没有选择，所以暂时都是标记为0。</p>
+<p>其中在执行过程中，例如下面这个图中的情况，当前最短路径中一共有0,1,2,3四个顶点，现在要找4,5,6三个顶点中，哪一个距离他们最短。第一个先并的0，然后并入的是1，然后并入的是2，然后并入的是3，看dist[]数组的的长度就知道了，因为都是按照哪个最短就先并哪个顶点的。<strong>此时，这里重点讲的是在并入哪一个顶点的比较过程，现在以此举例：</strong>在看4顶点，<strong>1.</strong>从根结点0到4顶点的距离为4+7（0-&gt;1-&gt;4）为11，<strong>2.</strong>从上一个顶点到4顶点的距离为无穷大（0-&gt;3-&gt;??),所以更新4顶点的dist[]数组为11，path[]数组为1，因为前一个顶点为1。然后就是再找到5顶点的路径长度是多少，同样要进行上面所说的两个比较，然后再找到6顶点的路径长度是多少，同样比较两个过程，最后，在4,5,6三个结点的路径长度之间选择一个最短的路径，并入最短路径中，将其顶点对应的set[]数组设置为1，就标志为已并入其中。这里，比较的是1.和2.这两种情况，在以后所有的选择哪一个顶点进行并入的时候都是进行这两种情况的比较。<br><img src="https://github.com/fanandli/picblog/blob/master/02dfd33059cda2a065dfe69b12abd16.png?raw=true" width="600" height="350" alt="Dijkstra2" align="center"></p>
+<p>接着，这里还有一个<strong>注意点</strong>，就是如下面的图中的过程，选的是最后一个顶点6怎么并入的过程，<strong>第一个</strong>路径是从根节点通过中间结点然后到达顶点6，<strong>第二个</strong>是通过上一个并入的顶点然后到顶点6（对应于上面的1.和2.的过程）对比这两个过程哪个路径短就并入最短路径。但是，有没有想过，第一个路径不止一种路径啊，为什么不这样走呢：0-&gt;1-&gt;4-&gt;6走呢？1,4也都是中间结点啊？？这里就是要讲的注意点就是路径的选择，我们可以以path[]数组为指引，选择路径，我们看0顶点的path[]数组是-1，为根结点的意思，1顶点的path[]数组为0，说明1顶点的前一个顶点为0，所以我们选1，顶点2的path[]为1，所以我们再选2顶点，5顶点的path[]为2，所以我们再选择5顶点，顶点4的path[]为5，所以我们就选择4，最终，选择出0-&gt;1-&gt;2-&gt;5-&gt;4这一条路径。其实以path[]作为选择路径的原因是，本来path[]中存储了之前顶点之间最短的路径，你为了保证再接入顶点的路径足够的短，当然前面的路径也要保证是短的。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/e34da8fcb815b7112f66c045acf77c5.png?raw=true" width="600" height="350" alt="Dijkstra3" align="center"></p>
+<p>可以看出来，在这个算法中一个核心的步骤就是1.和2.的两个结果的比较。<br>我们把直接从根结点到要并入的结点v的距离记为<code>dist[v]</code><br>通过从上一个已并入的结点到要并入的结点的距离记为<code>dist[vpre]+MGraph[vpre][v]</code><br>如果<code>dist[v]</code>&gt;<code>dist[vpre]+MGraph[vpre][v]</code>则更新<code>dist[v]=dist[vpre]+MGraph[vpre][v]</code>更新<code>path[v]=vpre</code>。</p>
+<p>代码如下：参数n为图的顶点个数，MGraph[][]为图的边信息，v0为起始顶点,dist[]存最短路径长度，path[]存最短路径。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">float</span> MGraph[][n],<span class="keyword">int</span> v0,<span class="keyword">int</span> dist[],<span class="keyword">int</span> path[])</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">set</span>[maxSize];  <span class="comment">//初始化操作</span></span><br><span class="line">	<span class="keyword">int</span> min,v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		dist[i]=NGraph[v0][i];</span><br><span class="line">		<span class="built_in">set</span>[i]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(MGraph[v0][i]&lt;INF)</span><br><span class="line">			path[i]=v0;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			path[i]=<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">set</span>[v0]=<span class="number">1</span>;path[v0]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;++i)  <span class="comment">//在没有被并入的顶点中挑一个距离最短路径最近的一个点</span></span><br><span class="line">	&#123;</span><br><span class="line">		min=INF;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j)</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">set</span>[j]==<span class="number">0</span>&amp;&amp;dist[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				v=j;</span><br><span class="line">				min=dist[j];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">set</span>[v]=<span class="number">1</span>;  <span class="comment">//然后将其设置为1</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j) /此循环是对dist和path数组的更新</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">set</span>[j]==<span class="number">0</span></span><br><span class="line">					&amp;&amp;dist[v]+MGraph[v][j]&lt;dist[j])</span><br><span class="line">				&#123;</span><br><span class="line">					dist[j]=dist[v]+MGraph[v][j];</span><br><span class="line">					path[j]=v;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>图——关键路径 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="关键路径AOE网，(activate on edge)1为源点，6为汇点。所谓关键路径，就是在AOE网中从源点开始到汇点结束的具有最大路径长度的那个路径就为关键路径。">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="图——关键路径">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>图——关键路径</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/15/data-structure-11/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-15T06:00:07.000Z">
+          2018-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>关键路径</strong><br>AOE网，(activate on edge)<br>1为源点，6为汇点。所谓关键路径，就是在AOE网中从源点开始到汇点结束的具有最大路径长度的那个路径就为关键路径。<br><img src="https://github.com/fanandli/picblog/blob/master/AOE.png?raw=true" width="600" height="350" alt="AOE" align="center"></p>
+<a id="more"></a>
+<p>首先由事件的拓扑排序和逆拓扑排序求出<strong>事件最早发生时间</strong>，规定第一个结点的最早发生时间为0，<br>这里所谓的最早发生时间的<strong>最早</strong>，是指在这个事件可以发生的前提下最早发生的时间，例如结点6首先他要发生，得必须等到3,4结点都发生完了，才可以考虑发生，因为如在现实生活中是一样的，事件6可以在事件3,4完成的前提下发生，他只是有发生的条件了，并不是说就一定发生了，我可以先等一会，然后再发生，那样，只要事件6的发生时间<strong>大于等于6</strong>他都可以发生，所以，他<strong>最早</strong>发生时间为6，这里所谓的最早是指在这个结点能有发生的前提下，不再等待任何多余的时间，即最早。</p>
+<p><strong>事件最晚发生时间：</strong>这个概念，首先我们由上面可知事件6的发生时间只要大于等于6就可，可是在现实生活中，一个事件一直拖着毫无意义。所以我们<strong>人为规定</strong>最后一个事件的（这里为事件6）最晚发生时间就等于最早发生时间。在此前提下我们再去求之前事件的最晚发生时间。如果没有这个规定，事件6之前的事件都可以往后拖了。</p>
+<p><strong>活动的最早发生时间：</strong>活动的最早发生时间为<strong>引出这个活动的事件</strong>（ -&gt;活动）的最早发生时间。如活动a2，引出这个活动的事件只有事件1，那么这是事件1的最早发生时间就是活动a2的最早发生时间为0。</p>
+<p><strong>活动的最迟发生时间：</strong>活动的最迟发生时间为<strong>这个活动引出的事件</strong>（活动-&gt; ）的最迟发生时间减去这个活动持续的时长。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/AOE1.png?raw=true" width="600" height="350" alt="AOE" align="center"></p>
+<p><strong>关键路径</strong>就是活动的最早发生时间等于活动的最晚发生时间的那些活动构成的路径，为关键路径。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

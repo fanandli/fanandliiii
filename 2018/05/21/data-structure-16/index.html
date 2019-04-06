@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>堆排序 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="逻辑结构是完全二叉树，其左右孩子结点都小于或者都大于父结点的结构叫做堆，一个叫小顶堆，还有一个叫大顶堆。">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="堆排序">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>堆排序</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/21/data-structure-16/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-21T06:44:09.000Z">
+          2018-05-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>逻辑结构是完全二叉树，其左右孩子结点都小于或者都大于父结点的结构叫做<strong>堆</strong>，一个叫小顶堆，还有一个叫大顶堆。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/duipaixu1.png?raw=true" width="365" height="250" alt="duipaixu1" align="center"><img src="https://github.com/fanandli/picblog/blob/master/duipaixu2.png?raw=true" width="365" height="250" alt="duipaixu2" align="center"></p>
+<a id="more"></a>
+<p>我们可以用一个数组来存储完全二叉树<br><img src="https://github.com/fanandli/picblog/blob/master/duipaixu3.png?raw=true" width="600" height="350" alt="duipaixu3" align="center"></p>
+<p>建堆操作<br><img src="https://github.com/fanandli/picblog/blob/master/duipaixu4.png?raw=true" width="600" height="350" alt="duipaixu4" align="center"></p>
+<p>插入结点<br><img src="https://github.com/fanandli/picblog/blob/master/duipai5.png?raw=true" width="600" height="350" alt="duipaixu5" align="center"></p>
+<p>删除结点<br>例如我们想要删除这个根结点，我们可以先将这个结点拿的丢在一边，然后将最后一个结点丢在这个删除的结点的位置，然后对这个堆做一个调整。<br><img src="https://github.com/fanandli/picblog/blob/master/duipaixu6.png?raw=true" width="600" height="350" alt="tuopu" align="center"></p>
+<p>堆排序的实现，我们分为两个过程，第一个过程是我们首先要建堆，第二个过程是我们从中挑出一个最值，然后把他丢在末尾，然后对其做一次调整。这两个过程说到底都是对某个关键字进行调整的过程。<br>所以实现这个堆排序也要两个函数，一个函数是对某个关键字进行调整的函数，还有一个函数是堆排序的主函数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sift</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span>  <span class="comment">//调整函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=low,j=<span class="number">2</span>*i+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> temp=arr[i];</span><br><span class="line">	<span class="keyword">while</span>(j&lt;=high)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(j&lt;high&amp;&amp;arr[j]&lt;arr[j+<span class="number">1</span>])</span><br><span class="line">			++j;</span><br><span class="line">		<span class="keyword">if</span>(temp&lt;arr[j])</span><br><span class="line">		&#123;</span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			i=j;</span><br><span class="line">			j=<span class="number">2</span>*i+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	arr[i]=temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span>  <span class="comment">//主函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">for</span>(i=n/<span class="number">2</span><span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">		sift(arr,i,n<span class="number">-1</span>);  <span class="comment">//生成了大顶堆</span></span><br><span class="line">	<span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;<span class="number">0</span>;--i)</span><br><span class="line">	&#123;</span><br><span class="line">		temp=arr[<span class="number">0</span>];</span><br><span class="line">		arr[<span class="number">0</span>]=arr[i];</span><br><span class="line">		arr[i]=temp;</span><br><span class="line">		sift(arr,<span class="number">0</span>,i<span class="number">-1</span>); <span class="comment">// 有序序列</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们首先走一下这个函数，我们走到主函数中的for（i=n/2-1;i&gt;0;–i)，i=8/2-1=3,然后我们下一句，我们调用调整函数，sift（arr，i,n-1）作用arr数组里的数，范围是i到n-1，即3到7。<br>我们到调整函数，i=low,然后j=2*i+1，这句是j指向i的左孩子（这个是完全二叉树中找其孩子结点的公式）</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/duipaixu7.png?raw=true" width="600" height="350" alt="duipaixu7" align="center"></p>
+<p>我们看第7行的if语句，这句话的意思就是，如果i的左右孩子结点都存在的话，那么就将j指向左右孩子中较大的那个结点。此时这里i=3,他这个结点只有左孩子没有右孩子，不满足这个条件，所以就跳过。第8行的if语句，如果temp所指结点小于arr[j]的话，那就将<br>j位置的值赋给i位置上，然后让i指向j，j指向i的左孩子结点，如果不满足条件，直接break.执行完这个调整函数之后，我们就恢复现场，此时还在26行的for循环中，再一次循环,–i，之前的i是3，所以这一次循环的i=2，然后再进入调整函数。这样一直循环。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/duipaixu8.png?raw=true" width="600" height="350" alt="duipaixu8" align="center"></p>
+<p>调整函数中两个for循环都是为了生成大顶堆，主函数中的for（i=n-1;i&gt;0;–i）就是生成有序序列。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

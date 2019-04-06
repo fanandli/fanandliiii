@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>图——拓扑排序 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="拓扑排序
+AOV网，描述了一种有实际意义的过程，所以结点之间有了先后顺序，其次是结点之间是没有环的。如何导出正确的结点之间的顺序，就需要拓扑排序。三个步骤:
+
+用邻接表来存储图，且修改顶点结构体为123456typedef struct&amp;#123;	int data;	int count; //指示当前结点的入度	ArcNode* first;&amp;#125;VNode;">
+  
+
+  
+  
+  <meta name="keywords" content="data-structure">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="图——拓扑排序">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>图——拓扑排序</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/15/data-structure-10/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-15T02:20:29.000Z">
+          2018-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>拓扑排序</strong></p>
+<p>AOV网，描述了一种有实际意义的过程，所以结点之间有了先后顺序，其次是结点之间是没有环的。<br>如何导出正确的结点之间的顺序，就需要拓扑排序。三个步骤:</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/AOV1.png?raw=true" width="600" height="350" alt="tuopu" align="center"></p>
+<p>用邻接表来存储图，且修改顶点结构体为<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">int</span> count; <span class="comment">//指示当前结点的入度</span></span><br><span class="line">	ArcNode* first;</span><br><span class="line">&#125;VNode;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>拓扑排序的代码实现：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">TopSort</span><span class="params">(AGraph *G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i ,j ,n=<span class="number">0</span>; <span class="comment">//n统计当前已经输出的顶点个数</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">stack</span>[maxSize],top=<span class="number">-1</span>; <span class="comment">//定义一个栈，保存所有入度为0的顶点</span></span><br><span class="line">	ArcNode* p; <span class="comment">//遍历</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G-&gt;n;++i)</span><br><span class="line">		<span class="keyword">if</span>(G-&gt;adjList[i].count==<span class="number">0</span>)</span><br><span class="line">			<span class="built_in">stack</span>[++top]=i; <span class="comment">//将入度为0的压栈</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(top!=<span class="number">-1</span>)<span class="comment">//若栈不为0，</span></span><br><span class="line">	&#123;</span><br><span class="line">		i=<span class="built_in">stack</span>[top--]; <span class="comment">//取出顶点，等效于将这个顶点删除，</span></span><br><span class="line">		++n;  <span class="comment">//记录取出的点的个数，</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;  <span class="comment">//输出这个顶点</span></span><br><span class="line"></span><br><span class="line">		p=G-&gt;adjList[i].first; <span class="comment">//遍历刚才出栈顶点的所有边，</span></span><br><span class="line">		<span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			j=p-&gt;adjV; <span class="comment">//通过这些边找到其相邻顶点，</span></span><br><span class="line">			--(G-&gt;adjList[j].count); <span class="comment">//修改其count</span></span><br><span class="line">			<span class="keyword">if</span>(G-&gt;adjList[j].count==<span class="number">0</span>) <span class="comment">//然后将count为0的点入栈，以待输出</span></span><br><span class="line">				<span class="built_in">stack</span>[++top]=j;</span><br><span class="line">			p=p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(n==G-&gt;n) <span class="comment">//输出的顶点个数是否为图中顶点的个数</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//相等则拓扑排序完成</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>逆拓扑排序</strong>    </p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/nituopupaixu.png?raw=true" width="600" height="350" alt="tuopu1" align="center"></p>
+<p>如何用深度优先遍历实现逆拓扑排序<br>深度优先遍历：</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/shenduyouxianbianli.png?raw=true" width="600" height="350" alt="tuopu2" align="center"></p>
+<p>以此实现逆拓扑排序：<br><img src="https://github.com/fanandli/picblog/blob/master/tuopupaixushixian.png?raw=true" width="600" height="350" alt="tuopu3" align="center"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/data-structure/">data-structure</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

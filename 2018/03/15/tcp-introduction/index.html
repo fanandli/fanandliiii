@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>tcp协议概念辨析 | turlee&#39;s blog</title>
+
+  
+  <meta name="author" content="turlee">
+  
+
+  
+  <meta name="description" content="之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下~暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧~想到再加。
+主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。首先：
+tcp协议的特点:(这里只主要讲解tcp是面向字节流的这一特点)
+
+首先tcp是面向连接的。在使用tcp协议之前一定要先建立tcp连接，传输数据完毕之后也要释放tcp的连接。
+
+每一条tcp的连接只能有两个端点，每一个tcp的连接都是点对点的连接。">
+  
+
+  
+  
+  <meta name="keywords" content="network,tcp">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="tcp协议概念辨析">
+
+  <meta property="og:site_name" content="turlee&#39;s blog">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">turlee&#39;s blog</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>tcp协议概念辨析</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/03/15/tcp-introduction/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-03-15T07:30:40.000Z">
+          2018-03-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下~暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧~想到再加。</p>
+<p>主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。<br>首先：</p>
+<h3 id="tcp协议的特点"><a href="#tcp协议的特点" class="headerlink" title="tcp协议的特点:"></a>tcp协议的特点:</h3><p><strong>(这里只主要讲解tcp是面向字节流的这一特点)</strong></p>
+<ul>
+<li><p>首先tcp是面向连接的。在使用tcp协议之前一定要先建立tcp连接，传输数据完毕之后也要释放tcp的连接。</p>
+</li>
+<li><p>每一条tcp的连接只能有两个端点，每一个tcp的连接都是点对点的连接。</p>
+<a id="more"></a></li>
+<li>tcp连接是可靠交付的连接。目的是无差错，不丢失，不重复。</li>
+</ul>
+<ul>
+<li><p>tcp提供<strong>全双工通信</strong>。tcp的两端都设有“接收缓存”和“发送缓存”，在发送时，应用程序把数据传送给tcp的缓存后就可以去做自己的事情，tcp在合适的时间再从缓存中去取自己需要的数据发送出去。在接收时，tcp将收到的数据放入缓存，上层的应用在合适的时间从缓存中取走自己需要的数据就好。</p>
+</li>
+<li><p>tcp是<strong>面向字节流</strong>的。<strong><em>这里详细讲一下“字节流”和“tcp报文段”的区别与联系。</em></strong>“tcp传送数据的单元是“tcp报文段””，这句话的意思准确来说是：tcp与应用进程在交互的时候的数据单元是“报文段”。从某种方面上来说字节流组成相应的报文段。应用程序和tcp进行交互的时候是按照一段一段的“报文段”，但是，tcp自身在接收到后，在处理这些“报文段”的时候是又将其分成一个一个的“字节流”去发送的。tcp不关心应用进程一次把多长的“报文段”发送到tcp的缓存中，他会将其分成更小的“字节流”，根据对方的窗口值和网络拥塞情况去决定选择多少“字节流”组成“报文段”再发送出去。（udp则是进程发送了多大的报文段他就传送多大的报文段）。再啰嗦一句，tcp和应用进程在接收和发送的时候都是以“报文段”为传送的数据单元，而tcp自己在处理这些“报文段”的时候，又会将其分成“字节”，整体上看就有了所谓的“字节流”，所以，“字节流”是tcp自身在处理时的数据单元。</p>
+</li>
+</ul>
+<h3 id="tcp的三次握手："><a href="#tcp的三次握手：" class="headerlink" title="tcp的三次握手："></a>tcp的三次握手：</h3><p>（这里依然一样，不讲解主要的细节流程，只讲解为什么要三次握手，为什么不是两次握手，四次握手？）</p>
+<p><img src="https://static.lwn.net/images/2012/tfo/3whs.png" alt></p>
+<p>（图片来源：Michael Kerrisk）</p>
+<p>这里，在客户机（client）收到服务器(server)发送的确认报文段后（SYN N,ACK M+1）,客户机还需要再发送一条确认报文段。为什么要再发送一条？假定之前，客户机向服务器发送一条请求报文段1（SYN M），由于某种原因这条请求报文段1没有及时送达，服务器自然就不会发送确认报文段，这时，客户机就会重新发送一条请求报文段2，后来成功建立了连接。但是，再重新建立连接后，假定之前发送的请求报文段1突然又成功的传到了服务器那里，那么服务器会误认为是客户机给他发送的请求报文段，这时他就会发送一个确认报文段给客户机，而客户机是不会响应这个确认报文段的（因为这个确认报文段是由先前认为他已经丢失的请求报文段1的回应），客户机还是会自己干自己的事情，而服务器却在那等待着客户机传送报文段。浪费了服务器的资源。</p>
+<p>考完试了更新一下网络中的各个数据报的结构吧，嗯。。挖个坑。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/network/">network</a><a href="/tags/tcp/">tcp</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    <br>
+    
+    &copy; 2019 turlee
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
