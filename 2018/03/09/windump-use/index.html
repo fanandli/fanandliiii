@@ -1,91 +1,89 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>windump使用注意事项 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>windump使用注意事项 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="之前在准备的时候需要用到windump这个软件，这里就主要记录一下使用过程中遇到的坑吧。。
-首先使用windump是需要安装winpcap的，安装就好，然后在命令行下直接使用windump。（要先打开到windump所处的位置）">
-  
 
-  
-  
-  <meta name="keywords" content="network,windump">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="windump使用注意事项">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            windump使用注意事项
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-03-09T08:15:32.000Z" itemprop="datePublished">3月 9 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            30 分钟 读完 (约 4501 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>windump使用注意事项</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/03/09/windump-use/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-03-09T08:15:32.000Z">
-          2018-03-09
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p>之前在准备的时候需要用到windump这个软件，这里就主要记录一下使用过程中遇到的坑吧。。</p>
 <p>首先使用windump是需要安装winpcap的，安装就好，然后在命令行下直接使用windump。（要先打开到windump所处的位置）<br><a id="more"></a><br>接着windump是直接监听网卡，所以你要选择你监听的网卡，这里也需要注意，你无线上网或者有线上网是不一样的，不然是捕获不到包的。有代理服务器的话也会多出来另外一个选择，所以最好要先运行windump -D先把网卡列表显示出来。（这里切记是大写的D,坑~）之后你再选择了哪一个网卡之后在进行针对性操作。例如，你可以键入：</p>
 <p><code>windump -i 2 -q -w C:\perflogs\filename\ -n -C 30 -W 10 -U -s 0</code></p>
@@ -173,46 +171,84 @@ n
 -s 
 不使用默认的68个字节，更改从每个包中获取数据的字节数量（ SunOS系统实际最小为96）。对于IP，ICMP，TCP和UDP包68个字节已足够，但是对命名服务和NFS包，他们的协议会被截断（见下面）。包被截断是因为在使用参数</code>[│proto]输出时指定受限制的快照，proto是被截断协议层的名称。注意如果使用大的快照会增加处理包的时间，并且明显地减少包的缓存数量。也许会导致包的丢失。你应该将snaplen 设置成你感兴趣协议的最小数。当snaplen 为0时接收整个包。<br>-T<br>根据表达式将选中的数据包表达成指定的类型。当前已有的类型有CNFP（Cisco的网络流量协议），rpc（远端程序调用），rtp（实时程序协议），rtcp（实时程序控制协议），snmp（简单网络管理协议），vat（可视单频工具），和wb（分布式白板）。<br>-R<br>假设ESP/AH包遵守旧的说明（RFC1825到RFC1829）。如果该参数被指定，TCPDUMP不打输出域。因为在ESP/AH说明中没有协议版本，TCPDUMP就无法推断出其版本号。<br>-S<br>输出绝对TCP序列号，而不是相对号。<br>-t<br>每个捕获行不要显示时间戳。<br>-tt<br>每个捕获行显示非格式化的时间时间戳。<br>-v<br>详细输出。例如，显示生存时间TTL，标识符，总长度和IP数据包的选项。也进行额外的包完整性较验，如验证IP和ICMP的头标较验值。<br>-vv<br>更为详细的输出。例如，显示NFS中继包中的其他域。<br>-vvv<br>很详细的输出。如，完全输出TELNET SB… SE选项。带-X参数的TELNET，打印并以十六进制输出。<br>-w<br>不对原始数据包解析打印而是转到文件中去。以后可用-r选项打印。当文件名为“-”表示标准输出。<br>-x<br>以十六进制（去除链路层头标）输出每个数据包。输出整个包的小部分或snaplen 个字节。<br>-X<br>输出十六进制同时，输出ASCII码。如果-x也被设置，数据包会以十六制/ASCII码显示。这对于分析新协议非常方便。如果-x也没有设置，一些数据包的部分会以十六制/ASCII码显示。<br>Win32特殊扩展<br>-B<br>以千字节为单位设置驱动缓存。默认缓存为1M（即1000）。如果在获取数据包时有数据丢失，建议使用该参数增大核心缓存大小，因为驱动缓存大小对数据捕获性能有很大影响。<br>-D<br>显示系统上可用的网卡列表。该参数将返回每块网卡的号码，名称和描述。用户可以输入“WinDump –i 网卡名称”或“WinDump –i 网卡号码”。如果机器有多块网卡，不带参数的WINDUMP命令会从系统的第一块可用网卡开始。</p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/network/">#network</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/network/">network</a><a href="/tags/windump/">windump</a>
-    </span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/windump/">#windump</a></span>
     
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/03/15/tcp-introduction/">tcp协议概念辨析</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/03/07/life-1/">纪念一下~</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

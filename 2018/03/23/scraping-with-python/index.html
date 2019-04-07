@@ -1,94 +1,93 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>web scraping with python | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>web scraping with python - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="之前就有对网络爬虫很感兴趣，觉得这是一件比较有意思的事情，奈何前段时间有接触过，学到后面的时候有点吃力，总结了一下原因之后觉得最直接的原因就是在前端方面自己接触的还是太少了，现在在准备论文之余。。。（为何总对论文的内容不感兴趣呢-_-！）再来重新看一遍爬虫吧。。哈哈，突然觉得保持一整天学习的热情的秘诀就是:">
-  
 
-  
-  
-  <meta name="keywords" content="python,crawler">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="web scraping with python">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            web scraping with python
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-03-23T01:13:05.000Z" itemprop="datePublished">3月 23 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            9 分钟 读完 (约 1422 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>web scraping with python</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/03/23/scraping-with-python/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-03-23T01:13:05.000Z">
-          2018-03-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p>之前就有对网络爬虫很感兴趣，觉得这是一件比较有意思的事情，奈何前段时间有接触过，学到后面的时候有点吃力，总结了一下原因之后觉得最直接的原因就是在前端方面自己接触的还是太少了，现在在准备论文之余。。。（为何总对论文的内容不感兴趣呢-_-！）再来重新看一遍爬虫吧。。哈哈，突然觉得保持一整天学习的热情的秘诀就是:<br><a id="more"></a><strong><em>把每一天的早晨的时间都用在自己感兴趣的事情上。</em></strong></p>
 <hr>
 <p>好了，进入正题，直接来看代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> HTTPError,URLError</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTitle</span><span class="params">(url)</span>:</span></span><br><span class="line">	<span class="keyword">try</span> :</span><br><span class="line">		html=urlopen(url)</span><br><span class="line">	<span class="keyword">except</span> (HTTPError,URLError) <span class="keyword">as</span> e:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		bsObj=BeautifulSoup(html.read())</span><br><span class="line">		title=bsObj.body.h1</span><br><span class="line">	<span class="keyword">except</span> AttributeError <span class="keyword">as</span> e:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">	<span class="keyword">return</span> title</span><br><span class="line">	</span><br><span class="line">title=getTitle(<span class="string">"http://aisleep.xyz"</span>)</span><br><span class="line"><span class="keyword">if</span> title ==<span class="literal">None</span>:</span><br><span class="line">	print(<span class="string">"Title could not be found"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(title)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> urlopen</span><br><span class="line"><span class="hljs-keyword">from</span> urllib.error <span class="hljs-keyword">import</span> HTTPError,URLError</span><br><span class="line"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getTitle</span><span class="hljs-params">(url)</span>:</span></span><br><span class="line">	<span class="hljs-keyword">try</span> :</span><br><span class="line">		html=urlopen(url)</span><br><span class="line">	<span class="hljs-keyword">except</span> (HTTPError,URLError) <span class="hljs-keyword">as</span> e:</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></span><br><span class="line">	<span class="hljs-keyword">try</span>:</span><br><span class="line">		bsObj=BeautifulSoup(html.read())</span><br><span class="line">		title=bsObj.body.h1</span><br><span class="line">	<span class="hljs-keyword">except</span> AttributeError <span class="hljs-keyword">as</span> e:</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></span><br><span class="line">	<span class="hljs-keyword">return</span> title</span><br><span class="line">	</span><br><span class="line">title=getTitle(<span class="hljs-string">"http://aisleep.xyz"</span>)</span><br><span class="line"><span class="hljs-keyword">if</span> title ==<span class="hljs-literal">None</span>:</span><br><span class="line">	print(<span class="hljs-string">"Title could not be found"</span>)</span><br><span class="line"><span class="hljs-keyword">else</span>:</span><br><span class="line">	print(title)</span><br></pre></td></tr></table></figure>
 <p>首先是引入几个需要用到的库，<code>request</code>中的<code>urlopen</code>，<code>beautifulsoup</code>，是爬虫经常需要用到的库（这里代码中的<code>BeautifulSoup</code>是<code>BeautifulSoup</code>库中的<code>BeautifulSoup</code>对象，不是指的<code>BeautifulSoup</code>库），前者是自带的，能够直接获取网页中的<code>html</code>代码，而后者是第三方库，需要自己安装，他是用来转换我们得到的<code>html</code>代码的结构，使其能够只要目标信息的旁边或附近有标记（这里说的标记是<code>HTML</code>中的标记）我们就能够提取出来。<code>HTTPError</code>和<code>URLError</code>则是对异常的处理所需要的。</p>
 <p>我们这里首先定义了一个名为<code>getTitle</code>的函数。我们在进行这个语句的时候：<code>html=urlopen(&quot;http://aisleep.xyz&quot;)</code>这行代码可能会发生两种异常：1、网页不在服务器上；2、服务器不存在。发生第一种异常，程序会抛出<code>HTTpError</code>异常，发生第二种异常，程序会返回一个<code>None</code>对象。所以<code>getTitle</code>函数中的第一个异常处理针对于<code>HTTPError</code>，还增加了一个防止<code>url</code>地址输入错误引起的<code>URLError</code>。</p>
 <p>然后，我们在使用<code>BeautifulSoup</code>去提取我们所需要的信息时也会出错：如果我们想要调用的标签不存在，<code>BeautifulSoup</code>会返回一个<code>None</code>对象；如果再去调用这个<code>None</code>对象下面的子标签，还会发生<code>AttributeError</code>错误。</p>
@@ -96,12 +95,12 @@
 <p>针对于爬虫中比较常见的异常处理，这样一来就会很简单的使自己的代码更稳定一点。</p>
 <hr>
 <p>上面的是采集一个页面中需要的信息，下面再看一个代码，实现随机的从一个页面跳转到另一个页面：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">random.seed(datetime.datetime.now())</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(articleUrl)</span>：</span></span><br><span class="line">	html=urlopen("http://en.wikipedia.org"+articleUrl)</span><br><span class="line">	bsObj=BeautifulSoup(html)</span><br><span class="line">	<span class="keyword">return</span> bsObj.find(<span class="string">"div"</span>,&#123;<span class="string">"id"</span>:<span class="string">"bodyContent"</span>&#125;).findAll(<span class="string">"a"</span>,href=re.compile(<span class="string">"^(/wiki/)((?!:).)*$"</span>))</span><br><span class="line"></span><br><span class="line">links=getLinks(<span class="string">"/wiki/Kevin_Bacon"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> len(links)&gt;<span class="number">0</span>:</span><br><span class="line">	newArticle=links[random.randint(<span class="number">0</span>,len(links)<span class="number">-1</span>)].attrs[<span class="string">"href"</span>]</span><br><span class="line">	print(newArticle)</span><br><span class="line">	links=getLinks(newArticle)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> urlopen</span><br><span class="line"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="hljs-keyword">import</span> datetime</span><br><span class="line"><span class="hljs-keyword">import</span> random</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"></span><br><span class="line">random.seed(datetime.datetime.now())</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLinks</span><span class="hljs-params">(articleUrl)</span>：</span></span><br><span class="line">	html=urlopen("http://en.wikipedia.org"+articleUrl)</span><br><span class="line">	bsObj=BeautifulSoup(html)</span><br><span class="line">	<span class="hljs-keyword">return</span> bsObj.find(<span class="hljs-string">"div"</span>,&#123;<span class="hljs-string">"id"</span>:<span class="hljs-string">"bodyContent"</span>&#125;).findAll(<span class="hljs-string">"a"</span>,href=re.compile(<span class="hljs-string">"^(/wiki/)((?!:).)*$"</span>))</span><br><span class="line"></span><br><span class="line">links=getLinks(<span class="hljs-string">"/wiki/Kevin_Bacon"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span> len(links)&gt;<span class="hljs-number">0</span>:</span><br><span class="line">	newArticle=links[random.randint(<span class="hljs-number">0</span>,len(links)<span class="hljs-number">-1</span>)].attrs[<span class="hljs-string">"href"</span>]</span><br><span class="line">	print(newArticle)</span><br><span class="line">	links=getLinks(newArticle)</span><br></pre></td></tr></table></figure>
 <p>首先这里导入了一些需要的库，<code>datetime</code>和<code>random</code>分别是为了生成一个随机数生成器。第7行中就是通过当前时间为值实现了一个随机数生成器。接着定义了一个函数<code>getLitle</code>我们传入的是以<code>http://en.wikipedia.org</code>为开头的<code>url</code>然后传入<code>Beautifulsoup</code>，最后返回在<strong>当前</strong>网页（用的是<code>find</code>）中的在<code>div</code>标签下的<code>id</code>是<code>bodyContent</code>的，且不包含<code>:</code>的以<code>/wiki/</code>开头的<strong>所有</strong><code>url</code>链接（返回的是一个列表，这里用了正则表达式来匹配所要满足条件的链接）。</p>
 <p>第14行写到以<code>Kevin_Bacon</code>为开始页面，调用<code>getLinks</code>函数。16行往下是指在返回的列表不为空的情况下，以随机数生成器生成的随机数作为列表的序号，去访问另一个链接，跳转到另一个页面，打印这个链接，最后又将此链接传给<code>getLitle</code>函数。</p>
 <hr>
 <p>接下面再看一个代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">pages=set()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(pageUrl)</span>:</span></span><br><span class="line">	<span class="keyword">global</span> pages</span><br><span class="line">	html = urlopen(<span class="string">"http://wikipedia.org"</span>+pageUrl)</span><br><span class="line">	bsObj=BeautifulSoup(html)</span><br><span class="line">	<span class="keyword">for</span> link <span class="keyword">in</span> bsObj.findAll(<span class="string">"a"</span>,href=re.compile(<span class="string">"^(/wiki/)"</span>)):</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'href'</span> <span class="keyword">in</span> link.attrs:</span><br><span class="line">			<span class="keyword">if</span> link.attrs[<span class="string">'href'</span>] <span class="keyword">not</span> <span class="keyword">in</span> pages:</span><br><span class="line">				newPage=link.attrs[<span class="string">'href'</span>]</span><br><span class="line">				print(newPage)</span><br><span class="line">				pages.add(newPage)</span><br><span class="line">				getLinks(newPage)</span><br><span class="line">getLinks(<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> urlopen</span><br><span class="line"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"></span><br><span class="line">pages=set()</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLinks</span><span class="hljs-params">(pageUrl)</span>:</span></span><br><span class="line">	<span class="hljs-keyword">global</span> pages</span><br><span class="line">	html = urlopen(<span class="hljs-string">"http://wikipedia.org"</span>+pageUrl)</span><br><span class="line">	bsObj=BeautifulSoup(html)</span><br><span class="line">	<span class="hljs-keyword">for</span> link <span class="hljs-keyword">in</span> bsObj.findAll(<span class="hljs-string">"a"</span>,href=re.compile(<span class="hljs-string">"^(/wiki/)"</span>)):</span><br><span class="line">		<span class="hljs-keyword">if</span> <span class="hljs-string">'href'</span> <span class="hljs-keyword">in</span> link.attrs:</span><br><span class="line">			<span class="hljs-keyword">if</span> link.attrs[<span class="hljs-string">'href'</span>] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> pages:</span><br><span class="line">				newPage=link.attrs[<span class="hljs-string">'href'</span>]</span><br><span class="line">				print(newPage)</span><br><span class="line">				pages.add(newPage)</span><br><span class="line">				getLinks(newPage)</span><br><span class="line">getLinks(<span class="hljs-string">""</span>)</span><br></pre></td></tr></table></figure>
 <p>由于链接之间很多都是重复的，所以自然就会有需要“链接去重”的功能。<br>首先定义了一个<code>set</code>集合类型的变量<code>pages</code>，接着我们看<code>getLinks</code>函数，第7行是定义全局变量<code>pages</code>，然后找到以<code>/wiki/</code>开头的链接。第12行是判断这个链接是否在<code>pages</code>中，如果不在就说明是新链接，打印且将他增加到<code>pages</code>中，最后将这个<code>newPage</code>又传入<code>getLinks</code>函数,递归处理。</p>
 <p><div id="container"></div></p>
 <p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
@@ -119,46 +118,84 @@ gitment.render('container')
 </script>
 
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/python/">#python</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/python/">python</a><a href="/tags/crawler/">crawler</a>
-    </span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/crawler/">#crawler</a></span>
     
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/04/01/web-scraping-1/">urllib库详解</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/03/21/css-learning/">css小笔记</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

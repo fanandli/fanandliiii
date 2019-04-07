@@ -1,138 +1,173 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>快速排序 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>快速排序 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="首先以几个图片大致说一下这个算法的思路是什么：">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="快速排序">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            快速排序
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-20T08:39:30.000Z" itemprop="datePublished">5月 20 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 分钟 读完 (约 554 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>快速排序</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/05/20/data-structure-15/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-05-20T08:39:30.000Z">
-          2018-05-20
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p>首先以几个图片大致说一下这个算法的思路是什么：<br><img src="https://github.com/fanandli/picblog/blob/master/kuaisupaixu1.png?raw=true" width="250" height="200" alt="kuaipai" align="center"><img src="https://github.com/fanandli/picblog/blob/master/kuaipai2.png?raw=true" width="250" height="200" alt="kuaipai2" align="center"><img src="https://github.com/fanandli/picblog/blob/master/kuaipai3.png?raw=true" width="250" height="200" alt="kuaipai3" align="center"></p>
 <a id="more"></a>
 <p>然后看以下代码事例：<br>其中arr[]是装关键字的数组，low和high是处理关键字的范围，初始就为整个数组。if(low&lt;high)成立才递归，很明显是因为low&gt;high了，说明子序列就不存在了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">int</span> i=low;j=high;</span><br><span class="line">	<span class="keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		temp=arr[low];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(j&gt;i&amp;&amp;arr[j]&gt;=temp) --j;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j)</span><br><span class="line">			&#123;</span><br><span class="line">				arr[i]=arr[j];</span><br><span class="line">				++i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span>(i&lt;j&amp;&amp;arr[i]&lt;temp) ++i;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j)</span><br><span class="line">			&#123;</span><br><span class="line">				arr[j]=arr[i];</span><br><span class="line">				--j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		arr[i]=temp;</span><br><span class="line">		quickSort(arr,low,i<span class="number">-1</span>);</span><br><span class="line">		quickSort(arr,i+<span class="number">1</span>,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> temp;</span><br><span class="line">	<span class="hljs-keyword">int</span> i=low;j=high;</span><br><span class="line">	<span class="hljs-keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		temp=arr[low];</span><br><span class="line">		<span class="hljs-keyword">while</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">while</span>(j&gt;i&amp;&amp;arr[j]&gt;=temp) --j;</span><br><span class="line">			<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">			&#123;</span><br><span class="line">				arr[i]=arr[j];</span><br><span class="line">				++i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">while</span>(i&lt;j&amp;&amp;arr[i]&lt;temp) ++i;</span><br><span class="line">			<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">			&#123;</span><br><span class="line">				arr[j]=arr[i];</span><br><span class="line">				--j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		arr[i]=temp;</span><br><span class="line">		quickSort(arr,low,i<span class="hljs-number">-1</span>);</span><br><span class="line">		quickSort(arr,i+<span class="hljs-number">1</span>,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里我说明一下这段代码的大致意思。首先先讲i,j指向low,high。temp先指定low处的关键字，然后第10行的while循环，这个循环的主要目的是找到一个arr[j]处的关键字比temp指的小，不然就一直往前移（–j），如果找到了，且满足if（i&lt;j），就将这个小的值，移到temp处，即往前移，然后让i往后移。同样的道理，在i处是找到比temp大的数就停下来，让这个大的数往后移，即与arr[j]交换，j往前再走一步。如此一直循环，直到不满足i&lt;j。然后退出第8行的循环，将此时的temp赋给arr[i]。<br><img src="https://github.com/fanandli/picblog/blob/master/kuaipai5.png?raw=true" width="600" height="350" alt="kuaipai5" align="center"></p>
 <p>接着到了24行，进入递归，level1（0,3,7）是为了方便理解自己写出来的，指出范围为0到7，且i，j指向3。在第一次进入这个递归的时候，low=0，i-1=2；所以，如图所示。<br><img src="https://github.com/fanandli/picblog/blob/master/kuaipai6.png?raw=true" width="600" height="350" alt="kuaipai6" align="center"></p>
 <p>i=0，j=2.temp暂存arr[0]=27。然后下面的while循环同上面的过程一样。一直走到第23行，循环完之后，i和j同时指向了1。所以我们可以记录为level2（0,1,2），代表这次是在0到2中循环且最后落在在了1这个位置。然后我们又来到了第24行，又进入了递归，此时i=j=0,进入递归，在第5行if（low&lt;high）处就不满足条件了，就直接跳出来了一直到代码底此时的记录应该为level3(0, ,0)1。<br>然后，我们跳出来了，我们就得从递归函数那出来，此时我们的level还是上一个，即level2（0,1,2）,然后程序执行来到第25行，又得进入一个递归，此时i=2，high=2.不满足第5行的if。就跳出来，然后从这个递归入口函数又出来，此时为level3(0, ,0)2。然后回到上一个递归，即到了level3（0，，0）1。上面已经知道了，这一层也不满足条件直接跳过，所以我们来到了level1(0,3,7)。然后执行第25行，i=4，j=7。然后进入if判定进行循环，接着个判定大小移动的操作和上面的步骤一样。此时level(4,6,7)2。然后在 准备进入递归入口函数，然后循环，然后再出递归，。。。以此再操作。</p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/05/21/data-structure-16/">堆排序</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/05/18/data-structure-14/">希尔排序</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

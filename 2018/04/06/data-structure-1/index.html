@@ -1,96 +1,89 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>data structure 杂物间 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>data structure 杂物间 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="小插曲：写作风格想渐渐地由便于理解的语言向最精简的叙述方式转变。（严谨的风格保持不变且在努力提高中：））
 
-整理一下数据结构所涉及到的一些C或C++中的基础知识。
 
-结构型
 
-结构型的作用就是满足对数据类型的需求的补充，我们可以自己创造合适自己的数据类型，例如现有int,char等数据类型，我们可以：">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="data structure 杂物间">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            data structure 杂物间
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-06T01:47:57.000Z" itemprop="datePublished">4月 6 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 分钟 读完 (约 696 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>data structure 杂物间</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/04/06/data-structure-1/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-04-06T01:47:57.000Z">
-          2018-04-06
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <blockquote>
 <p>小插曲：写作风格想渐渐地由便于理解的语言向最精简的叙述方式转变。（严谨的风格保持不变且在努力提高中：））</p>
 </blockquote>
@@ -98,7 +91,7 @@
 <ul>
 <li>结构型</li>
 </ul>
-<p>结构型的作用就是满足对数据类型的需求的补充，我们可以自己创造合适自己的数据类型，例如现有<code>int</code>,<code>char</code>等数据类型，我们可以：<br><a id="more"></a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a ;</span><br><span class="line">	<span class="keyword">char</span> b ;</span><br><span class="line">&#125;typeA;</span><br></pre></td></tr></table></figure></p>
+<p>结构型的作用就是满足对数据类型的需求的补充，我们可以自己创造合适自己的数据类型，例如现有<code>int</code>,<code>char</code>等数据类型，我们可以：<br><a id="more"></a><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> </span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> a ;</span><br><span class="line">	<span class="hljs-keyword">char</span> b ;</span><br><span class="line">&#125;typeA;</span><br></pre></td></tr></table></figure></p>
 <p>这样就定义了一个<code>typeA</code>类型的数据类型。</p>
 <p>他的使用需要注意：<code>typeA a[3]</code>这句话是定义了一个<code>typeA</code>类型的数组<code>a[]</code>。这个数组是由<code>a[0]</code>，<code>a[1]</code>，<code>a[2]</code>组成，且<code>a[0]</code>中由2个分别为<code>int</code>，<code>char</code>组成。使用<code>a[0].a</code>调用。</p>
 <p>所以，这里的<code>a[]</code>可以理解为是一个二维数组了。需要理解一下。</p>
@@ -106,59 +99,95 @@
 <li>使用自己定义的结构型构造结点</li>
 </ul>
 <p>构造一个链表结点，分为两步：<br>第一步：构造出需要的结构型（链表结点的定义）：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span>	</span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> a;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> *<span class="hljs-title">next</span>;</span>	</span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
 <p>构造出一个<code>Node</code>型，里面是一个<code>int</code>型的数据域，一个是<code>Node</code>型的指针。</p>
-<p>第二步：构造出结点（用一个指针指向他）：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Node *p;</span><br><span class="line">p=(Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br></pre></td></tr></table></figure></p>
+<p>第二步：构造出结点（用一个指针指向他）：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Node *p;</span><br><span class="line">p=(Node*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(Node));</span><br></pre></td></tr></table></figure></p>
 <p>定义了一个<code>p</code>指针指向了结点，结点构造成功。结点的名字为<code>p</code>，这里的第2句的意思自行<code>google</code>。<br>如果我们想要取出这个结点的<code>data</code>赋给<code>x</code>，那么应该这样做：<code>x=p-&gt;data</code>，或者可以这样<code>x=(*p).data</code><br>这里主要是指针的使用注意点。<br><strong>注意</strong>，这里的<code>p</code>命名了两个东西：一个是结点，另一个是指向这个结点的指针。所以<code>p</code>既是指针名又是结点名。</p>
 <ul>
 <li><code>#define</code>和<code>typedef</code>的使用</li>
 </ul>
-<p>请看实例：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> <span class="meta-keyword">error</span> 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ok 0</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">bool</span> status</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> elemtype</span><br><span class="line"></span><br><span class="line"><span class="function">status <span class="title">f</span><span class="params">(elemtype a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a&gt;<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> error;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> ok;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>请看实例：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> <span class="hljs-meta-keyword">error</span> 1</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ok 0</span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">bool</span> status</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> elemtype</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">status <span class="hljs-title">f</span><span class="hljs-params">(elemtype a)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a&gt;<span class="hljs-number">0</span>)</span><br><span class="line">		<span class="hljs-keyword">return</span> error;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">		<span class="hljs-keyword">return</span> ok;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>上面这个代码其实就是这个意思：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a&gt;<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a )</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a&gt;<span class="hljs-number">0</span>)</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>typedef</code>是为变量起一个新名字，<code>#define</code>则是定义一个常量，也可以理解为为常量起一个新名字。<br>这样的用法的意义是可以当你有多个地方的<code>int</code>型的变量想要修改为<code>char</code>型的时候，不要一个一个的去修改，直接将<code>typedef int xx</code>改成<code>typedef int yy</code>就可以一下子全部修改了。</p>
 <p>还有需要补充的小知识点再补充。。</p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/04/06/data-structure-2/">data structure——线性表</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/04/03/Requests-webscraping/">Requests库详解</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

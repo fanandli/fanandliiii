@@ -1,98 +1,89 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>urllib库详解 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>urllib库详解 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;非常明显，技术已经超越我们的人性。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;      &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;——阿尔伯特·爱因斯坦（Albert Einstein）
 
-python爬虫之旅之第一站~~
-首先讲一下urllib库，他是python内置的一个http请求库，他有以下主要的四个模块：
 
-urllib.request        请求模块，我们通过他来模拟发送一个请求
-urllib.error        异常处理模块
-urllib.parse        url解析模块，可以对url进行拆分，合并等操作
-urllib.robotparser    robots.txt解析模块，主要是对网站的robots.txt文件进行解析">
-  
 
-  
-  
-  <meta name="keywords" content="python,web-scraping">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="urllib库详解">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            urllib库详解
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-01T01:56:48.000Z" itemprop="datePublished">4月 1 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            13 分钟 读完 (约 1896 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>urllib库详解</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/04/01/web-scraping-1/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-04-01T01:56:48.000Z">
-          2018-04-01
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <blockquote>
 <p>&nbsp;&nbsp;非常明显，技术已经超越我们的人性。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——阿尔伯特·爱因斯坦（Albert Einstein）</p>
 </blockquote>
@@ -110,67 +101,67 @@ urllib.robotparser    robots.txt解析模块，主要是对网站的robots.txt�
 <ul>
 <li><code>urlopen</code>函数：<br><code>urllib.request.urlopen(url,data=None,[timeout])</code><br><code>urlopen</code>函数中的常见的参数有<code>url</code>,<code>data</code>和<code>timeout</code>，<code>url</code>参数是传入网站的<code>url</code>，<code>data</code>参数主要是用来传入一些其他的数据，<code>timeout</code>是用于超时的数据。</li>
 </ul>
-<p>下面看代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">response=urllib.request.urlopen(<span class="string">"http://aisleep.xyz"</span>)</span><br><span class="line">print(response.read().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
+<p>下面看代码：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line">response=urllib.request.urlopen(<span class="hljs-string">"http://aisleep.xyz"</span>)</span><br><span class="line">print(response.read().decode(<span class="hljs-string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
 <p>其中<code>.read()</code>是获取<code>response</code>的内容，因为一开始是<code>bytes</code>数据，所以才要再用<code>.decode(&#39;utf-8&#39;)</code>将其转为字符串。这个是<code>request</code>的一个<code>get</code>的请求。</p>
-<p>接着看：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">data=bytes(urllib.parse.urlencode(&#123;<span class="string">'word'</span>: <span class="string">'hello'</span>&#125;),encoding=<span class="string">'utf8'</span>)</span><br><span class="line">response=urllib.request.urlopen(<span class="string">'http://httpbin.org'</span>,data=data)</span><br><span class="line">print(response.read())</span><br></pre></td></tr></table></figure></p>
+<p>接着看：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.parse</span><br><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">data=bytes(urllib.parse.urlencode(&#123;<span class="hljs-string">'word'</span>: <span class="hljs-string">'hello'</span>&#125;),encoding=<span class="hljs-string">'utf8'</span>)</span><br><span class="line">response=urllib.request.urlopen(<span class="hljs-string">'http://httpbin.org'</span>,data=data)</span><br><span class="line">print(response.read())</span><br></pre></td></tr></table></figure></p>
 <p>这里传入了个<code>data</code>，且必须是<code>bytes</code>类型。其中调用<code>urlencode</code>方法传入所需要的字典，后又定义了一个编码方式。这就是<code>post</code>请求。</p>
-<p>下面再看一下使用<code>timeout</code>参数的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> urllib.error</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	response=urllib.request.urlopen(<span class="string">'http://httpbin.org/get'</span>,timeout=<span class="number">1</span>)</span><br><span class="line">	print(response.read())</span><br><span class="line"><span class="keyword">except</span> urllib.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">	<span class="keyword">if</span> isinstance(e.reason,socket.timeout):</span><br><span class="line">		print(<span class="string">"time out"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>下面再看一下使用<code>timeout</code>参数的代码：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line"><span class="hljs-keyword">import</span> socket</span><br><span class="line"><span class="hljs-keyword">import</span> urllib.error</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span>:</span><br><span class="line">	response=urllib.request.urlopen(<span class="hljs-string">'http://httpbin.org/get'</span>,timeout=<span class="hljs-number">1</span>)</span><br><span class="line">	print(response.read())</span><br><span class="line"><span class="hljs-keyword">except</span> urllib.error.URLError <span class="hljs-keyword">as</span> e:</span><br><span class="line">	<span class="hljs-keyword">if</span> isinstance(e.reason,socket.timeout):</span><br><span class="line">		print(<span class="hljs-string">"time out"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>这里是使用了一个<code>try-except</code>处理异常，还设置了一个<code>timeout</code>参数，还有涉及到了一些<code>error</code>等，这个后面会有讲解。</p>
-<p>下面我们再来看看，<code>urlopen</code>的响应类型（一般常用的有：状态码，响应头，响应体）：<br>代码一：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">response=urllib.request.urlopen(<span class="string">'http://baidu.com'</span>)</span><br><span class="line">print(type(response))</span><br></pre></td></tr></table></figure></p>
-<p>代码二：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">response=urllib.request.urlopen(<span class="string">'https://baidu.com'</span>)</span><br><span class="line">print(response.status)</span><br><span class="line">print(response.getheaders()）</span><br><span class="line">print(response.getheader(<span class="string">'Server'</span>))</span><br><span class="line">print(response.read().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
+<p>下面我们再来看看，<code>urlopen</code>的响应类型（一般常用的有：状态码，响应头，响应体）：<br>代码一：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line">response=urllib.request.urlopen(<span class="hljs-string">'http://baidu.com'</span>)</span><br><span class="line">print(type(response))</span><br></pre></td></tr></table></figure></p>
+<p>代码二：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line">response=urllib.request.urlopen(<span class="hljs-string">'https://baidu.com'</span>)</span><br><span class="line">print(response.status)</span><br><span class="line">print(response.getheaders()）</span><br><span class="line">print(response.getheader(<span class="hljs-string">'Server'</span>))</span><br><span class="line">print(response.read().decode(<span class="hljs-string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
 <p>代码一中是返回了<code>response</code>的类型是什么，代码二中第3行是返回的状态码，一般请求成功状态码就是<code>200</code>第4行是返回的响应头的全部信息，第5行则是返回的是响应头中的<code>Server</code>参数的信息，第6行则是使用了常用的<code>read</code>方法，来获取响应体的内容。</p>
 <ul>
 <li><code>Request</code>对象</li>
 </ul>
 <p>代码一：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">request=urllib.request.Request(<span class="string">'http://aisleep.xyz'</span>)</span><br><span class="line">response=urllib.request.urlopen(request)</span><br><span class="line">print(response.read().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
-<p>代码二：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request,parse</span><br><span class="line">url=<span class="string">"http://httpbin.org/post"</span></span><br><span class="line">dict=&#123;</span><br><span class="line">	<span class="string">'name'</span>:<span class="string">'lifan'</span></span><br><span class="line">&#125;</span><br><span class="line">data=bytes(parse.urlencode(dict),encoding=<span class="string">'utf8'</span>)</span><br><span class="line">req=request.Request(url=url,data=data,method=<span class="string">'POST'</span>)</span><br><span class="line">req.add_header(<span class="string">'User-Agent'</span>,<span class="string">'Mozilia/4.0(compatible;MSIE 5.5;Windows NT)'</span>)</span><br><span class="line">response=request.urlopen(req)</span><br><span class="line">print(response.read().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line">request=urllib.request.Request(<span class="hljs-string">'http://aisleep.xyz'</span>)</span><br><span class="line">response=urllib.request.urlopen(request)</span><br><span class="line">print(response.read().decode(<span class="hljs-string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
+<p>代码二：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request,parse</span><br><span class="line">url=<span class="hljs-string">"http://httpbin.org/post"</span></span><br><span class="line">dict=&#123;</span><br><span class="line">	<span class="hljs-string">'name'</span>:<span class="hljs-string">'lifan'</span></span><br><span class="line">&#125;</span><br><span class="line">data=bytes(parse.urlencode(dict),encoding=<span class="hljs-string">'utf8'</span>)</span><br><span class="line">req=request.Request(url=url,data=data,method=<span class="hljs-string">'POST'</span>)</span><br><span class="line">req.add_header(<span class="hljs-string">'User-Agent'</span>,<span class="hljs-string">'Mozilia/4.0(compatible;MSIE 5.5;Windows NT)'</span>)</span><br><span class="line">response=request.urlopen(req)</span><br><span class="line">print(response.read().decode(<span class="hljs-string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
 <p>这里代码二是将<code>url</code>,<code>data</code>,<code>header</code>一起传给<code>Request</code>对象，然后再使用<code>urlopen</code>函数。第8行是传入了一个<code>header</code>,可以用特殊的<code>add_header</code>函数，也可以将其构造一个和这里的<code>dict</code>一样的字典传给<code>Request</code>。<br>通过<code>Request</code>对象可以将我们需要传入的请求方式，请求头，请求体等参数构造成一各整体，传给<code>Request</code>对象，发送给服务器。这里使用<code>Request</code>对象，再调用<code>urlopen</code>函数的方法相比于直接使用<code>urlopen</code>函数的好处就是可以传入更多类型的参数。不单单只是<code>url</code>,<code>timeout</code>,<code>data</code>等了。</p>
 <ul>
 <li>代理（<code>handler</code>）</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">proxy_handler=urllib.request.ProxyHandler(&#123;</span><br><span class="line">	<span class="string">'https'</span>: <span class="string">'https://127.0.0.1:9743'</span>,</span><br><span class="line">	<span class="string">'http'</span>: <span class="string">'http://127.0.0.1:9743'</span></span><br><span class="line">	&#125;)</span><br><span class="line">opener=urllib.request.build_opener(proxy_handler)</span><br><span class="line">response=opener.open(<span class="string">'http://www.google.com'</span>)</span><br><span class="line">print(response.read())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line">proxy_handler=urllib.request.ProxyHandler(&#123;</span><br><span class="line">	<span class="hljs-string">'https'</span>: <span class="hljs-string">'https://127.0.0.1:9743'</span>,</span><br><span class="line">	<span class="hljs-string">'http'</span>: <span class="hljs-string">'http://127.0.0.1:9743'</span></span><br><span class="line">	&#125;)</span><br><span class="line">opener=urllib.request.build_opener(proxy_handler)</span><br><span class="line">response=opener.open(<span class="hljs-string">'http://www.google.com'</span>)</span><br><span class="line">print(response.read())</span><br></pre></td></tr></table></figure>
 <p>这里稍后再细讲</p>
 <ul>
 <li><code>cookie</code></li>
 </ul>
 <p>获取<code>cookie</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,http.cookiejar</span><br><span class="line">cookie=http.cookiejar.CookieJar()</span><br><span class="line">hander=urllib.request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener=urllib.request.build_opener(hander)</span><br><span class="line">response=opener.open(<span class="string">'http://www.baidu.com'</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cookie:</span><br><span class="line">	print(item.name+<span class="string">"="</span>+item.value)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request,http.cookiejar</span><br><span class="line">cookie=http.cookiejar.CookieJar()</span><br><span class="line">hander=urllib.request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener=urllib.request.build_opener(hander)</span><br><span class="line">response=opener.open(<span class="hljs-string">'http://www.baidu.com'</span>)</span><br><span class="line"><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> cookie:</span><br><span class="line">	print(item.name+<span class="hljs-string">"="</span>+item.value)</span><br></pre></td></tr></table></figure>
 <p><code>cookie</code>保存：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cookie保存方式1</span></span><br><span class="line"><span class="keyword">import</span> http.cookiejar,urllib.request</span><br><span class="line">filename=<span class="string">"cookie.txt"</span></span><br><span class="line">cookie=http.cookiejar.MozillaCookieJar(filename)</span><br><span class="line">handler=urllib.request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener=urllib.request.build_opener(handler)</span><br><span class="line">response=opener.open(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">cookie.save(ignore_discard=<span class="literal">True</span>,ignore_expires=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cookie保存方式2</span></span><br><span class="line"><span class="keyword">import</span> http.cookie,urllib.request</span><br><span class="line">filename =<span class="string">'cookie.txt'</span></span><br><span class="line">cookie=http.cookiejar.LWPCookieJar(filename)</span><br><span class="line">handler=urllib.request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener=urllib.request.build_opener(handler)</span><br><span class="line">response=opener.open(<span class="string">'http://www.baidu.com'</span>)</span><br><span class="line">cookie.save(ignore_discard=<span class="literal">True</span>,ignore_expires=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取cookie文件</span></span><br><span class="line"><span class="keyword">import</span> http.cookiejar,urllib.request</span><br><span class="line">cookie=http.cookiejar.LWPCookiejar()</span><br><span class="line">cookie.load(<span class="string">'cookie.txt'</span>,ignore_discard=<span class="literal">True</span>,ignore_expires=<span class="literal">True</span>)</span><br><span class="line">handler=urllib.request.build_opener(handler)</span><br><span class="line">response=opener.open(<span class="string">'http://www.baidu.com'</span>)</span><br><span class="line">print(response.read().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#cookie保存方式1</span></span><br><span class="line"><span class="hljs-keyword">import</span> http.cookiejar,urllib.request</span><br><span class="line">filename=<span class="hljs-string">"cookie.txt"</span></span><br><span class="line">cookie=http.cookiejar.MozillaCookieJar(filename)</span><br><span class="line">handler=urllib.request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener=urllib.request.build_opener(handler)</span><br><span class="line">response=opener.open(<span class="hljs-string">"http://www.baidu.com"</span>)</span><br><span class="line">cookie.save(ignore_discard=<span class="hljs-literal">True</span>,ignore_expires=<span class="hljs-literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#cookie保存方式2</span></span><br><span class="line"><span class="hljs-keyword">import</span> http.cookie,urllib.request</span><br><span class="line">filename =<span class="hljs-string">'cookie.txt'</span></span><br><span class="line">cookie=http.cookiejar.LWPCookieJar(filename)</span><br><span class="line">handler=urllib.request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener=urllib.request.build_opener(handler)</span><br><span class="line">response=opener.open(<span class="hljs-string">'http://www.baidu.com'</span>)</span><br><span class="line">cookie.save(ignore_discard=<span class="hljs-literal">True</span>,ignore_expires=<span class="hljs-literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#读取cookie文件</span></span><br><span class="line"><span class="hljs-keyword">import</span> http.cookiejar,urllib.request</span><br><span class="line">cookie=http.cookiejar.LWPCookiejar()</span><br><span class="line">cookie.load(<span class="hljs-string">'cookie.txt'</span>,ignore_discard=<span class="hljs-literal">True</span>,ignore_expires=<span class="hljs-literal">True</span>)</span><br><span class="line">handler=urllib.request.build_opener(handler)</span><br><span class="line">response=opener.open(<span class="hljs-string">'http://www.baidu.com'</span>)</span><br><span class="line">print(response.read().decode(<span class="hljs-string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
 <p><code>cookie</code>这里的使用，后面再细讲。</p>
 <ul>
 <li><code>error</code>模块，异常处理</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request,error</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	response=request.urlopen(<span class="string">'http://www.baidu.com'</span>)</span><br><span class="line"><span class="keyword">except</span> error.HTTPError <span class="keyword">as</span> e:</span><br><span class="line">	print(e.reason,e.code,e.headers,sep=<span class="string">'\n'</span>)</span><br><span class="line"><span class="keyword">except</span> error.URLError <span class="keyword">as</span> e:</span><br><span class="line">	print(e.reason)</span><br><span class="line"><span class="keyword">else</span>：</span><br><span class="line">	<span class="keyword">print</span>（<span class="string">'Request.Successfully'</span>）</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request,error</span><br><span class="line"><span class="hljs-keyword">try</span>:</span><br><span class="line">	response=request.urlopen(<span class="hljs-string">'http://www.baidu.com'</span>)</span><br><span class="line"><span class="hljs-keyword">except</span> error.HTTPError <span class="hljs-keyword">as</span> e:</span><br><span class="line">	print(e.reason,e.code,e.headers,sep=<span class="hljs-string">'\n'</span>)</span><br><span class="line"><span class="hljs-keyword">except</span> error.URLError <span class="hljs-keyword">as</span> e:</span><br><span class="line">	print(e.reason)</span><br><span class="line"><span class="hljs-keyword">else</span>：</span><br><span class="line">	<span class="hljs-keyword">print</span>（<span class="hljs-string">'Request.Successfully'</span>）</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>urlparse</code>模块，<code>url</code>解析</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urlib.parse <span class="keyword">import</span> urlparse</span><br><span class="line">result=urlparse(<span class="string">'http://www.baidu.com/index.html;user?id=5#comment'</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urlib.parse <span class="hljs-keyword">import</span> urlparse</span><br><span class="line">result=urlparse(<span class="hljs-string">'http://www.baidu.com/index.html;user?id=5#comment'</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
 <p><code>urlparse</code>模块主要是对<code>url</code>进行解析，这个代码的输出信息是：<br><code>ParseResult(scheme=&#39;http&#39;,netloc=&#39;www.baidu.com&#39;,path=&#39;/index.html&#39;,params=&#39;user&#39;,query=&#39;id5&#39;,fragment=&#39;comment&#39;)</code></p>
 <p>再看：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urlib.parse <span class="keyword">import</span> urlparse</span><br><span class="line">result=urlparse(<span class="string">'http://www.baidu.com/index.html;user?id=5#comment'</span>,scheme=<span class="string">'https'</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urlib.parse <span class="hljs-keyword">import</span> urlparse</span><br><span class="line">result=urlparse(<span class="hljs-string">'http://www.baidu.com/index.html;user?id=5#comment'</span>,scheme=<span class="hljs-string">'https'</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
 <p>这个代码的输出信息则是：<br><code>ParseResult(scheme=&#39;http&#39;,netloc=&#39;www.baidu.com&#39;,path=&#39;/index.html&#39;,params=&#39;user&#39;,query=&#39;id5&#39;,fragment=&#39;comment&#39;)</code><br>可以看到，我们指定的协议类型，如果默认协议存在则不会被我们指定的协议所改变。</p>
 <p>再看：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlparse</span><br><span class="line">result=urlparse(<span class="string">'http://www.baidu.com/index.html;user?id=5#comment'</span>,allow_fragments=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlparse</span><br><span class="line">result=urlparse(<span class="hljs-string">'http://www.baidu.com/index.html;user?id=5#comment'</span>,allow_fragments=<span class="hljs-literal">False</span>)</span><br></pre></td></tr></table></figure>
 <p>这个代码的输出信息则是：<br><code>ParseResult(scheme=&#39;http&#39;,netloc=&#39;www.baidu.com&#39;,path=&#39;/index.html&#39;,params=&#39;user&#39;,query=&#39;id=5#comment&#39;,fragment=&#39;&#39;)</code><br>可见，当我们指定<code>allow_fragment=False</code>的时候，<code>fragment</code>的内容就会被拼接到前面的<code>query</code>    里面去。如果连前面的<code>query</code>也没有呢？<code>fragment</code>里面的内容会继续拼接到前面的地方。</p>
 <ul>
 <li><code>unurlparse</code>函数，组成<code>url</code></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlunparse</span><br><span class="line">data=[<span class="string">'http'</span>,<span class="string">'www.baidu.com'</span>,<span class="string">'index.html'</span>,<span class="string">'user'</span>,<span class="string">'a=6'</span>,<span class="string">'comment'</span>]</span><br><span class="line">print(urlunparse(data))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlunparse</span><br><span class="line">data=[<span class="hljs-string">'http'</span>,<span class="hljs-string">'www.baidu.com'</span>,<span class="hljs-string">'index.html'</span>,<span class="hljs-string">'user'</span>,<span class="hljs-string">'a=6'</span>,<span class="hljs-string">'comment'</span>]</span><br><span class="line">print(urlunparse(data))</span><br></pre></td></tr></table></figure>
 <p>这个代码的输出信息则是：<br><code>http://www.baidu.com/index.html;user?a=6#comment</code></p>
 <ul>
 <li><code>urljoin</code>函数，拼接<code>url</code></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urljoin</span><br><span class="line">print(urljoin(<span class="string">'http://www.baidu.com'</span>,<span class="string">'https://www.google.com/faq.html'</span>))</span><br><span class="line"><span class="keyword">print</span>（urljoin(<span class="string">'http://www.baidu.com'</span>,<span class="string">'https://www.baidu.com'</span>)）</span><br><span class="line">print(urljoin(<span class="string">'http://www.baidu.com'</span>,<span class="string">'http://www.baidu.com/FAQ.html?question=2'</span>))</span><br><span class="line">print(urljoin(<span class="string">'http://www.baidu.com'</span>,<span class="string">'?category=1'</span>))</span><br></pre></td></tr></table></figure>
-<p>这个代码的运行结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://www.google.com/faq.html</span><br><span class="line">https://www.baidu.com</span><br><span class="line">http://www.baidu.com/FAQ.html?question=2</span><br><span class="line">http://www.baidu.com?category=1</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urljoin</span><br><span class="line">print(urljoin(<span class="hljs-string">'http://www.baidu.com'</span>,<span class="hljs-string">'https://www.google.com/faq.html'</span>))</span><br><span class="line"><span class="hljs-keyword">print</span>（urljoin(<span class="hljs-string">'http://www.baidu.com'</span>,<span class="hljs-string">'https://www.baidu.com'</span>)）</span><br><span class="line">print(urljoin(<span class="hljs-string">'http://www.baidu.com'</span>,<span class="hljs-string">'http://www.baidu.com/FAQ.html?question=2'</span>))</span><br><span class="line">print(urljoin(<span class="hljs-string">'http://www.baidu.com'</span>,<span class="hljs-string">'?category=1'</span>))</span><br></pre></td></tr></table></figure>
+<p>这个代码的运行结果是：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://www.google.com/faq.html</span><br><span class="line">https://www.baidu.com</span><br><span class="line">http://www.baidu.com/FAQ.html?question=2</span><br><span class="line">http://www.baidu.com?category=1</span><br></pre></td></tr></table></figure></p>
 <p>我们从中可以知道，<code>urljoin</code>函数，泛泛的理解就是：在前者后者都有的情况下，后者的内容会覆盖前者，前者没有后者有的时候，也是为后者的内容，如果前者有，后者内容没有就以前者为准。</p>
 <ul>
 <li><code>urlencode</code>函数，将字典对象转换成<code>get</code>请求参数</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line">params=&#123;</span><br><span class="line">	<span class="string">'name'</span>:<span class="string">'lifan'</span>,</span><br><span class="line">	<span class="string">'age'</span>:<span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line">base_url=<span class="string">'http://www.baidu.com'</span></span><br><span class="line">url=base_url+urlencode(params)</span><br><span class="line">print(url)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlencode</span><br><span class="line">params=&#123;</span><br><span class="line">	<span class="hljs-string">'name'</span>:<span class="hljs-string">'lifan'</span>,</span><br><span class="line">	<span class="hljs-string">'age'</span>:<span class="hljs-number">23</span></span><br><span class="line">&#125;</span><br><span class="line">base_url=<span class="hljs-string">'http://www.baidu.com'</span></span><br><span class="line">url=base_url+urlencode(params)</span><br><span class="line">print(url)</span><br></pre></td></tr></table></figure>
 <p>运行结果是：<code>http://www.baidu.comname=lifan&amp;age=23</code></p>
 <p><div id="container"></div></p>
 <p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
@@ -190,46 +181,84 @@ gitment.render('container')
 
 
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/python/">#python</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/python/">python</a><a href="/tags/web-scraping/">web-scraping</a>
-    </span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/web-scraping/">#web-scraping</a></span>
     
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/04/03/Requests-webscraping/">Requests库详解</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/03/23/scraping-with-python/">web scraping with python</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

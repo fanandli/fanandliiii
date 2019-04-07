@@ -1,95 +1,92 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>data structure——图 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>data structure——图 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="图的存储结构：
 
-图的顺序存储结构：邻接矩阵的结构型有两个数组：一个一维数组存储图中的顶点信息；一个二维数组存储图中的边或弧的信息。缺点：如果边数相对于顶点数较少，那么边数组的存储空间是一个很大的浪费。123456789101112typedef struct&amp;#123;	int no;  //顶点编号	char info;  //顶点的其他信息，视情况而定写不写&amp;#125;VertexType;typedef struct //图的定义&amp;#123;	int edges[maxSize][maxSize];  //邻接矩阵定义，可看做边表	int n,e;  //顶点数和边数	VertexType vex[maxSize];  //顶点表，存放结点信息&amp;#125;MGraph;  //图的邻接矩阵类型">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="data structure——图">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            data structure——图
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-30T01:17:32.000Z" itemprop="datePublished">4月 30 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            13 分钟 读完 (约 1909 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>data structure——图</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/04/30/data-structure-7/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-04-30T01:17:32.000Z">
-          2018-04-30
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p><strong>图的存储结构：</strong></p>
 <ul>
-<li>图的顺序存储结构：邻接矩阵的结构型<br>有两个数组：一个一维数组存储图中的顶点信息；一个二维数组存储图中的边或弧的信息。<br>缺点：如果边数相对于顶点数较少，那么边数组的存储空间是一个很大的浪费。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> no;  <span class="comment">//顶点编号</span></span><br><span class="line">	<span class="keyword">char</span> info;  <span class="comment">//顶点的其他信息，视情况而定写不写</span></span><br><span class="line">&#125;VertexType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> //图的定义</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> edges[maxSize][maxSize];  <span class="comment">//邻接矩阵定义，可看做边表</span></span><br><span class="line">	<span class="keyword">int</span> n,e;  <span class="comment">//顶点数和边数</span></span><br><span class="line">	VertexType vex[maxSize];  <span class="comment">//顶点表，存放结点信息</span></span><br><span class="line">&#125;MGraph;  <span class="comment">//图的邻接矩阵类型</span></span><br></pre></td></tr></table></figure>
+<li>图的顺序存储结构：邻接矩阵的结构型<br>有两个数组：一个一维数组存储图中的顶点信息；一个二维数组存储图中的边或弧的信息。<br>缺点：如果边数相对于顶点数较少，那么边数组的存储空间是一个很大的浪费。<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> no;  <span class="hljs-comment">//顶点编号</span></span><br><span class="line">	<span class="hljs-keyword">char</span> info;  <span class="hljs-comment">//顶点的其他信息，视情况而定写不写</span></span><br><span class="line">&#125;VertexType;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> //图的定义</span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> edges[maxSize][maxSize];  <span class="hljs-comment">//邻接矩阵定义，可看做边表</span></span><br><span class="line">	<span class="hljs-keyword">int</span> n,e;  <span class="hljs-comment">//顶点数和边数</span></span><br><span class="line">	VertexType vex[maxSize];  <span class="hljs-comment">//顶点表，存放结点信息</span></span><br><span class="line">&#125;MGraph;  <span class="hljs-comment">//图的邻接矩阵类型</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
@@ -98,7 +95,7 @@
 <ul>
 <li>图的链式存储结构：邻接表<br>数组与链表相结合；图中顶点用一维数组来存储（也可用单链表）；图中的每个顶点的邻接点用单链表来存储。</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span>  //边表</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> adjvex;  <span class="comment">//该边所指向的结点的位置，就是顶点标号</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>  <span class="comment">//指向这个顶点结点的另一条边的指针</span></span><br><span class="line">	<span class="keyword">int</span> info;  <span class="comment">//该边的相关信息</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>   //顶点表</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;  <span class="comment">//顶点信息</span></span><br><span class="line">	ArcNode *firstarc;  <span class="comment">//指向第一条边的指针</span></span><br><span class="line">&#125;VNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	VNode adjlist[maxSize];  <span class="comment">//邻接表</span></span><br><span class="line">	<span class="keyword">int</span> n,e;  <span class="comment">//顶点数和边数</span></span><br><span class="line">&#125;AGraph;  <span class="comment">//图的邻接表类型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ArcNode</span>  //边表</span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> adjvex;  <span class="hljs-comment">//该边所指向的结点的位置，就是顶点标号</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ArcNode</span> *<span class="hljs-title">nextarc</span>;</span>  <span class="hljs-comment">//指向这个顶点结点的另一条边的指针</span></span><br><span class="line">	<span class="hljs-keyword">int</span> info;  <span class="hljs-comment">//该边的相关信息</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>   //顶点表</span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">char</span> data;  <span class="hljs-comment">//顶点信息</span></span><br><span class="line">	ArcNode *firstarc;  <span class="hljs-comment">//指向第一条边的指针</span></span><br><span class="line">&#125;VNode;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> </span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	VNode adjlist[maxSize];  <span class="hljs-comment">//邻接表</span></span><br><span class="line">	<span class="hljs-keyword">int</span> n,e;  <span class="hljs-comment">//顶点数和边数</span></span><br><span class="line">&#125;AGraph;  <span class="hljs-comment">//图的邻接表类型</span></span><br></pre></td></tr></table></figure>
 <p>邻接表事例：<br>ArcNode是“边”（边结点）的结构体，是用点与点之间的关系来表示边的。其中的adjvex（Adjacent vertices邻接顶点的缩写）这条边所指的顶点，是顶点在数组中的下标，*next是指向下一个边结点的指针。<br>VNode是“顶点”的结构体，AGraph是“图”的结构体，其中定义了一个VNode型的数组来储存顶点，n,e是结点数和边数。<br><img src="https://github.com/fanandli/picblog/blob/master/linjiebiao.jpg?raw=true" width="600" height="350" alt="邻接表" align="center"><br>邻接表中，如果是有向图的话，邻接表是存储的是这个结点引出的边，也即“出度”，而如果存储的是指向这个结点的边，也即“入度”的话，这个存储结构就是“逆邻接表”。</p>
 <p><img src="https://github.com/fanandli/picblog/blob/master/linjiebiao&nilinjiebiao.jpg?raw=true" width="600" height="350" alt="邻接矩阵和邻接表" align="center"></p>
 <ul>
@@ -116,64 +113,100 @@
 <ul>
 <li>深度优先遍历（DFS）</li>
 </ul>
-<p>很类似于树的先序遍历算法，<br>这里用了一个visit[]数组，设置为一个标记，如果这个结点已经访问过了就设置为1，如果没有访问过默认为0。<br><strong>注意：</strong>Visit函数和visit[]数组不是同一个东西，第10句中的下一个结点指的是在邻接表中当前结点的下一个结点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> c,AGraph *G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	visit[v]=<span class="number">1</span>;</span><br><span class="line">	Visit(v);  <span class="comment">//Visit函数代表了对顶点v的访问</span></span><br><span class="line">	ArcNode* q=G-&gt;adjList[v].first;  <span class="comment">//这里是p指向顶点的第一条边</span></span><br><span class="line">	<span class="keyword">while</span>(q!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(visit[q-&gt;adjV]==<span class="number">0</span>)  <span class="comment">//如果这个顶点没有被访问过，那么就访问他</span></span><br><span class="line">			DFS(q-&gt;adjV,G);  <span class="comment">//递归处理</span></span><br><span class="line">			q=q-&gt;next;  <span class="comment">//指向当前顶点的下一个结点</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很类似于树的先序遍历算法，<br>这里用了一个visit[]数组，设置为一个标记，如果这个结点已经访问过了就设置为1，如果没有访问过默认为0。<br><strong>注意：</strong>Visit函数和visit[]数组不是同一个东西，第10句中的下一个结点指的是在邻接表中当前结点的下一个结点。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-keyword">int</span> c,AGraph *G)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	visit[v]=<span class="hljs-number">1</span>;</span><br><span class="line">	Visit(v);  <span class="hljs-comment">//Visit函数代表了对顶点v的访问</span></span><br><span class="line">	ArcNode* q=G-&gt;adjList[v].first;  <span class="hljs-comment">//这里是p指向顶点的第一条边</span></span><br><span class="line">	<span class="hljs-keyword">while</span>(q!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(visit[q-&gt;adjV]==<span class="hljs-number">0</span>)  <span class="hljs-comment">//如果这个顶点没有被访问过，那么就访问他</span></span><br><span class="line">			DFS(q-&gt;adjV,G);  <span class="hljs-comment">//递归处理</span></span><br><span class="line">			q=q-&gt;next;  <span class="hljs-comment">//指向当前顶点的下一个结点</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><img src width="600" height="350" alt align="center"><br><img src="https://github.com/fanandli/picblog/blob/master/dfs.png?raw=true" width="600" height="350" alt="dfs" align="center"></p>
 <ul>
 <li>广度优先遍历（BFS）<br>类似于树的层次遍历，遍历过程会用到一个列表。主要过程是：取一个顶点进行访问，入队，并将这个点标记为已访问；接着，访问这个结点的下一个结点，没有访问过就访问，标记为1，入队，如此循环将邻接点都入队，p为空时就出队，然后循环对这个出队顶点的所有没有被访问过的邻接顶点进行访问，标记，入队，依次循环最后，直至出队使得队列为空，结束循环。</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(AGraph *G,<span class="keyword">int</span> v,<span class="keyword">int</span> visit[maxsize])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ArcNode *p;</span><br><span class="line">	<span class="keyword">int</span> que[maxSize],front=<span class="number">0</span>,rear=<span class="number">0</span>;  <span class="comment">//创建一个队列que</span></span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	Visit(v);  <span class="comment">//访问任意一个v结点</span></span><br><span class="line">	visit[v]=<span class="number">1</span>;  <span class="comment">//标记为已访问</span></span><br><span class="line">	rear=(rear+<span class="number">1</span>)%maxSize;  <span class="comment">//当前结点入队</span></span><br><span class="line">	que[rear]=v;  <span class="comment">//入队，（是将数组下标写进队列中）</span></span><br><span class="line">	<span class="keyword">while</span>(front!=rear)  <span class="comment">//如果队列不为空，就循环</span></span><br><span class="line">	&#123;</span><br><span class="line">		front=(front+<span class="number">1</span>)%maxSize;  <span class="comment">//出队</span></span><br><span class="line">		j=que[front];  </span><br><span class="line">		p=G-&gt;adjlist[j].first;  <span class="comment">//p指向这个出队顶点j的第一条边</span></span><br><span class="line">		<span class="keyword">while</span>(p!=<span class="literal">NULL</span>)  <span class="comment">//当p不空的时候,</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(visit[p-&gt;adjV]==<span class="number">0</span>)  <span class="comment">//如果p的邻接点没有被访问过，</span></span><br><span class="line">			&#123;</span><br><span class="line">				Visit(p-&gt;adjV);  <span class="comment">//就访问他,</span></span><br><span class="line">				visit[p-&gt;adjV]=<span class="number">1</span>;  <span class="comment">//接着标记为已访问，</span></span><br><span class="line">				rear=(rear+<span class="number">1</span>)%maxSize;  <span class="comment">//该顶点也入队</span></span><br><span class="line">				que[rear]=p-&gt;adjV;  <span class="comment">//入队</span></span><br><span class="line">			&#125;</span><br><span class="line">			p=p-&gt;next;  <span class="comment">//访问下一条边</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BFS</span><span class="hljs-params">(AGraph *G,<span class="hljs-keyword">int</span> v,<span class="hljs-keyword">int</span> visit[maxsize])</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	ArcNode *p;</span><br><span class="line">	<span class="hljs-keyword">int</span> que[maxSize],front=<span class="hljs-number">0</span>,rear=<span class="hljs-number">0</span>;  <span class="hljs-comment">//创建一个队列que</span></span><br><span class="line">	<span class="hljs-keyword">int</span> j;</span><br><span class="line">	Visit(v);  <span class="hljs-comment">//访问任意一个v结点</span></span><br><span class="line">	visit[v]=<span class="hljs-number">1</span>;  <span class="hljs-comment">//标记为已访问</span></span><br><span class="line">	rear=(rear+<span class="hljs-number">1</span>)%maxSize;  <span class="hljs-comment">//当前结点入队</span></span><br><span class="line">	que[rear]=v;  <span class="hljs-comment">//入队，（是将数组下标写进队列中）</span></span><br><span class="line">	<span class="hljs-keyword">while</span>(front!=rear)  <span class="hljs-comment">//如果队列不为空，就循环</span></span><br><span class="line">	&#123;</span><br><span class="line">		front=(front+<span class="hljs-number">1</span>)%maxSize;  <span class="hljs-comment">//出队</span></span><br><span class="line">		j=que[front];  </span><br><span class="line">		p=G-&gt;adjlist[j].first;  <span class="hljs-comment">//p指向这个出队顶点j的第一条边</span></span><br><span class="line">		<span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)  <span class="hljs-comment">//当p不空的时候,</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span>(visit[p-&gt;adjV]==<span class="hljs-number">0</span>)  <span class="hljs-comment">//如果p的邻接点没有被访问过，</span></span><br><span class="line">			&#123;</span><br><span class="line">				Visit(p-&gt;adjV);  <span class="hljs-comment">//就访问他,</span></span><br><span class="line">				visit[p-&gt;adjV]=<span class="hljs-number">1</span>;  <span class="hljs-comment">//接着标记为已访问，</span></span><br><span class="line">				rear=(rear+<span class="hljs-number">1</span>)%maxSize;  <span class="hljs-comment">//该顶点也入队</span></span><br><span class="line">				que[rear]=p-&gt;adjV;  <span class="hljs-comment">//入队</span></span><br><span class="line">			&#125;</span><br><span class="line">			p=p-&gt;next;  <span class="hljs-comment">//访问下一条边</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://github.com/fanandli/picblog/blob/master/bfs.png?raw=true" width="600" height="350" alt="bfs" align="center"></p>
 <ul>
 <li>最小生成树</li>
 </ul>
 <p>由一个图按照某种规则导出的一个树，叫生成树。最小生成树：构成这个生成树的所有分支的权值和最小。</p>
-<p>prime算法<br>求最小生成树的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span> n ,<span class="keyword">float</span> MGraph[][n],<span class="keyword">int</span> v0,<span class="keyword">float</span> &amp;sum)</span><span class="comment">//顶点个数，带权图，构造生成树的起始顶点，</span></span></span><br><span class="line"><span class="function"></span>&#123;                                                    <span class="comment">//存储最小权值和（代价）</span></span><br><span class="line">	<span class="keyword">int</span> lowCost[n],vSet[n];  </span><br><span class="line">	<span class="keyword">int</span> v,k,min;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		lowCost[i]=MGraph[v0][i];  <span class="comment">//lowCost[]指向vo初始点的同一行的不同列的顶点</span></span><br><span class="line">		vSet[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	v=v0;  <span class="comment">//v指向第一个结点，</span></span><br><span class="line">	vSet[v]=<span class="number">1</span>;  <span class="comment">//已经并入，所以标记设置为1</span></span><br><span class="line">	sum=<span class="number">0</span>;  <span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		min=INF; <span class="comment">//min初始化为无穷大</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n,++j)</span><br><span class="line">			<span class="keyword">if</span>(vSet[j]==<span class="number">0</span>&amp;&amp;lowCost[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				min=lowCost[j];</span><br><span class="line">				k=j;</span><br><span class="line">			&#125;</span><br><span class="line">			vSet[k]=<span class="number">1</span>;</span><br><span class="line">			v=k;  <span class="comment">//v指向如今刚进入的结点</span></span><br><span class="line">			sum+=min;  <span class="comment">//min的值累加到sum</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j)  <span class="comment">//更新lowCost数组</span></span><br><span class="line">				<span class="keyword">if</span>(vSet[j]==<span class="number">0</span>&amp;&amp;MGraph[v][j]&lt;lowCost[j])</span><br><span class="line">					lowCost[j]=MGraph[v][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>prime算法<br>求最小生成树的代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Prim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n ,<span class="hljs-keyword">float</span> MGraph[][n],<span class="hljs-keyword">int</span> v0,<span class="hljs-keyword">float</span> &amp;sum)</span><span class="hljs-comment">//顶点个数，带权图，构造生成树的起始顶点，</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;                                                    <span class="hljs-comment">//存储最小权值和（代价）</span></span><br><span class="line">	<span class="hljs-keyword">int</span> lowCost[n],vSet[n];  </span><br><span class="line">	<span class="hljs-keyword">int</span> v,k,min;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		lowCost[i]=MGraph[v0][i];  <span class="hljs-comment">//lowCost[]指向vo初始点的同一行的不同列的顶点</span></span><br><span class="line">		vSet[i]=<span class="hljs-number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	v=v0;  <span class="hljs-comment">//v指向第一个结点，</span></span><br><span class="line">	vSet[v]=<span class="hljs-number">1</span>;  <span class="hljs-comment">//已经并入，所以标记设置为1</span></span><br><span class="line">	sum=<span class="hljs-number">0</span>;  <span class="hljs-comment">//初始化</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		min=INF; <span class="hljs-comment">//min初始化为无穷大</span></span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n,++j)</span><br><span class="line">			<span class="hljs-keyword">if</span>(vSet[j]==<span class="hljs-number">0</span>&amp;&amp;lowCost[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				min=lowCost[j];</span><br><span class="line">				k=j;</span><br><span class="line">			&#125;</span><br><span class="line">			vSet[k]=<span class="hljs-number">1</span>;</span><br><span class="line">			v=k;  <span class="hljs-comment">//v指向如今刚进入的结点</span></span><br><span class="line">			sum+=min;  <span class="hljs-comment">//min的值累加到sum</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;++j)  <span class="hljs-comment">//更新lowCost数组</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(vSet[j]==<span class="hljs-number">0</span>&amp;&amp;MGraph[v][j]&lt;lowCost[j])</span><br><span class="line">					lowCost[j]=MGraph[v][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>lowCost[]数组是用来存储当前生成树到图中其余顶点的边的最小权值。vSet[i]为1时就说明已经被并入生成树中，为0就没有并入。<br>v指向刚并入的顶点。</p>
 <p>v0是最小生成树的初始结点，所以v=v0</p>
 <p>kruskal算法</p>
 <p>把当前未被并入的，且并入后不会产生环的最小边进行并入。<br>如何检测并入后到底会不会产生环呢？就用到了“并查集”。所谓的并查集，就是通过这些图中的点构造出来的树，每一个结点在相连的时候，要一直查到到根结点，如果根结点不相同，说明图中选取边之后不会产生环，所以可以选择这个这个结点的边。</p>
 <p>相关的存储结构：</p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/05/01/data-structure-13/">图——最小生成树</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/04/28/data-sturcture-practise-1/">data structure——树的例题</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

@@ -1,142 +1,177 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>data structure——树的例题 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>data structure——树的例题 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="1.假设二叉树采用二叉链表存储结构，设计一个算法，计算一棵给定二叉树的所有结点数。1234567891011int n=0;void count(BTNode *p)&amp;#123;	if(p!=NULL)	&amp;#123;		++n;		count(p-&amp;gt;lChild);		count(p-&amp;gt;rChild);	&amp;#125;&amp;#125;">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="data structure——树的例题">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            data structure——树的例题
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-28T01:21:50.000Z" itemprop="datePublished">4月 28 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 读完 (约 1251 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>data structure——树的例题</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/04/28/data-sturcture-practise-1/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-04-28T01:21:50.000Z">
-          2018-04-28
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>1.假设二叉树采用二叉链表存储结构，设计一个算法，计算一棵给定二叉树的所有结点数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">count</span><span class="params">(BTNode *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		++n;</span><br><span class="line">		count(p-&gt;lChild);</span><br><span class="line">		count(p-&gt;rChild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>1.假设二叉树采用二叉链表存储结构，设计一个算法，计算一棵给定二叉树的所有结点数。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">count</span><span class="hljs-params">(BTNode *p)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		++n;</span><br><span class="line">		count(p-&gt;lChild);</span><br><span class="line">		count(p-&gt;rChild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>2.假设二叉树采用二叉链表存储形式，设计一个算法，计算一棵给定二叉树的所有叶子结点数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">count</span><span class="params">(BTNode *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;lChild&amp;&amp;p-&gt;rChild==<span class="literal">NULL</span>)</span><br><span class="line">			++n;</span><br><span class="line">		count(p-&gt;lChild);</span><br><span class="line">		count(p-&gt;rChild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3.假设二叉树采用二叉链表存储结构，设计一个算法，利用结点的右孩子指针rchild将一棵二叉树的叶子结点按照从左往右的顺序串成一个单链表（在题目中定义两个指针，head与tail，其中head指向第一个叶子结点，head初值为null,tail指向最后一个叶子结点）。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(BTNode *p,BTNode *&amp;head,BTNode *&amp;tail)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;rchild==<span class="literal">NULL</span>&amp;&amp;p-&gt;lChild==<span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">if</span>(head==<span class="literal">NULL</span>)  <span class="comment">//如果head=null,则说明当前是遇到的是第一个叶子结点</span></span><br><span class="line">			&#123;</span><br><span class="line">				head=p;</span><br><span class="line">				tail=p;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>  <span class="comment">//接着再将其他的叶子结点串在其后面</span></span><br><span class="line">			&#123;</span><br><span class="line">				tail-&gt;rchild=p;</span><br><span class="line">				tail=p;</span><br><span class="line">			&#125;</span><br><span class="line">			link(p-&gt;lchild,head,tail);</span><br><span class="line">			link(p-&gt;rchild,head,tail);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4.在二叉树的二叉链表存储结构中，增加一个指向双亲结点的parent指针，设计一个算法，给这个指针赋值，并输出所有结点到根结点的路径。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BTNode</span> //修改数据结构</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BTNode</span> *<span class="title">parent</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BTNode</span> *<span class="title">lchild</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BTNode</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;BTNode;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">triBtree</span><span class="params">(BTNode *p,BTNode *q)</span>  <span class="comment">//将各个结点的parent赋值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p-&gt;parent=q;</span><br><span class="line">		q=p;</span><br><span class="line">		triBtree(p-&gt;lchild,q);</span><br><span class="line">		triBtree(p-&gt;rchild,q);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printPath</span><span class="params">(BTNode *p)</span>  <span class="comment">//打印一个结点到根结点的路径</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;p-&gt;data&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		p=p-&gt;parent;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">allPath</span><span class="params">(BTNode *p)</span>  <span class="comment">//打印所有结点到根结点的路径</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		printPath(p);</span><br><span class="line">		allPath(p-&gt;lchild);</span><br><span class="line">		allPath(p-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>5.假设<strong>满二叉树</strong>b的先序遍历序列已经存放在于数组中（在解题过程中，此数组名称可以自己定义，长度为n），设计一个算法将其转化为后序遍历序列。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">char</span> pre[],<span class="keyword">int</span> L1,<span class="keyword">int</span> R1,<span class="keyword">char</span> post[],<span class="keyword">int</span> L2,<span class="keyword">int</span> R2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L1&lt;=R1)</span><br><span class="line">	&#123;</span><br><span class="line">		post[R2]=pre[L1];  <span class="comment">//这里是将pre[]中的第一个放在post[]的最后一个</span></span><br><span class="line">		change(pre,L1+<span class="number">1</span>,(L1+<span class="number">1</span>+R1)/<span class="number">2</span>,post,L2,(L2+R2<span class="number">-1</span>)/<span class="number">2</span>);  <span class="comment">//将pre[]中的前一半存在post[]中的前一半中，递归处理</span></span><br><span class="line">		change(pre,(L1+<span class="number">1</span>+R1)/<span class="number">2</span>+<span class="number">1</span>,R1,post,(L2+R2<span class="number">-1</span>)/<span class="number">2</span>+<span class="number">1</span>,R2<span class="number">-1</span>);  <span class="comment">//将pre[]的后一半存在post[]中的后一半中</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>7.假设二叉树采用二叉链表存储结构存储，设计一个算法，求二叉树b中值为x的结点的层号。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> L=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leno</span><span class="params">(BTNode *p,<span class="keyword">char</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;data==x)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;L&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		++L;</span><br><span class="line"></span><br><span class="line">		leno(p-&gt;lchild,x);</span><br><span class="line">		leno(p-&gt;rchild,x);</span><br><span class="line">		--L;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.假设二叉树采用二叉链表存储形式，设计一个算法，计算一棵给定二叉树的所有叶子结点数。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">count</span><span class="hljs-params">(BTNode *p)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;lChild&amp;&amp;p-&gt;rChild==<span class="hljs-literal">NULL</span>)</span><br><span class="line">			++n;</span><br><span class="line">		count(p-&gt;lChild);</span><br><span class="line">		count(p-&gt;rChild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.假设二叉树采用二叉链表存储结构，设计一个算法，利用结点的右孩子指针rchild将一棵二叉树的叶子结点按照从左往右的顺序串成一个单链表（在题目中定义两个指针，head与tail，其中head指向第一个叶子结点，head初值为null,tail指向最后一个叶子结点）。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">link</span><span class="hljs-params">(BTNode *p,BTNode *&amp;head,BTNode *&amp;tail)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;rchild==<span class="hljs-literal">NULL</span>&amp;&amp;p-&gt;lChild==<span class="hljs-literal">NULL</span>)</span><br><span class="line">			<span class="hljs-keyword">if</span>(head==<span class="hljs-literal">NULL</span>)  <span class="hljs-comment">//如果head=null,则说明当前是遇到的是第一个叶子结点</span></span><br><span class="line">			&#123;</span><br><span class="line">				head=p;</span><br><span class="line">				tail=p;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span>  <span class="hljs-comment">//接着再将其他的叶子结点串在其后面</span></span><br><span class="line">			&#123;</span><br><span class="line">				tail-&gt;rchild=p;</span><br><span class="line">				tail=p;</span><br><span class="line">			&#125;</span><br><span class="line">			link(p-&gt;lchild,head,tail);</span><br><span class="line">			link(p-&gt;rchild,head,tail);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.在二叉树的二叉链表存储结构中，增加一个指向双亲结点的parent指针，设计一个算法，给这个指针赋值，并输出所有结点到根结点的路径。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> //修改数据结构</span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">char</span> data;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">parent</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">lchild</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">rchild</span>;</span></span><br><span class="line">&#125;BTNode;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">triBtree</span><span class="hljs-params">(BTNode *p,BTNode *q)</span>  <span class="hljs-comment">//将各个结点的parent赋值</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p-&gt;parent=q;</span><br><span class="line">		q=p;</span><br><span class="line">		triBtree(p-&gt;lchild,q);</span><br><span class="line">		triBtree(p-&gt;rchild,q);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printPath</span><span class="hljs-params">(BTNode *p)</span>  <span class="hljs-comment">//打印一个结点到根结点的路径</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;p-&gt;data&lt;&lt;<span class="hljs-string">" "</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		p=p-&gt;parent;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">allPath</span><span class="hljs-params">(BTNode *p)</span>  <span class="hljs-comment">//打印所有结点到根结点的路径</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		printPath(p);</span><br><span class="line">		allPath(p-&gt;lchild);</span><br><span class="line">		allPath(p-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.假设<strong>满二叉树</strong>b的先序遍历序列已经存放在于数组中（在解题过程中，此数组名称可以自己定义，长度为n），设计一个算法将其转化为后序遍历序列。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">change</span><span class="hljs-params">(<span class="hljs-keyword">char</span> pre[],<span class="hljs-keyword">int</span> L1,<span class="hljs-keyword">int</span> R1,<span class="hljs-keyword">char</span> post[],<span class="hljs-keyword">int</span> L2,<span class="hljs-keyword">int</span> R2)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(L1&lt;=R1)</span><br><span class="line">	&#123;</span><br><span class="line">		post[R2]=pre[L1];  <span class="hljs-comment">//这里是将pre[]中的第一个放在post[]的最后一个</span></span><br><span class="line">		change(pre,L1+<span class="hljs-number">1</span>,(L1+<span class="hljs-number">1</span>+R1)/<span class="hljs-number">2</span>,post,L2,(L2+R2<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>);  <span class="hljs-comment">//将pre[]中的前一半存在post[]中的前一半中，递归处理</span></span><br><span class="line">		change(pre,(L1+<span class="hljs-number">1</span>+R1)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>,R1,post,(L2+R2<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>,R2<span class="hljs-number">-1</span>);  <span class="hljs-comment">//将pre[]的后一半存在post[]中的后一半中</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>7.假设二叉树采用二叉链表存储结构存储，设计一个算法，求二叉树b中值为x的结点的层号。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> L=<span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">leno</span><span class="hljs-params">(BTNode *p,<span class="hljs-keyword">char</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;data==x)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;L&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		++L;</span><br><span class="line"></span><br><span class="line">		leno(p-&gt;lchild,x);</span><br><span class="line">		leno(p-&gt;rchild,x);</span><br><span class="line">		--L;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里用到了一个我们发现遍历序列时候的共性：在遍历结点的时候，总是由指针p从一层往下面一层去走，一直走到最底层，(++L)然后由下层往上层走（–L）,而且，第一次遇见一个结点，是往下走，此时是先序遍历，（第二次遇见也是往下走），第三次遇见是往上走，是后序遍历，所以，我们在第10行加入<code>++L</code>,在递归处理左右子树后，在第14行加入<code>--L</code>（这里说的比较个人化。。不好理解）</p>
-<p>8.二叉树的双序遍历是指：对于二叉树的每一个结点来说，先访问这个结点，再按双序遍历它的左子树，然后再一次访问这个结点，接下来按双序遍历它的右子树。试写出执行这种双序遍历的算法。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Double_order</span><span class="params">(BTNode *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(t!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Visit(t);</span><br><span class="line">		Double_order(t-&gt;lchild);</span><br><span class="line">		Visit(t);</span><br><span class="line">		Double_order(t-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>9.设中序线索二叉树的类型为TBTNode*InThree;<br>设计算法，在一棵中序线索二叉树中寻找结点t的子树上中序下的最后一个结点。<br>设计算法，在一棵中序线索二叉树中寻找结点t的中序下的前驱。<br>设计算法，在一棵中序线索二叉树中寻找结点t的前序下的后继。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TBTNode* <span class="title">inLast</span><span class="params">(TBTNode *t)</span>  <span class="comment">//一直往右子树链走下去即为最后一个结点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TBTNode *p=t;</span><br><span class="line">	<span class="keyword">while</span>(p&amp;&amp;!p-&gt;rtag)</span><br><span class="line">		p=p-&gt;rchild;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">TBTNode <span class="title">inPrior</span><span class="params">(TBTNode *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TBTNode *p=p-&gt;lchild;</span><br><span class="line">	<span class="keyword">if</span>(p&amp;&amp;!t-&gt;ltag)</span><br><span class="line">		p=inLast(p);</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">TBTNode * <span class="title">treNext</span><span class="params">(TBTNode *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TBTNode *p;</span><br><span class="line">	<span class="keyword">if</span>(!t-&gt;ltag)</span><br><span class="line">		p=t-&gt;lchild;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(!t-&gt;rtag)</span><br><span class="line">		p=t-&gt;rchild;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		p=t;</span><br><span class="line">		<span class="keyword">while</span>(p&amp;&amp;p-&gt;rtag)</span><br><span class="line">			p=p-&gt;rchild;</span><br><span class="line">		<span class="keyword">if</span>(p)</span><br><span class="line">			p=p-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>10.假设二叉树采用二叉链存储结构，设计一个算法，输出根结点到每个结点的路径。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i ;</span><br><span class="line"><span class="keyword">int</span> top=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> pathstack[maxsize];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">allPath</span><span class="params">(BTNode *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		pathstack[top]=p-&gt;data;</span><br><span class="line">		++top;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;lchild=<span class="literal">NULL</span>&amp;&amp;p-&gt;rchild=<span class="literal">NULL</span>)  <span class="comment">//如果当前为叶子结点就打印路径</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;top;++i)</span><br><span class="line">				<span class="built_in">cout</span>&lt;&lt;pathstack[i];</span><br><span class="line">		&#125;</span><br><span class="line">		allPath(p-&gt;lchild);</span><br><span class="line">		allPath(p-&gt;rchild);</span><br><span class="line">		--top;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>8.二叉树的双序遍历是指：对于二叉树的每一个结点来说，先访问这个结点，再按双序遍历它的左子树，然后再一次访问这个结点，接下来按双序遍历它的右子树。试写出执行这种双序遍历的算法。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Double_order</span><span class="hljs-params">(BTNode *t)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Visit(t);</span><br><span class="line">		Double_order(t-&gt;lchild);</span><br><span class="line">		Visit(t);</span><br><span class="line">		Double_order(t-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>9.设中序线索二叉树的类型为TBTNode*InThree;<br>设计算法，在一棵中序线索二叉树中寻找结点t的子树上中序下的最后一个结点。<br>设计算法，在一棵中序线索二叉树中寻找结点t的中序下的前驱。<br>设计算法，在一棵中序线索二叉树中寻找结点t的前序下的后继。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">TBTNode* <span class="hljs-title">inLast</span><span class="hljs-params">(TBTNode *t)</span>  <span class="hljs-comment">//一直往右子树链走下去即为最后一个结点</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	TBTNode *p=t;</span><br><span class="line">	<span class="hljs-keyword">while</span>(p&amp;&amp;!p-&gt;rtag)</span><br><span class="line">		p=p-&gt;rchild;</span><br><span class="line">	<span class="hljs-keyword">return</span> p;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">TBTNode <span class="hljs-title">inPrior</span><span class="hljs-params">(TBTNode *t)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	TBTNode *p=p-&gt;lchild;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p&amp;&amp;!t-&gt;ltag)</span><br><span class="line">		p=inLast(p);</span><br><span class="line">	<span class="hljs-keyword">return</span> p;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">TBTNode * <span class="hljs-title">treNext</span><span class="hljs-params">(TBTNode *t)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	TBTNode *p;</span><br><span class="line">	<span class="hljs-keyword">if</span>(!t-&gt;ltag)</span><br><span class="line">		p=t-&gt;lchild;</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(!t-&gt;rtag)</span><br><span class="line">		p=t-&gt;rchild;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		p=t;</span><br><span class="line">		<span class="hljs-keyword">while</span>(p&amp;&amp;p-&gt;rtag)</span><br><span class="line">			p=p-&gt;rchild;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p)</span><br><span class="line">			p=p-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>10.假设二叉树采用二叉链存储结构，设计一个算法，输出根结点到每个结点的路径。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> i ;</span><br><span class="line"><span class="hljs-keyword">int</span> top=<span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">char</span> pathstack[maxsize];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">allPath</span><span class="hljs-params">(BTNode *p)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		pathstack[top]=p-&gt;data;</span><br><span class="line">		++top;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;lchild=<span class="hljs-literal">NULL</span>&amp;&amp;p-&gt;rchild=<span class="hljs-literal">NULL</span>)  <span class="hljs-comment">//如果当前为叶子结点就打印路径</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;top;++i)</span><br><span class="line">				<span class="hljs-built_in">cout</span>&lt;&lt;pathstack[i];</span><br><span class="line">		&#125;</span><br><span class="line">		allPath(p-&gt;lchild);</span><br><span class="line">		allPath(p-&gt;rchild);</span><br><span class="line">		--top;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/04/30/data-structure-7/">data structure——图</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/04/14/data-structure-5/">data structure——数组、矩阵与广义表</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

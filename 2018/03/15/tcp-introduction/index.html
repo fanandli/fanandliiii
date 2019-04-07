@@ -1,96 +1,89 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>tcp协议概念辨析 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>tcp协议概念辨析 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下~暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧~想到再加。
-主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。首先：
-tcp协议的特点:(这里只主要讲解tcp是面向字节流的这一特点)
 
-首先tcp是面向连接的。在使用tcp协议之前一定要先建立tcp连接，传输数据完毕之后也要释放tcp的连接。
 
-每一条tcp的连接只能有两个端点，每一个tcp的连接都是点对点的连接。">
-  
 
-  
-  
-  <meta name="keywords" content="network,tcp">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="tcp协议概念辨析">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            tcp协议概念辨析
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-03-15T07:30:40.000Z" itemprop="datePublished">3月 15 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 读完 (约 1220 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>tcp协议概念辨析</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/03/15/tcp-introduction/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-03-15T07:30:40.000Z">
-          2018-03-15
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p>之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下~暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧~想到再加。</p>
 <p>主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。<br>首先：</p>
 <h3 id="tcp协议的特点"><a href="#tcp协议的特点" class="headerlink" title="tcp协议的特点:"></a>tcp协议的特点:</h3><p><strong>(这里只主要讲解tcp是面向字节流的这一特点)</strong></p>
@@ -113,46 +106,84 @@ tcp协议的特点:(这里只主要讲解tcp是面向字节流的这一特点)
 <p>这里，在客户机（client）收到服务器(server)发送的确认报文段后（SYN N,ACK M+1）,客户机还需要再发送一条确认报文段。为什么要再发送一条？假定之前，客户机向服务器发送一条请求报文段1（SYN M），由于某种原因这条请求报文段1没有及时送达，服务器自然就不会发送确认报文段，这时，客户机就会重新发送一条请求报文段2，后来成功建立了连接。但是，再重新建立连接后，假定之前发送的请求报文段1突然又成功的传到了服务器那里，那么服务器会误认为是客户机给他发送的请求报文段，这时他就会发送一个确认报文段给客户机，而客户机是不会响应这个确认报文段的（因为这个确认报文段是由先前认为他已经丢失的请求报文段1的回应），客户机还是会自己干自己的事情，而服务器却在那等待着客户机传送报文段。浪费了服务器的资源。</p>
 <p>考完试了更新一下网络中的各个数据报的结构吧，嗯。。挖个坑。</p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/network/">#network</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/network/">network</a><a href="/tags/tcp/">tcp</a>
-    </span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/tcp/">#tcp</a></span>
     
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/03/18/html-learning-1/">html小笔记</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/03/09/windump-use/">windump使用注意事项</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

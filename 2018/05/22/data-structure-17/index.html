@@ -1,133 +1,168 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>归并排序 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>归并排序 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="arr[]存储所有待排关键字的数组，low到high的关键字为一个子表，从mid+1到high为另一个关键字的子表。所以可以看出，归并排序可以对一个序列中任意一部分的元素进行排序，通过指定范围low-high就行。int n1=mid-low+1;显然n1为low到high范围里的关键字的个数。int n2=high-mid;显然n2是mid+1到high的关键字的个数。">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="归并排序">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            归并排序
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-22T02:02:05.000Z" itemprop="datePublished">5月 22 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 分钟 读完 (约 384 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>归并排序</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/05/22/data-structure-17/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-05-22T02:02:05.000Z">
-          2018-05-22
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p>arr[]存储所有待排关键字的数组，low到high的关键字为一个子表，从mid+1到high为另一个关键字的子表。所以可以看出，归并排序<strong>可以对一个序列中任意一部分的元素进行排序</strong>，通过指定范围low-high就行。int n1=mid-low+1;显然n1为low到high范围里的关键字的个数。int n2=high-mid;显然n2是mid+1到high的关键字的个数。 </p>
-<p><img src="https://github.com/fanandli/picblog/blob/master/guibing1.png?raw=true" width="600" height="350" alt="guibingpaixu" align="center"><br><a id="more"></a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> mid,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">	<span class="keyword">int</span> n1=mid-low+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> n2=high-mid;</span><br><span class="line">	<span class="keyword">int</span> L[n1],R[n2];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n1;i++)</span><br><span class="line">		L[i]=arr[low+i]; <span class="comment">//将arr[]中的low到mid的元素赋给L[]中</span></span><br><span class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n2;j++)</span><br><span class="line">		R[j]=arr[mid+<span class="number">1</span>+j]; <span class="comment">//将arr[]中的mid+1到high的元素赋给R[]中</span></span><br><span class="line">	i=<span class="number">0</span>; </span><br><span class="line">	j=<span class="number">0</span>;</span><br><span class="line">	k=low;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;n1&amp;&amp;j&lt;n2)  </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(L[i]&lt;=R[j])   <span class="comment">//L数组和R数组中相对应的元素进行大小比较</span></span><br><span class="line">			arr[k]=L[i++]; <span class="comment">//此时L数组的元素较小，赋给arr数组中，且i加一</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			arr[k]=R[j++]; <span class="comment">// R数组中的元素较小</span></span><br><span class="line">		k++; <span class="comment">//k指向arr数组中的元素，被赋过值了，所以加一</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;n1)  <span class="comment">//L数组中若是比较完之后有剩余就将他加到arr数组的后面</span></span><br><span class="line">		arr[k++]=L[i++];</span><br><span class="line">	<span class="keyword">while</span>(j&lt;n2)  <span class="comment">//同理是R数组中若有剩余</span></span><br><span class="line">		arr[k++]=R[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>; <span class="comment">//计算出中间位置</span></span><br><span class="line">		mergeSort(arr,low,mid); </span><br><span class="line">		mergeSort(arr,mid+<span class="number">1</span>,high);</span><br><span class="line">		merge(arr,low,mid,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/guibing1.png?raw=true" width="600" height="350" alt="guibingpaixu" align="center"><br><a id="more"></a><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> mid,<span class="hljs-keyword">int</span> high)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i,j,k;</span><br><span class="line">	<span class="hljs-keyword">int</span> n1=mid-low+<span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> n2=high-mid;</span><br><span class="line">	<span class="hljs-keyword">int</span> L[n1],R[n2];</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n1;i++)</span><br><span class="line">		L[i]=arr[low+i]; <span class="hljs-comment">//将arr[]中的low到mid的元素赋给L[]中</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;n2;j++)</span><br><span class="line">		R[j]=arr[mid+<span class="hljs-number">1</span>+j]; <span class="hljs-comment">//将arr[]中的mid+1到high的元素赋给R[]中</span></span><br><span class="line">	i=<span class="hljs-number">0</span>; </span><br><span class="line">	j=<span class="hljs-number">0</span>;</span><br><span class="line">	k=low;</span><br><span class="line">	<span class="hljs-keyword">while</span>(i&lt;n1&amp;&amp;j&lt;n2)  </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(L[i]&lt;=R[j])   <span class="hljs-comment">//L数组和R数组中相对应的元素进行大小比较</span></span><br><span class="line">			arr[k]=L[i++]; <span class="hljs-comment">//此时L数组的元素较小，赋给arr数组中，且i加一</span></span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">			arr[k]=R[j++]; <span class="hljs-comment">// R数组中的元素较小</span></span><br><span class="line">		k++; <span class="hljs-comment">//k指向arr数组中的元素，被赋过值了，所以加一</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">while</span>(i&lt;n1)  <span class="hljs-comment">//L数组中若是比较完之后有剩余就将他加到arr数组的后面</span></span><br><span class="line">		arr[k++]=L[i++];</span><br><span class="line">	<span class="hljs-keyword">while</span>(j&lt;n2)  <span class="hljs-comment">//同理是R数组中若有剩余</span></span><br><span class="line">		arr[k++]=R[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mergeSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> mid=(low+high)/<span class="hljs-number">2</span>; <span class="hljs-comment">//计算出中间位置</span></span><br><span class="line">		mergeSort(arr,low,mid); </span><br><span class="line">		mergeSort(arr,mid+<span class="hljs-number">1</span>,high);</span><br><span class="line">		merge(arr,low,mid,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/05/22/data-structure-18/">基数排序</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/05/21/data-structure-16/">堆排序</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

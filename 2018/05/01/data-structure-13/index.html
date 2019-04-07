@@ -1,93 +1,91 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>图——最小生成树 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>图——最小生成树 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="由一个图按照某种规则导出的一个树，叫生成树。最小生成树：构成这个生成树的所有分支的权值和最小。
-prime算法求最小生成树的代码：1234567891011121314151617181920212223242526272829void Prim(int n ,float MGraph[][n],int v0,float &amp;amp;sum)  //顶点个数，带权图，构造生成树的起始顶点，存储最小权值和（代价）&amp;#123;	int lowCost[n],vSet[n];  	int v,k,min;	for(int i=0;i&amp;lt;n;++i)	&amp;#123;		lowCost[i]=MGraph[v0][i];  //lowCost[]指向vo初始点的同一行的不同列的顶点		vSet[i]=0;	&amp;#125;	v=v0;  //v指向第一个结点，	vSet[v]=1;  //已经并入，所以标记设置为1	sum=0;  //初始化	for(int i=0;i&amp;lt;n-1;++i)	&amp;#123;		min=INF; //min初始化为无穷大		for(int j=0;j&amp;lt;n,++j)			if(vSet[j]==0&amp;amp;&amp;amp;lowCost[j]&amp;lt;min)			&amp;#123;				min=lowCost[j];				k=j;			&amp;#125;			vSet[k]=1;			v=k;  //v指向如今刚进入的结点			sum+=min;  //min的值累加到sum			for(int j=0;j&amp;lt;n;++j)  //更新lowCost数组				if(vSet[j]==0&amp;amp;&amp;amp;MGraph[v][j]&amp;lt;lowCost[j])					lowCost[j]=MGraph[v][j];	&amp;#125;&amp;#125;">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="图——最小生成树">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            图——最小生成树
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-01T11:27:29.000Z" itemprop="datePublished">5月 1 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 读完 (约 348 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>图——最小生成树</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/05/01/data-structure-13/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-05-01T11:27:29.000Z">
-          2018-05-01
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
         <p>由一个图按照某种规则导出的一个树，叫生成树。最小生成树：构成这个生成树的所有分支的权值和最小。</p>
-<p><strong>prime算法</strong><br>求最小生成树的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span> n ,<span class="keyword">float</span> MGraph[][n],<span class="keyword">int</span> v0,<span class="keyword">float</span> &amp;sum)</span>  <span class="comment">//顶点个数，带权图，构造生成树的起始顶点，存储最小权值和（代价）</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lowCost[n],vSet[n];  </span><br><span class="line">	<span class="keyword">int</span> v,k,min;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		lowCost[i]=MGraph[v0][i];  <span class="comment">//lowCost[]指向vo初始点的同一行的不同列的顶点</span></span><br><span class="line">		vSet[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	v=v0;  <span class="comment">//v指向第一个结点，</span></span><br><span class="line">	vSet[v]=<span class="number">1</span>;  <span class="comment">//已经并入，所以标记设置为1</span></span><br><span class="line">	sum=<span class="number">0</span>;  <span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		min=INF; <span class="comment">//min初始化为无穷大</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n,++j)</span><br><span class="line">			<span class="keyword">if</span>(vSet[j]==<span class="number">0</span>&amp;&amp;lowCost[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				min=lowCost[j];</span><br><span class="line">				k=j;</span><br><span class="line">			&#125;</span><br><span class="line">			vSet[k]=<span class="number">1</span>;</span><br><span class="line">			v=k;  <span class="comment">//v指向如今刚进入的结点</span></span><br><span class="line">			sum+=min;  <span class="comment">//min的值累加到sum</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;++j)  <span class="comment">//更新lowCost数组</span></span><br><span class="line">				<span class="keyword">if</span>(vSet[j]==<span class="number">0</span>&amp;&amp;MGraph[v][j]&lt;lowCost[j])</span><br><span class="line">					lowCost[j]=MGraph[v][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>prime算法</strong><br>求最小生成树的代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Prim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n ,<span class="hljs-keyword">float</span> MGraph[][n],<span class="hljs-keyword">int</span> v0,<span class="hljs-keyword">float</span> &amp;sum)</span>  <span class="hljs-comment">//顶点个数，带权图，构造生成树的起始顶点，存储最小权值和（代价）</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> lowCost[n],vSet[n];  </span><br><span class="line">	<span class="hljs-keyword">int</span> v,k,min;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		lowCost[i]=MGraph[v0][i];  <span class="hljs-comment">//lowCost[]指向vo初始点的同一行的不同列的顶点</span></span><br><span class="line">		vSet[i]=<span class="hljs-number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	v=v0;  <span class="hljs-comment">//v指向第一个结点，</span></span><br><span class="line">	vSet[v]=<span class="hljs-number">1</span>;  <span class="hljs-comment">//已经并入，所以标记设置为1</span></span><br><span class="line">	sum=<span class="hljs-number">0</span>;  <span class="hljs-comment">//初始化</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		min=INF; <span class="hljs-comment">//min初始化为无穷大</span></span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n,++j)</span><br><span class="line">			<span class="hljs-keyword">if</span>(vSet[j]==<span class="hljs-number">0</span>&amp;&amp;lowCost[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				min=lowCost[j];</span><br><span class="line">				k=j;</span><br><span class="line">			&#125;</span><br><span class="line">			vSet[k]=<span class="hljs-number">1</span>;</span><br><span class="line">			v=k;  <span class="hljs-comment">//v指向如今刚进入的结点</span></span><br><span class="line">			sum+=min;  <span class="hljs-comment">//min的值累加到sum</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;++j)  <span class="hljs-comment">//更新lowCost数组</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(vSet[j]==<span class="hljs-number">0</span>&amp;&amp;MGraph[v][j]&lt;lowCost[j])</span><br><span class="line">					lowCost[j]=MGraph[v][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>lowCost[]数组是用来存储当前生成树到图中其余顶点的边的最小权值。vSet[i]为1时就说明已经被并入生成树中，为0就没有并入。<br>v指向刚并入的顶点。</p>
 <p>v0是最小生成树的初始结点，所以v=v0</p>
@@ -99,46 +97,82 @@ prime算法求最小生成树的代码：123456789101112131415161718192021222324
 <p><img src="https://github.com/fanandli/picblog/blob/master/Kruskal-jiegou.png?raw=true" width="600" height="350" alt="kruskal-chuncujiegou2" align="center"></p>
 <p>代码实现：<br><img src="https://github.com/fanandli/picblog/blob/master/Kruskal-daima.png?raw=true" width="600" height="350" alt="kruskal-daima1" align="center"></p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/05/11/data-structure-8/">图——Dijkstra算法</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/04/30/data-structure-7/">data structure——图</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>

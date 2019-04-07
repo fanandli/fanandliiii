@@ -1,137 +1,172 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>排序算法习题 | turlee&#39;s blog</title>
+    <meta charset="utf-8">
+<title>排序算法习题 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="turlee">
-  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
-  
-  <meta name="description" content="1.设计一个算法指出在一个无序关键字序列中的某个关键字是该序列中的第几个关键字（从小到大数），序列中关键字均为整数类型，且各不相同，要求比较的次数尽可能的少。12345678910111213141516171819int getPos(int arr[],int n,int k)&amp;#123;	int i=0,j=n-1;	int temp;	while(i&amp;lt;=j)	&amp;#123;		while(i&amp;lt;n&amp;amp;&amp;amp;arr[i]&amp;lt;=k) ++i; //把比这个数小的放在左边		while(j&amp;gt;=0&amp;amp;&amp;amp;arr[j]&amp;gt;k) --j; //把比这个数大的放在右边		if(i&amp;lt;j)		&amp;#123;			temp=arr[i]; //逻辑上为啥就能找到这个数的位置的原因不知道。。			arr[i]=arr[j];			arr[j]=temp;			++i;			--j;		&amp;#125;	&amp;#125;	return j+1;&amp;#125;">
-  
 
-  
-  
-  <meta name="keywords" content="data-structure">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="排序算法习题">
 
-  <meta property="og:site_name" content="turlee&#39;s blog">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="turlee&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">turlee&#39;s blog</a>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            排序算法习题
+        
     </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-23T07:48:19.000Z" itemprop="datePublished">5月 23 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 读完 (约 284 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-    <h3 class="article-title"><span>排序算法习题</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/05/23/data-structure-20/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-05-23T07:48:19.000Z">
-          2018-05-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>1.设计一个算法指出在一个无序关键字序列中的某个关键字是该序列中的第几个关键字（从小到大数），序列中关键字均为整数类型，且各不相同，要求比较的次数尽可能的少。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getPos</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=n<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;n&amp;&amp;arr[i]&lt;=k) ++i; <span class="comment">//把比这个数小的放在左边</span></span><br><span class="line">		<span class="keyword">while</span>(j&gt;=<span class="number">0</span>&amp;&amp;arr[j]&gt;k) --j; <span class="comment">//把比这个数大的放在右边</span></span><br><span class="line">		<span class="keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=arr[i]; <span class="comment">//逻辑上为啥就能找到这个数的位置的原因不知道。。</span></span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			arr[j]=temp;</span><br><span class="line">			++i;</span><br><span class="line">			--j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> j+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>1.设计一个算法指出在一个无序关键字序列中的某个关键字是该序列中的第几个关键字（从小到大数），序列中关键字均为整数类型，且各不相同，要求比较的次数尽可能的少。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getPos</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,j=n<span class="hljs-number">-1</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> temp;</span><br><span class="line">	<span class="hljs-keyword">while</span>(i&lt;=j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">while</span>(i&lt;n&amp;&amp;arr[i]&lt;=k) ++i; <span class="hljs-comment">//把比这个数小的放在左边</span></span><br><span class="line">		<span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;arr[j]&gt;k) --j; <span class="hljs-comment">//把比这个数大的放在右边</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=arr[i]; <span class="hljs-comment">//逻辑上为啥就能找到这个数的位置的原因不知道。。</span></span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			arr[j]=temp;</span><br><span class="line">			++i;</span><br><span class="line">			--j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> j+<span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>2.设计一个用<strong>二分查找法</strong>来找插入位置的改进的<strong>插入排序算法??</strong>。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BSSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> low,high,mid,place;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		low=<span class="number">1</span>;high=i<span class="number">-1</span>;</span><br><span class="line">		arr[<span class="number">0</span>]=arr[i];</span><br><span class="line">		<span class="keyword">while</span>(low&lt;=high) <span class="comment">// 二分查找</span></span><br><span class="line">		&#123;</span><br><span class="line">			mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span>(arr[<span class="number">0</span>]&lt;arr[mid])</span><br><span class="line">				high=mid+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				low=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		place=low;  <span class="comment">//插入arr[i]的位置？？</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>;j&gt;=place;--j)</span><br><span class="line">			arr[j+<span class="number">1</span>]=arr[j];</span><br><span class="line">		arr[place]=arr[<span class="number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3.设计<strong>快速排序</strong>的递归和非递归算法<strong>??</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high,<span class="keyword">int</span> &amp;i)</span> <span class="comment">//划分函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i; <span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	i=low;</span><br><span class="line">	j=high;</span><br><span class="line">	temp=arr[i];</span><br><span class="line">	<span class="keyword">while</span>(i&lt;j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;j&amp;&amp;arr[j]&gt;=temp) --j;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			++i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;j&amp;&amp;arr[i]&lt;temp) ++i;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j]=arr[i];</span><br><span class="line">			--j;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	arr[i]=temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> <span class="comment">//递归</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		partition(arr,low,high,i);</span><br><span class="line">		quickSort(arr,low,i<span class="number">-1</span>);</span><br><span class="line">		quickSort(arr,i+<span class="number">1</span>,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSortNonrecursion</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span> <span class="comment">//非递归？？</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,low,high;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">stack</span>[maxSize][<span class="number">2</span>],top=<span class="number">-1</span>; <span class="comment">//自己申请栈空间</span></span><br><span class="line">	low0;high=n<span class="number">-1</span>;</span><br><span class="line">	++top;  <span class="comment">//入栈</span></span><br><span class="line">	<span class="built_in">stack</span>[top][<span class="number">0</span>]=low;</span><br><span class="line">	<span class="built_in">stack</span>[top][<span class="number">1</span>]=high;</span><br><span class="line">	<span class="keyword">while</span>(top&gt;=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		low=<span class="built_in">stack</span>[top][<span class="number">0</span>]; <span class="comment">//出栈</span></span><br><span class="line">		high=<span class="built_in">stack</span>[top][<span class="number">1</span>];</span><br><span class="line">		--top;</span><br><span class="line">		partition(arr,low,high,i)</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high)</span><br><span class="line">		&#123;</span><br><span class="line">			++top;  <span class="comment">//入栈</span></span><br><span class="line">			<span class="built_in">stack</span>[top][<span class="number">0</span>]=low;</span><br><span class="line">			<span class="built_in">stack</span>[top][<span class="number">1</span>]=i<span class="number">-1</span>;</span><br><span class="line">			++top;  <span class="comment">//出栈</span></span><br><span class="line">			<span class="built_in">stack</span>[top][<span class="number">0</span>]=i+<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">stack</span>[top][<span class="number">1</span>]=high;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4.设有整数0~n-1存放在整形数组A[0,1,2,…n-1]中，请设计一个时间复杂度为O(n),空间复杂度为O(1)的算法来是实现对A的排序（要求从小到大）。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">order</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">		A[A[i]]=A[i]; <span class="comment">//???</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>5.编写一个是实现在排序二叉树中将data域（整型）值小于x的结点全部删除的算法。树中存在data域为x的结点且不存在data域值相同的结点。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteBT</span><span class="params">(BTNode *&amp;t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(t!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		deleteBT(t-&gt;lChild);</span><br><span class="line">		deleteBT(t-&gt;rChild);</span><br><span class="line">		<span class="built_in">free</span>(t);</span><br><span class="line">		t=<span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">findAndDeleteBT</span><span class="params">(BTNode *&amp;t,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(t!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(t-&gt;data==x)</span><br><span class="line">		&#123;</span><br><span class="line">			deleteBT(t-&gt;lChild);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(t-&gt;data&lt;x)</span><br><span class="line">			t=t-&gt;rChild;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			t=t-&gt;lChild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.设计一个用<strong>二分查找法</strong>来找插入位置的改进的<strong>插入排序算法??</strong>。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BSSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> n)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> low,high,mid,place;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		low=<span class="hljs-number">1</span>;high=i<span class="hljs-number">-1</span>;</span><br><span class="line">		arr[<span class="hljs-number">0</span>]=arr[i];</span><br><span class="line">		<span class="hljs-keyword">while</span>(low&lt;=high) <span class="hljs-comment">// 二分查找</span></span><br><span class="line">		&#123;</span><br><span class="line">			mid=(low+high)/<span class="hljs-number">2</span>;</span><br><span class="line">			<span class="hljs-keyword">if</span>(arr[<span class="hljs-number">0</span>]&lt;arr[mid])</span><br><span class="line">				high=mid+<span class="hljs-number">1</span>;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">				low=mid+<span class="hljs-number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		place=low;  <span class="hljs-comment">//插入arr[i]的位置？？</span></span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i<span class="hljs-number">-1</span>;j&gt;=place;--j)</span><br><span class="line">			arr[j+<span class="hljs-number">1</span>]=arr[j];</span><br><span class="line">		arr[place]=arr[<span class="hljs-number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.设计<strong>快速排序</strong>的递归和非递归算法<strong>??</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high,<span class="hljs-keyword">int</span> &amp;i)</span> <span class="hljs-comment">//划分函数</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i; <span class="hljs-comment">//初始化</span></span><br><span class="line">	<span class="hljs-keyword">int</span> temp;</span><br><span class="line">	i=low;</span><br><span class="line">	j=high;</span><br><span class="line">	temp=arr[i];</span><br><span class="line">	<span class="hljs-keyword">while</span>(i&lt;j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">while</span>(i&lt;j&amp;&amp;arr[j]&gt;=temp) --j;</span><br><span class="line">		<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			++i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">while</span>(i&lt;j&amp;&amp;arr[i]&lt;temp) ++i;</span><br><span class="line">		<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j]=arr[i];</span><br><span class="line">			--j;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	arr[i]=temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span> <span class="hljs-comment">//递归</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i;</span><br><span class="line">	<span class="hljs-keyword">if</span>(low&lt;high)</span><br><span class="line">	&#123;</span><br><span class="line">		partition(arr,low,high,i);</span><br><span class="line">		quickSort(arr,low,i<span class="hljs-number">-1</span>);</span><br><span class="line">		quickSort(arr,i+<span class="hljs-number">1</span>,high);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">quickSortNonrecursion</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> n)</span> <span class="hljs-comment">//非递归？？</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i,low,high;</span><br><span class="line">	<span class="hljs-keyword">int</span> <span class="hljs-built_in">stack</span>[maxSize][<span class="hljs-number">2</span>],top=<span class="hljs-number">-1</span>; <span class="hljs-comment">//自己申请栈空间</span></span><br><span class="line">	low0;high=n<span class="hljs-number">-1</span>;</span><br><span class="line">	++top;  <span class="hljs-comment">//入栈</span></span><br><span class="line">	<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">0</span>]=low;</span><br><span class="line">	<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">1</span>]=high;</span><br><span class="line">	<span class="hljs-keyword">while</span>(top&gt;=<span class="hljs-number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		low=<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">0</span>]; <span class="hljs-comment">//出栈</span></span><br><span class="line">		high=<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">1</span>];</span><br><span class="line">		--top;</span><br><span class="line">		partition(arr,low,high,i)</span><br><span class="line">		<span class="hljs-keyword">if</span>(low&lt;high)</span><br><span class="line">		&#123;</span><br><span class="line">			++top;  <span class="hljs-comment">//入栈</span></span><br><span class="line">			<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">0</span>]=low;</span><br><span class="line">			<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">1</span>]=i<span class="hljs-number">-1</span>;</span><br><span class="line">			++top;  <span class="hljs-comment">//出栈</span></span><br><span class="line">			<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">0</span>]=i+<span class="hljs-number">1</span>;</span><br><span class="line">			<span class="hljs-built_in">stack</span>[top][<span class="hljs-number">1</span>]=high;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.设有整数0~n-1存放在整形数组A[0,1,2,…n-1]中，请设计一个时间复杂度为O(n),空间复杂度为O(1)的算法来是实现对A的排序（要求从小到大）。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">order</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[],<span class="hljs-keyword">int</span> n)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i;</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;++i)</span><br><span class="line">		A[A[i]]=A[i]; <span class="hljs-comment">//???</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.编写一个是实现在排序二叉树中将data域（整型）值小于x的结点全部删除的算法。树中存在data域为x的结点且不存在data域值相同的结点。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteBT</span><span class="hljs-params">(BTNode *&amp;t)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		deleteBT(t-&gt;lChild);</span><br><span class="line">		deleteBT(t-&gt;rChild);</span><br><span class="line">		<span class="hljs-built_in">free</span>(t);</span><br><span class="line">		t=<span class="hljs-literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findAndDeleteBT</span><span class="hljs-params">(BTNode *&amp;t,<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">while</span>(t!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(t-&gt;data==x)</span><br><span class="line">		&#123;</span><br><span class="line">			deleteBT(t-&gt;lChild);</span><br><span class="line">			<span class="hljs-keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(t-&gt;data&lt;x)</span><br><span class="line">			t=t-&gt;rChild;</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">			t=t-&gt;lChild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-      
+    
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-
+    <div class="columns is-variable is-1 is-multiline is-mobile">
     
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/data-structure/">data-structure</a>
-    </span>
-    
-
     </div>
-
     
-  </div>
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/07/18/shujubaojiexi-py/">贴一个用python实现了一个解析pcap文件的小工具</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/05/23/data-structure-19/">多路归并排序</a>
+            
+        </span>
+    </div>
+    
 </article>
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    <br>
-    
-    &copy; 2019 turlee
-    
-  </p>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
-    
-  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
 </body>
 </html>
