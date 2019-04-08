@@ -63,7 +63,7 @@ a.tag.article-tag {
 
 .article .article-more-link a {
   font-size: .9rem;
-  color: darkgray;
+  color: red;
   border-bottom: 1px dotted transparent; }
   .article .article-more-link a:hover {
     border-bottom-color: darkgray; }
