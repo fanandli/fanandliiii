@@ -109,6 +109,44 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2018/05/11/data-structure-8/" itemprop="url">图——Dijkstra算法</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-11T01:48:43.000Z" itemprop="datePublished">5月 11 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            10 分钟 读完 (约 1456 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>最短路径问题</p>
+<p><strong>迪杰斯特拉算法</strong><br>求某一个顶点到其余各顶点的最短路径，也为单元最短路径算法。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/ef0e63b9977341e4513cd67239c5b25.png?raw=true" width="600" height="350" alt="Dijkstra1" align="center"></p>
+<p>dict[]数组存储了当前起点到其余各顶点的最短路径长度（是长度，数值），path[]存储了当前起点到其余各顶点的最短路径（是上一个顶点的下标）。set[]标记哪些顶点被选入了最短路径（是标记）。</p>
+        <p class="article-more-link">
+            <a href="/2018/05/11/data-structure-8/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2018/05/01/data-structure-13/" itemprop="url">图——最小生成树</a>
         
     </h1>
@@ -536,46 +574,6 @@
 <p>结构型的作用就是满足对数据类型的需求的补充，我们可以自己创造合适自己的数据类型，例如现有<code>int</code>,<code>char</code>等数据类型，我们可以：<br></p>
         <p class="article-more-link">
             <a href="/2018/04/06/data-structure-1/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/04/03/Requests-webscraping/" itemprop="url">Requests库详解</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-04-03T01:52:53.000Z" itemprop="datePublished">4月 3 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            8 分钟 读完 (约 1166 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <blockquote>
-<p>真正危险的不是计算机开始像人那样去思考，而是人类开始像计算机一样思考。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——西德尼·哈里斯（Sydney Harris）</p>
-</blockquote>
-<p><code>python</code><strong><em>爬虫之旅之第二站~~</em></strong></p>
-<p><code>Requests</code>库是经常用的库，比<code>urllib</code>更加方便。<br>首先先领略一下使用<code>Requests</code>的方便之处：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line">response=requests.get(<span class="hljs-string">'http://aisleep.xyz'</span>)</span><br><span class="line">print(type(response))</span><br><span class="line">print(response.status_code)</span><br><span class="line">print(type(response.text))</span><br><span class="line">print(response.text)</span><br><span class="line">print(response.cookies)</span><br></pre></td></tr></table></figure></p>
-<p>这里的第6行和在<code>urllib</code>中使用<code>read</code>的作用是一样的，在<code>urllib</code>中还要使用<code>.decode</code>使得其变成字符串类型。在<code>Requests</code>中就很方便了，直接使用<code>text</code>就可以了。在最后一行中的<code>cookies</code>获取中也比在<code>urllib</code>中方便很多。</p>
-        <p class="article-more-link">
-            <a href="/2018/04/03/Requests-webscraping/#more">阅读更多</a>
         </p>
     
     </div>

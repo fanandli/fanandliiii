@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>array and string exercises - turlee&#39;s blog</title>
+<title>数组和字符串例题 - turlee&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -17,14 +17,14 @@
     <meta name="description" content="1：Score(ACM/ICPC Seoul2007,UVa1586) 给出一种物质的分子式（不带括号），求分子量。本题中的分子式只包含4种原子，分 别为C, H, O, N，原子量分别为12.01, 1.008, 16.00, 14.01（单位：g/mol）。例如，C6H5OH的 分子量为94.108g/mol.">
 <meta name="keywords" content="OJ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="array and string exercises">
+<meta property="og:title" content="数组和字符串例题">
 <meta property="og:url" content="http://yoursite.com/2019/04/15/array-and-string-exercises/index.html">
 <meta property="og:site_name" content="turlee&#39;s blog">
 <meta property="og:description" content="1：Score(ACM/ICPC Seoul2007,UVa1586) 给出一种物质的分子式（不带括号），求分子量。本题中的分子式只包含4种原子，分 别为C, H, O, N，原子量分别为12.01, 1.008, 16.00, 14.01（单位：g/mol）。例如，C6H5OH的 分子量为94.108g/mol.">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-04-15T15:55:27.080Z">
+<meta property="og:updated_time" content="2019-04-18T13:12:42.187Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="array and string exercises">
+<meta name="twitter:title" content="数组和字符串例题">
 <meta name="twitter:description" content="1：Score(ACM/ICPC Seoul2007,UVa1586) 给出一种物质的分子式（不带括号），求分子量。本题中的分子式只包含4种原子，分 别为C, H, O, N，原子量分别为12.01, 1.008, 16.00, 14.01（单位：g/mol）。例如，C6H5OH的 分子量为94.108g/mol.">
 
 
@@ -113,7 +113,7 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            array and string exercises
+            数组和字符串例题
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -131,7 +131,7 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h2 id="1：Score"><a href="#1：Score" class="headerlink" title="1：Score"></a><strong>1：Score</strong></h2><p>(ACM/ICPC Seoul2007,UVa1586)</p>
+        <h2 id="1：Score"><a href="#1：Score" class="headerlink" title="1：Score"></a>1：Score</h2><p>(ACM/ICPC Seoul2007,UVa1586)</p>
 <p>给出一种物质的分子式（不带括号），求分子量。本题中的分子式只包含4种原子，分 别为C, H, O, N，原子量分别为12.01, 1.008, 16.00, 14.01（单位：g/mol）。例如，C6H5OH的 分子量为94.108g/mol.<br><a id="more"></a></p>
 <h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>题目中所说的原子只有4种，可以用数组存储，建立起原子和原子量的关系。<br>最基本的是要对数字和原子进行区别处理。<br>分子式的计算需要注意到原子后面是否跟了数字，如果是数字就需要乘以数字前面的原子值。</p>
 <h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">char</span> s[<span class="hljs-number">1024</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">double</span> a[<span class="hljs-number">128</span>];</span><br><span class="line">    a[<span class="hljs-string">'C'</span>]=<span class="hljs-number">12.01</span>;</span><br><span class="line">    a[<span class="hljs-string">'H'</span>]=<span class="hljs-number">1.008</span>;</span><br><span class="line">    a[<span class="hljs-string">'O'</span>]=<span class="hljs-number">16.00</span>;</span><br><span class="line">    a[<span class="hljs-string">'N'</span>]=<span class="hljs-number">14.01</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> testcase;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;testcase);</span><br><span class="line">    <span class="hljs-keyword">while</span>(testcase--)&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,s);<span class="hljs-comment">//notice</span></span><br><span class="line">        <span class="hljs-keyword">int</span> n=<span class="hljs-built_in">strlen</span>(s);</span><br><span class="line">        <span class="hljs-keyword">double</span> result=<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> ele=s[i];</span><br><span class="line">            <span class="hljs-keyword">int</span> num=<span class="hljs-number">0</span>;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="hljs-keyword">if</span>(s[i]&gt;=<span class="hljs-string">'0'</span>&amp;&amp;s[i]&lt;=<span class="hljs-string">'9'</span>)&#123;</span><br><span class="line">                num=num*<span class="hljs-number">10</span>+s[i]-<span class="hljs-string">'0'</span>;</span><br><span class="line">                i++;   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(num==<span class="hljs-number">0</span>)</span><br><span class="line">                num=<span class="hljs-number">1</span>;</span><br><span class="line">            result+=a[ele]*num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.3lf\n"</span>,result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -148,7 +148,9 @@
     
     
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/04/18/function-and-recursive/">函数和递归例题</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
