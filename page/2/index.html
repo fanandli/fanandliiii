@@ -109,6 +109,78 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2018/09/10/data-structure-Threaded-binary-tree/" itemprop="url">线索二叉树</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-09-10T12:07:34.000Z" itemprop="datePublished">9月 10 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 分钟 读完 (约 536 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong>线索二叉树</strong></p>
+<p>线索二叉树的结点定义：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TBTNode</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">char</span> data;</span><br><span class="line">	<span class="hljs-keyword">int</span> ltag,rtaghy;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TBTNode</span> *<span class="hljs-title">lchild</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TBTNode</span> *<span class="hljs-title">rchild</span>;</span></span><br><span class="line">&#125;TBTNode;</span><br></pre></td></tr></table></figure></p>
+<p>通过中序遍历对二叉树线索化的递归算法：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">InThread</span><span class="hljs-params">(TBTNode *p,TBTNode *&amp;pre)</span>  <span class="hljs-comment">//p指向根结点</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		InThread(p-&gt;lchild,pre); <span class="hljs-comment">//pre指针一直指向p指针指向的结点的前驱结点</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;lchild==<span class="hljs-literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			p-&gt;lchild=pre; <span class="hljs-comment">//左指针指向前驱结点，</span></span><br><span class="line">			p-&gt;ltag=<span class="hljs-number">1</span>;  <span class="hljs-comment">//且将ltag设为1</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(pre!=<span class="hljs-literal">NULL</span>&amp;&amp;pre-&gt;rchild==<span class="hljs-literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			pre-&gt;rchild=p;  <span class="hljs-comment">//右指针指向后继结点，</span></span><br><span class="line">			pre-&gt;rtag=<span class="hljs-number">1</span>;  <span class="hljs-comment">//且将rtag设为1</span></span><br><span class="line">		&#125;</span><br><span class="line">		pre=p; <span class="hljs-comment">//p结点的要指向后继结点了，所以要将pre指向p，让他跟上来，这一句话要重点注意</span></span><br><span class="line">		p=p-&gt;rchild;  <span class="hljs-comment">//左子树全部访问完，开始访问右子树</span></span><br><span class="line">		InThread(p,pre); <span class="hljs-comment">//递归，右子树线索化</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p class="article-more-link">
+            <a href="/2018/09/10/data-structure-Threaded-binary-tree/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/08/19/zhan-prc/" itemprop="url">有关栈的问题</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-08-19T11:15:36.000Z" itemprop="datePublished">8月 19 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            9 分钟 读完 (约 1412 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong>1、利用栈将中缀表达式求值：</strong><br>计算规则：设两个栈，s1用来存储操作数，s2用来存储运算符。从左往右扫描表达式，遇到操作数就将入栈s1,遇到运算符就入栈s2。<br>当前扫描到的运算符优先级大于栈顶的运算符的优先级，则入栈，否则，就出栈s1中的两个操作数，进行计算，将计算结果入栈s1。<strong>且栈顶的操作数先出栈，放在运算符的右边，栈顶下面的一个操作数后出栈，放在运算符的左边</strong>。<br>如果遇到左括号就直接入栈s2，直到遇到右括号，此时，从栈顶到左括号的运算符都出栈进行计算。出栈的运算符都不再入栈。<br>如果表达式全部扫描完毕，s2栈中还有运算符的话就挨个出栈进行计算，计算结果依次放入s1栈中。<br></p>
+        <p class="article-more-link">
+            <a href="/2018/08/19/zhan-prc/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2018/08/03/xianxingbiao-prac1/" itemprop="url">线性表问题总结</a>
         
     </h1>
@@ -378,81 +450,6 @@
         <p>首先以几个图片大致说一下这个算法的思路是什么：<br><img src="https://github.com/fanandli/picblog/blob/master/kuaisupaixu1.png?raw=true" width="250" height="200" alt="kuaipai" align="center"><img src="https://github.com/fanandli/picblog/blob/master/kuaipai2.png?raw=true" width="250" height="200" alt="kuaipai2" align="center"><img src="https://github.com/fanandli/picblog/blob/master/kuaipai3.png?raw=true" width="250" height="200" alt="kuaipai3" align="center"></p>
         <p class="article-more-link">
             <a href="/2018/05/20/data-structure-15/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/05/18/data-structure-14/" itemprop="url">希尔排序</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-05-18T02:35:05.000Z" itemprop="datePublished">5月 18 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            2 分钟 读完 (约 330 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>首先我们来先看一个过程，</p>
-<p><img src="https://github.com/fanandli/picblog/blob/master/sier2.png?raw=true" width="300" height="200" alt="xier" align="center"><img src="https://github.com/fanandli/picblog/blob/master/xier3.png?raw=true" width="300" height="200" alt="xier2" align="center"></p>
-        <p class="article-more-link">
-            <a href="/2018/05/18/data-structure-14/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/05/17/data-structure-12/" itemprop="url">直接插入，简单选择和冒泡排序</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-05-17T01:53:57.000Z" itemprop="datePublished">5月 17 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            5 分钟 读完 (约 706 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <ul>
-<li>直接插入排序</li>
-</ul>
-<p>insertSort[]数组用来存储我们要排的关键字，n为关键字的个数，temp用来暂时存储我们当前要插入的排序的关键字。<br>第一个for循环是从i=1开始，是因为我们规定认为初始状态的第0个元素为有序序列，第0个元素之后的元素为无序序列。我们的思路是从无序序列中逐次扫描，与有序序列中的大小进行比较，从而将他们插入到合适的位置中去。<br>因为箭头总是指向带插入位置的前一个位置，所以我们要arr[j+1]=temp</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> n)</span> </span></span><br><span class="line"><span class="hljs-function"></span>&#123; </span><br><span class="line">	<span class="hljs-keyword">int</span> temp,i,j;</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		temp=arr[i]；</span><br><span class="line">		j=i<span class="hljs-number">-1</span>; <span class="hljs-comment">//j指向有序序列中的最右边的一个元素</span></span><br><span class="line">		<span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;temp&lt;arr[j])</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j+<span class="hljs-number">1</span>]=arr[j];</span><br><span class="line">			--j; <span class="hljs-comment">//j是从右往左扫描有序序列</span></span><br><span class="line">		&#125;</span><br><span class="line">		arr[j+<span class="hljs-number">1</span>]=temp; <span class="hljs-comment">//将temp中的待排关键字插入</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        <p class="article-more-link">
-            <a href="/2018/05/17/data-structure-12/#more">阅读更多</a>
         </p>
     
     </div>

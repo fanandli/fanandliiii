@@ -109,6 +109,80 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/05/27/c-friend/" itemprop="url">C++中的友元</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-27T06:35:42.000Z" itemprop="datePublished">5月 27 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 分钟 读完 (约 424 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>友元的功能是让一个函数或者类，能够访问另一个类中的私有成员。</p>
+<p>实现方法：</p>
+<p>1.全局函数作为友元：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Building</span>&#123;</span><span class="hljs-comment">//类</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">void</span> <span class="hljs-title">goodfri</span><span class="hljs-params">(Building *building)</span></span>;<span class="hljs-comment">//这句话就是让全局函数做Building类的友元</span></span><br><span class="line"><span class="hljs-comment">//这样，private的m_bedroom才可以被goodfri访问</span></span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        Buliding()&#123;<span class="hljs-comment">//构造函数</span></span><br><span class="line">            <span class="hljs-keyword">this</span>-&gt;m_sittingroom=<span class="hljs-string">"keting"</span>;<span class="hljs-comment">//在其中赋值</span></span><br><span class="line">            <span class="hljs-keyword">this</span>-&gt;m_bedroom=<span class="hljs-string">"woshi"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        <span class="hljs-built_in">string</span> m_sittingroom;</span><br><span class="line">    <span class="hljs-keyword">private</span>:</span><br><span class="line">        <span class="hljs-built_in">string</span> m_bedroom;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">goodfri</span><span class="hljs-params">(Building *building)</span></span>&#123;<span class="hljs-comment">//全局函数</span></span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"now is:"</span>&lt;&lt;building-&gt;m_sittingroom&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"now is:"</span>&lt;&lt;building-&gt;m_bedroom&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    Building b;<span class="hljs-comment">//创建一个Building型的b</span></span><br><span class="line">    goodfri(&amp;b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    test01();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p class="article-more-link">
+            <a href="/2019/05/27/c-friend/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/05/23/c-chongzai/" itemprop="url">C++中的重载</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-23T12:35:42.000Z" itemprop="datePublished">5月 23 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            1 分钟 读完 (约 158 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h4 id="c-的重载的注意事项："><a href="#c-的重载的注意事项：" class="headerlink" title="c++的重载的注意事项："></a>c++的重载的注意事项：</h4><p>1，引用作为重载的条件，举例：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(int &amp;a)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>与<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(const int &amp;a)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>调用的是上面一个版本，但是如果main函数中是这样写的话:func(10);return 0;那么调用的就是下面这个版本，这里的原因主要通过引用的原理很好理解：int &amp;a=10;不合法，因为引用只能是栈或者堆中的数据，而10是常量，是放在常量区中的，所以不合法。而const int &amp;a=10;是合法的。</p>
+<p>2，函数重载碰到默认参数,举例：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b=<span class="hljs-number">10</span>)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(int a,int b=10)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(int a)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	func(<span class="hljs-number">10</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面这种情况也会报错，因为默认参数在这种情况，上下两个func既能满足重载，又能因为默认参数导致编译器不知道调用谁。理解了默认参数的使用就可以避免。</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/05/13/some-articles/" itemprop="url">The Art of Unhappiness</a>
         
     </h1>
@@ -446,78 +520,6 @@
 <p>这里的low，high，mid是下标，不是值的大小<br></p>
         <p class="article-more-link">
             <a href="/2018/09/16/search-1/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/09/10/data-structure-Threaded-binary-tree/" itemprop="url">线索二叉树</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-09-10T12:07:34.000Z" itemprop="datePublished">9月 10 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            4 分钟 读完 (约 536 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><strong>线索二叉树</strong></p>
-<p>线索二叉树的结点定义：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TBTNode</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">char</span> data;</span><br><span class="line">	<span class="hljs-keyword">int</span> ltag,rtaghy;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TBTNode</span> *<span class="hljs-title">lchild</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TBTNode</span> *<span class="hljs-title">rchild</span>;</span></span><br><span class="line">&#125;TBTNode;</span><br></pre></td></tr></table></figure></p>
-<p>通过中序遍历对二叉树线索化的递归算法：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">InThread</span><span class="hljs-params">(TBTNode *p,TBTNode *&amp;pre)</span>  <span class="hljs-comment">//p指向根结点</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		InThread(p-&gt;lchild,pre); <span class="hljs-comment">//pre指针一直指向p指针指向的结点的前驱结点</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;lchild==<span class="hljs-literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			p-&gt;lchild=pre; <span class="hljs-comment">//左指针指向前驱结点，</span></span><br><span class="line">			p-&gt;ltag=<span class="hljs-number">1</span>;  <span class="hljs-comment">//且将ltag设为1</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(pre!=<span class="hljs-literal">NULL</span>&amp;&amp;pre-&gt;rchild==<span class="hljs-literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			pre-&gt;rchild=p;  <span class="hljs-comment">//右指针指向后继结点，</span></span><br><span class="line">			pre-&gt;rtag=<span class="hljs-number">1</span>;  <span class="hljs-comment">//且将rtag设为1</span></span><br><span class="line">		&#125;</span><br><span class="line">		pre=p; <span class="hljs-comment">//p结点的要指向后继结点了，所以要将pre指向p，让他跟上来，这一句话要重点注意</span></span><br><span class="line">		p=p-&gt;rchild;  <span class="hljs-comment">//左子树全部访问完，开始访问右子树</span></span><br><span class="line">		InThread(p,pre); <span class="hljs-comment">//递归，右子树线索化</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        <p class="article-more-link">
-            <a href="/2018/09/10/data-structure-Threaded-binary-tree/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/08/19/zhan-prc/" itemprop="url">有关栈的问题</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-08-19T11:15:36.000Z" itemprop="datePublished">8月 19 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            9 分钟 读完 (约 1412 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><strong>1、利用栈将中缀表达式求值：</strong><br>计算规则：设两个栈，s1用来存储操作数，s2用来存储运算符。从左往右扫描表达式，遇到操作数就将入栈s1,遇到运算符就入栈s2。<br>当前扫描到的运算符优先级大于栈顶的运算符的优先级，则入栈，否则，就出栈s1中的两个操作数，进行计算，将计算结果入栈s1。<strong>且栈顶的操作数先出栈，放在运算符的右边，栈顶下面的一个操作数后出栈，放在运算符的左边</strong>。<br>如果遇到左括号就直接入栈s2，直到遇到右括号，此时，从栈顶到左括号的运算符都出栈进行计算。出栈的运算符都不再入栈。<br>如果表达式全部扫描完毕，s2栈中还有运算符的话就挨个出栈进行计算，计算结果依次放入s1栈中。<br></p>
-        <p class="article-more-link">
-            <a href="/2018/08/19/zhan-prc/#more">阅读更多</a>
         </p>
     
     </div>
