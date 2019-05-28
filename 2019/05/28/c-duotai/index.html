@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: C++ - turlee&#39;s blog</title>
+<title>c++中的多态 - turlee&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,13 +14,18 @@
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="turlee&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/C/index.html">
+    <meta name="description" content="多态分为两类1.静态多态: 函数重载和运算符重载属于静态多态，复用函数名2.动态多态: 派生类和虚函数实现运行时多态 静态多态和动态多态区别：1.静态多态的函数地址早绑定 - 编译阶段确定函数地址2.动态多态的函数地址晚绑定 - 运行阶段确定函数地址 实例： 1234567891011121314151617181920212223242526272829303132333435363738394">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++中的多态">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/c-duotai/index.html">
 <meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="多态分为两类1.静态多态: 函数重载和运算符重载属于静态多态，复用函数名2.动态多态: 派生类和虚函数实现运行时多态 静态多态和动态多态区别：1.静态多态的函数地址早绑定 - 编译阶段确定函数地址2.动态多态的函数地址晚绑定 - 运行阶段确定函数地址 实例： 1234567891011121314151617181920212223242526272829303132333435363738394">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-05-28T13:48:32.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="turlee&#39;s blog">
+<meta name="twitter:title" content="c++中的多态">
+<meta name="twitter:description" content="多态分为两类1.静态多态: 函数重载和运算符重载属于静态多态，复用函数名2.动态多态: 派生类和虚函数实现运行时多态 静态多态和动态多态区别：1.静态多态的函数地址早绑定 - 编译阶段确定函数地址2.动态多态的函数地址晚绑定 - 运行阶段确定函数地址 实例： 1234567891011121314151617181920212223242526272829303132333435363738394">
 
 
 
@@ -103,20 +108,12 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5>#C++</h5>
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/05/28/c-duotai/" itemprop="url">c++中的多态</a>
+            c++中的多态
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -146,88 +143,29 @@
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C/">#C++</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/05/27/c-friend/">C++中的友元</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
 
 
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/05/27/c-friend/" itemprop="url">C++中的友元</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-05-27T06:35:42.000Z" itemprop="datePublished">5月 27 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            3 分钟 读完 (约 424 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>友元的功能是让一个函数或者类，能够访问另一个类中的私有成员。</p>
-<p>实现方法：</p>
-<p>1.全局函数作为友元：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Building</span>&#123;</span><span class="hljs-comment">//类</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">void</span> <span class="hljs-title">goodfri</span><span class="hljs-params">(Building *building)</span></span>;<span class="hljs-comment">//这句话就是让全局函数做Building类的友元</span></span><br><span class="line"><span class="hljs-comment">//这样，private的m_bedroom才可以被goodfri访问</span></span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        Buliding()&#123;<span class="hljs-comment">//构造函数</span></span><br><span class="line">            <span class="hljs-keyword">this</span>-&gt;m_sittingroom=<span class="hljs-string">"keting"</span>;<span class="hljs-comment">//在其中赋值</span></span><br><span class="line">            <span class="hljs-keyword">this</span>-&gt;m_bedroom=<span class="hljs-string">"woshi"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        <span class="hljs-built_in">string</span> m_sittingroom;</span><br><span class="line">    <span class="hljs-keyword">private</span>:</span><br><span class="line">        <span class="hljs-built_in">string</span> m_bedroom;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">goodfri</span><span class="hljs-params">(Building *building)</span></span>&#123;<span class="hljs-comment">//全局函数</span></span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"now is:"</span>&lt;&lt;building-&gt;m_sittingroom&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"now is:"</span>&lt;&lt;building-&gt;m_bedroom&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    Building b;<span class="hljs-comment">//创建一个Building型的b</span></span><br><span class="line">    goodfri(&amp;b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    test01();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        <p class="article-more-link">
-            <a href="/2019/05/27/c-friend/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/05/23/c-chongzai/" itemprop="url">C++中的重载</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-05-23T12:35:42.000Z" itemprop="datePublished">5月 23 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            1 分钟 读完 (约 158 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h4 id="c-的重载的注意事项："><a href="#c-的重载的注意事项：" class="headerlink" title="c++的重载的注意事项："></a>c++的重载的注意事项：</h4><p>1，引用作为重载的条件，举例：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(int &amp;a)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>与<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(const int &amp;a)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>调用的是上面一个版本，但是如果main函数中是这样写的话:func(10);return 0;那么调用的就是下面这个版本，这里的原因主要通过引用的原理很好理解：int &amp;a=10;不合法，因为引用只能是栈或者堆中的数据，而10是常量，是放在常量区中的，所以不合法。而const int &amp;a=10;是合法的。</p>
-<p>2，函数重载碰到默认参数,举例：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b=<span class="hljs-number">10</span>)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(int a,int b=10)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"func(int a)调用"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	func(<span class="hljs-number">10</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面这种情况也会报错，因为默认参数在这种情况，上下两个func既能满足重载，又能因为默认参数导致编译器不知道调用谁。理解了默认参数的使用就可以避免。</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-    
     </div>
 </section>
     <footer class="footer">

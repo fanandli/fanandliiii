@@ -109,6 +109,46 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/05/28/c-duotai/" itemprop="url">c++中的多态</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-28T13:23:02.000Z" itemprop="datePublished">5月 28 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 分钟 读完 (约 533 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>多态分为两类<br>1.静态多态: 函数重载和运算符重载属于静态多态，复用函数名<br>2.动态多态: 派生类和虚函数实现运行时多态</p>
+<p>静态多态和动态多态区别：<br>1.静态多态的函数地址早绑定 - 编译阶段确定函数地址<br>2.动态多态的函数地址晚绑定 - 运行阶段确定函数地址</p>
+<p>实例：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//在成员函数前面加上virtual就变为了虚函数</span></span><br><span class="line">        <span class="hljs-comment">//编译器就不能确定函数调用了</span></span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"animal speak"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span><span class="hljs-keyword">public</span> Animal&#123;<span class="hljs-comment">//继承了animal这个类</span></span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//子类重写了父类中的虚函数</span></span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"cat speak"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span><span class="hljs-keyword">public</span> Animal&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span>:</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//也重写了父类中的虚函数</span></span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"dog speak"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dospeak</span><span class="hljs-params">(Animal &amp;animal)</span></span>&#123;<span class="hljs-comment">//Animal &amp;animal=cat</span></span><br><span class="line">    animal.speak();<span class="hljs-comment">//父类的引用指向了子类对象，</span></span><br><span class="line">    <span class="hljs-comment">//首先要知道c++中运行父子之间的类型转换，不需要强制类型转换</span></span><br><span class="line">    <span class="hljs-comment">//父类的引用或指针可以直接指向子类对象</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    Cat cat;</span><br><span class="line">    dospeak(cat); </span><br><span class="line">    Dog dog;</span><br><span class="line">    dospeak(dog);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    test01();</span><br><span class="line">    system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 总结：</span></span><br><span class="line"><span class="hljs-comment">// 多态满足条件：</span></span><br><span class="line"><span class="hljs-comment">//         有继承关系， 子类重写父类中的虚函数</span></span><br><span class="line"><span class="hljs-comment">// 多态使用条件：父类指针或引用指向子类对象</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 重写：函数返回值类型 函数名 参数列表 完全一致称为重写</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码输出为：<br>cat speak<br>dog speak</p>
+<p>我们再来看一下本质：<br>Animal的内部结构在变为虚函数后是这样的：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">class     Animal       <span class="hljs-title">size</span><span class="hljs-params">(<span class="hljs-number">4</span>)</span></span></span><br><span class="line">		+---		</span><br><span class="line"><span class="hljs-number">0</span>		|&#123;vfptr&#125;</span><br><span class="line">		+---</span><br><span class="line"></span><br><span class="line">Animal::$vftable@:</span><br><span class="line">		|&amp;Animal_meta</span><br><span class="line">		|<span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">0</span>		|&amp;Animal::speak</span><br></pre></td></tr></table></figure></p>
+<p>变为虚函数后，由vfptr这个指针指向vftable中，<br>Cat类重写过后内部是这样的：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">class     Cat         <span class="hljs-title">size</span><span class="hljs-params">(<span class="hljs-number">4</span>)</span></span></span><br><span class="line">          +---</span><br><span class="line"><span class="hljs-number">0</span>		  | +---base <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span></span></span><br><span class="line"><span class="hljs-class">0		  | | &#123;</span>vfptr&#125;</span><br><span class="line">		  | +---</span><br><span class="line">		  +---</span><br><span class="line"> Cat::$vftable@:</span><br><span class="line">		  | &amp;Cat_meta</span><br><span class="line">		  | <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">0</span>		  | &amp;Cat::speak</span><br></pre></td></tr></table></figure></p>
+<p>由vfptr指针指向vftable，其中因为被重写过了，已经由上面的&amp;Animal::speak变为&amp;Cat::speak,<br>变为虚函数，编译器就不能确定函数调用了，又经过这样的重写，指向了Cat,这样就真正实现了多态。</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/05/27/c-friend/" itemprop="url">C++中的友元</a>
         
     </h1>
@@ -481,45 +521,6 @@
 <li>顺序存储结构（适用于完全二叉树）<br><img src="https://github.com/fanandli/picblog/blob/master/erchashu-xingzhi.png?raw=true" width="600" height="350" alt="完全二叉树的顺序存储结构" align="center"><br>图中右边的规则只是适合完全二叉树，（如果用来储存一般的二叉树会浪费大量的存储空间）且是从0开始编号的。</li></ul>
         <p class="article-more-link">
             <a href="/2018/10/14/data-structure-6/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/09/16/search-1/" itemprop="url">data-structure———查找</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-09-16T10:47:00.000Z" itemprop="datePublished">9月 16 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            6 分钟 读完 (约 893 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>注意一下有一个概念：平均查找长度：<strong>ASL</strong></p>
-<p><strong>顺序查找：</strong><br>举例如果从一个无序数组a（数组下标从1开始）中找到值为k的元素，查找成功就返回1，不成功就返回0，采用顺序查找的话：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Search</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a[] ,<span class="hljs-keyword">int</span> n ,<span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i ;</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="hljs-keyword">if</span>(a[i]==k)</span><br><span class="line">			<span class="hljs-keyword">return</span> 	<span class="hljs-number">1</span>;</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上是使用顺序表的时候的情况，下面再看一下链式结构的情况：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">LNode* <span class="hljs-title">search</span><span class="hljs-params">(LNode* head,<span class="hljs-keyword">int</span> key)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	LNode* p = head-&gt;next;</span><br><span class="line">	<span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p-&gt;data==key)</span><br><span class="line">			<span class="hljs-keyword">return</span> p;</span><br><span class="line">		p=p-&gt;next; <span class="hljs-comment">//注意一下</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">//注意一下这个没有找到所要值得情况的位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>一个是使用循环递增i数组下标，还有一个是使用p=p-&gt;next，一个一个的顺序访问。<br><strong>折半查找：</strong><br>折半查找的要求是表中记录是按关键字<strong>有序</strong>的。用到的是递归的思想。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Bsearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high,<span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> mid;</span><br><span class="line">	<span class="hljs-keyword">while</span>(low&lt;=high)</span><br><span class="line">	&#123;</span><br><span class="line">		mid=(low+high)/<span class="hljs-number">2</span>;</span><br><span class="line">		<span class="hljs-keyword">if</span>(R[mid]==k)</span><br><span class="line">			<span class="hljs-keyword">return</span> mid;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(R[mid]&gt;k)</span><br><span class="line">			high=mid<span class="hljs-number">-1</span>;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(R[mid]&lt;k)</span><br><span class="line">			low=mid+<span class="hljs-number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里的low，high，mid是下标，不是值的大小<br></p>
-        <p class="article-more-link">
-            <a href="/2018/09/16/search-1/#more">阅读更多</a>
         </p>
     
     </div>
