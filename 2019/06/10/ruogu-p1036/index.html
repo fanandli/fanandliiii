@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>洛谷p1036-选数 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="题目链接">
+<meta name="keywords" content="OJ,C&#x2F;C++,NOI&#x2F;NOIP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷p1036-选数">
+<meta property="og:url" content="http://yoursite.com/2019/06/10/ruogu-p1036/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="题目链接">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-06-10T13:02:28.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="洛谷p1036-选数">
+<meta name="twitter:description" content="题目链接">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            洛谷p1036-选数
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-06-10T03:36:27.000Z" itemprop="datePublished">6月 10 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 分钟 读完 (约 596 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><a href="https://www.luogu.org/problemnew/show/P1036" target="_blank" rel="noopener">题目链接</a><br><a id="more"></a></p>
+<h4 id="题解一："><a href="#题解一：" class="headerlink" title="题解一："></a>题解一：</h4><p>此题是从n个数中选出k个不同的数字出来，然后按要求计算，看k个数的和有多少个数素数。<br>思考一下，无非难点就是，如何在n个数字中取出k个不同的数字，<strong>且不能重复</strong>。这里不能重复，一是说取出的数字不能相同，二是说取得方案不能重复。比如：<br>4 3<br>3 7 12 19<br>是说4个数字中取出3个数字，可以这样取<br>3 7 12<br>3 7 19<br>3 12 19<br>7 12 19<br>但是不能这样取：<br>3 3 7之类，<br>也不能这样取：<br>3 7 12<br>3 7 19<br>3 7 19<br>3 12 19<br>7 12 19<br>即：一组内不能有相同得数字，且不能有相同得两组。</p>
+<p>好了，重点是：<strong>如何去重</strong>！<br>如果我们有规律得枚举，就能有效得避免重复列举得出现。也即达到了去重得目的。</p>
+<p>我们要这样：<br>3 7 12<br>3 7 19<br>3 12 19<br>7 12 19<br>这样取，第一个位置，先取最小得数字3，后面递增取出。第一个位置选择为3得排列选完了，那么：第一个位置换为第二小得数字，再进行排列。即选7排列。<br>这样枚举，就有秩序了。</p>
+<p>题解思路是用dfs，和上述文章中提到得降重得方法。<br>其中startx参数是用来储存当前升序排序时的初始值。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isprime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;<span class="hljs-comment">//判断素数</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i*i&lt;=a;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(a%i==<span class="hljs-number">0</span>)  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<span class="hljs-comment">//如果能整除，说明不是素数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<span class="hljs-comment">//若能走到这里了，就说明不能整除，说明是素数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,k;<span class="hljs-comment">//n为n个数，k为要选取的个数</span></span><br><span class="line"><span class="hljs-keyword">int</span> a[<span class="hljs-number">25</span>];<span class="hljs-comment">//存储输入的每个数字</span></span><br><span class="line"><span class="hljs-keyword">bool</span> vis[<span class="hljs-number">25</span>];<span class="hljs-comment">//标记这个数是否有没被选中</span></span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">0</span>;<span class="hljs-comment">//统计部分和为素数的情况个数</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m,<span class="hljs-keyword">int</span> sum,<span class="hljs-keyword">int</span> startx)</span></span>&#123;<span class="hljs-comment">//递归处</span></span><br><span class="line">    <span class="hljs-comment">//m代表了select了多少个数</span></span><br><span class="line">    <span class="hljs-comment">//sum表示当前的和</span></span><br><span class="line">    <span class="hljs-comment">//startx表示升序排列的起始值，就是用上面所说得按一定规律有序得枚举</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(m==k)&#123;<span class="hljs-comment">//如果选完了的情况</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(isprime(sum))    ans++;<span class="hljs-comment">//如果选取的数的和不为素数，那么就ans++</span></span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=startx;i&lt;n;i++)&#123; <span class="hljs-comment">//这里就为上述中写的有规律的排列的实现</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(vis[i])  <span class="hljs-keyword">continue</span>;<span class="hljs-comment">//如果被选过，直接进入下一次循环</span></span><br><span class="line">        vis[i]=<span class="hljs-literal">true</span>;<span class="hljs-comment">//如果没有被选过，选择之，即标记为选过</span></span><br><span class="line">        dfs(m+<span class="hljs-number">1</span>,sum+a[i],i+<span class="hljs-number">1</span>);<span class="hljs-comment">//递归</span></span><br><span class="line"><span class="hljs-comment">//m+1为被选择了的数的个数加一，sum+a[i]计算被选中的数字的和，i+1升序初始值加一，以防止重复排列</span></span><br><span class="line">        vis[i]=<span class="hljs-literal">false</span>;<span class="hljs-comment">//递归出来后，让这个数的标记重新设为未选择状态</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ;<span class="hljs-comment">//这里，所有都已枚举完，直接返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)    <span class="hljs-built_in">cin</span>&gt;&gt;a[i];<span class="hljs-comment">//读入输入的数</span></span><br><span class="line">    dfs(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;ans;<span class="hljs-comment">//输出结果</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/OJ/">#OJ</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C-C/">#C/C++</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NOI-NOIP/">#NOI/NOIP</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/06/10/luogu-p1038/">洛谷p1038-统计单词数</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/05/28/c-duotai/">c++中的多态</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
