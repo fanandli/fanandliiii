@@ -109,6 +109,91 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2018/04/03/Requests-webscraping/" itemprop="url">Requests库详解</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-03T01:52:53.000Z" itemprop="datePublished">4月 3 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 读完 (约 1166 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <blockquote>
+<p>真正危险的不是计算机开始像人那样去思考，而是人类开始像计算机一样思考。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——西德尼·哈里斯（Sydney Harris）</p>
+</blockquote>
+<p><code>python</code><strong><em>爬虫之旅之第二站~~</em></strong></p>
+<p><code>Requests</code>库是经常用的库，比<code>urllib</code>更加方便。<br>首先先领略一下使用<code>Requests</code>的方便之处：<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> requests</span><br><span class="line">response=requests.get(<span class="hljs-string">'http://aisleep.xyz'</span>)</span><br><span class="line">print(type(response))</span><br><span class="line">print(response.status_code)</span><br><span class="line">print(type(response.text))</span><br><span class="line">print(response.text)</span><br><span class="line">print(response.cookies)</span><br></pre></td></tr></table></figure></p>
+<p>这里的第6行和在<code>urllib</code>中使用<code>read</code>的作用是一样的，在<code>urllib</code>中还要使用<code>.decode</code>使得其变成字符串类型。在<code>Requests</code>中就很方便了，直接使用<code>text</code>就可以了。在最后一行中的<code>cookies</code>获取中也比在<code>urllib</code>中方便很多。</p>
+        <p class="article-more-link">
+            <a href="/2018/04/03/Requests-webscraping/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/04/01/web-scraping-1/" itemprop="url">urllib库详解</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-01T01:56:48.000Z" itemprop="datePublished">4月 1 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            13 分钟 读完 (约 1896 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <blockquote>
+<p>&nbsp;&nbsp;非常明显，技术已经超越我们的人性。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——阿尔伯特·爱因斯坦（Albert Einstein）</p>
+</blockquote>
+<p><code>python</code><strong><em>爬虫之旅之第一站~~</em></strong></p>
+<p>首先讲一下<code>urllib</code>库，他是python内置的一个<code>http</code>请求库，他有以下主要的四个模块：</p>
+<ul>
+<li><code>urllib.request</code>        请求模块，我们通过他来模拟发送一个请求</li>
+<li><code>urllib.error</code>        异常处理模块</li>
+<li><code>urllib.parse</code>        <code>url</code>解析模块，可以对<code>url</code>进行拆分，合并等操作</li>
+<li><code>urllib.robotparser</code>    <code>robots.txt</code>解析模块，主要是对网站的<code>robots.txt</code>文件进行解析    </li>
+</ul>
+        <p class="article-more-link">
+            <a href="/2018/04/01/web-scraping-1/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2018/03/23/scraping-with-python/" itemprop="url">web scraping with python</a>
         
     </h1>

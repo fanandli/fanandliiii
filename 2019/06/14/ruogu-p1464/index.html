@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: NOI/NOIP - turlee&#39;s blog</title>
+<title>洛谷p1464-Function - turlee&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,13 +14,18 @@
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="turlee&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/NOI-NOIP/index.html">
+    <meta name="description" content="题目链接">
+<meta name="keywords" content="OJ,C&#x2F;C++,NOI&#x2F;NOIP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷p1464-Function">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/ruogu-p1464/index.html">
 <meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-06-15T03:19:44.915Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="turlee&#39;s blog">
+<meta name="twitter:title" content="洛谷p1464-Function">
+<meta name="twitter:description" content="题目链接">
 
 
 
@@ -103,55 +108,12 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5>#NOI/NOIP</h5>
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/06/15/ruogu-p1478/" itemprop="url">洛谷p1478-陶陶摘苹果（升级版）</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-06-15T03:16:45.000Z" itemprop="datePublished">6月 15 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            2 分钟 读完 (约 364 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><a href="https://www.luogu.org/problemnew/show/P1478" target="_blank" rel="noopener">题目链接</a><br></p>
-        <p class="article-more-link">
-            <a href="/2019/06/15/ruogu-p1478/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/06/14/ruogu-p1464/" itemprop="url">洛谷p1464-Function</a>
+            洛谷p1464-Function
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -169,91 +131,43 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p><a href="https://www.luogu.org/problemnew/show/P1464" target="_blank" rel="noopener">题目链接</a><br></p>
-        <p class="article-more-link">
-            <a href="/2019/06/14/ruogu-p1464/#more">阅读更多</a>
-        </p>
+        <p><a href="https://www.luogu.org/problemnew/show/P1464" target="_blank" rel="noopener">题目链接</a><br><a id="more"></a></p>
+<p><strong>题解一：</strong><br>思路：<br>题意是输入若干行，其结束标识是输入”-1 -1 -1”。<br>关键思想是使用：<strong>记忆化搜索</strong>，即开一个数组来存储一些数据。所谓记忆话搜索，就是对于你求的解，将他们的值都存在数组中，如果在搜索的过程中，这个解已经被计算过存储在了数组中，就不再需要计算了，直接返回f数组中对应的存储好的解。如果没有既定存储好的，就计算，存在f数组中。</p>
+<p>由题意可以知道：<br>如果a,b,c有一个小于0，就返回1;   (case 1)<br>如果a,b,c有一个大于20，就返回w(20，20，20);   (case 2)<br>如果a&lt;b且b&lt;c就返回w(a,b,c-1)+w(a,b-1,c-1)-w(a,b-1,c);    (case 3)<br>如果其他的情况就返回w(a-1,b,c)+w(a-1,b-1,c)+w(a-1,b,c-1)-w(a-1,b-1,c)    (case 4)<br>可以发现，要开一个数组来存储这些返回值的话：这个数组的大小只要f[25][25][25]足够，就可以把所以的不同的情况都保存起来。</p>
+<p>代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> f[<span class="hljs-number">25</span>][<span class="hljs-number">25</span>][<span class="hljs-number">25</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">w</span><span class="hljs-params">(<span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> c)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(a&lt;=<span class="hljs-number">0</span>||b&lt;=<span class="hljs-number">0</span>||c&lt;=<span class="hljs-number">0</span>)    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<span class="hljs-comment">//case 1</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(a&gt;<span class="hljs-number">20</span>||b&gt;<span class="hljs-number">20</span>||c&gt;<span class="hljs-number">20</span>)    <span class="hljs-keyword">return</span> w(<span class="hljs-number">20</span>,<span class="hljs-number">20</span>,<span class="hljs-number">20</span>); <span class="hljs-comment">//case 2</span></span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a&lt;b&amp;&amp;b&lt;c)&#123;  <span class="hljs-comment">//case 3</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(f[a][b][c]==<span class="hljs-number">-1</span>)<span class="hljs-comment">//判断这个记忆数组有没有已经存储，</span></span><br><span class="line">            f[a][b][c]=w(a,b,c<span class="hljs-number">-1</span>)+w(a,b<span class="hljs-number">-1</span>,c<span class="hljs-number">-1</span>)-w(a,b<span class="hljs-number">-1</span>,c);<span class="hljs-comment">//就将结果存在对应的f数组中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(f[a][b][c]==<span class="hljs-number">-1</span>)&#123;<span class="hljs-comment">//case 4</span></span><br><span class="line">        f[a][b][c]=w(a<span class="hljs-number">-1</span>,b,c)+w(a<span class="hljs-number">-1</span>,b<span class="hljs-number">-1</span>,c)+w(a<span class="hljs-number">-1</span>,b,c<span class="hljs-number">-1</span>)-w(a<span class="hljs-number">-1</span>,b<span class="hljs-number">-1</span>,c<span class="hljs-number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> f[a][b][c];<span class="hljs-comment">//已经通过计算存在了f数组中，不需要计算，直接返回就行</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(f,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span>(f));<span class="hljs-comment">//先将f数组初始化全为-1</span></span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,b,c;</span><br><span class="line">    <span class="hljs-keyword">do</span>&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;<span class="hljs-comment">//输入三个数字</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(a!=<span class="hljs-number">-1</span>||b!=<span class="hljs-number">-1</span>||c!=<span class="hljs-number">-1</span>)<span class="hljs-comment">//这里检验一下是否为结素标志是因为，do-while循环会直接循环一次，</span></span><br><span class="line"><span class="hljs-comment">//这里写这句话是为了如果输入第一行时就输入：-1 -1 -1，就一次循环都不做。</span></span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"w(%lld, %lld, %lld) = %lld\n"</span>,a,b,c,w(a,b,c));</span><br><span class="line">    &#125;<span class="hljs-keyword">while</span>(a!=<span class="hljs-number">-1</span>||b!=<span class="hljs-number">-1</span>||c!=<span class="hljs-number">-1</span>);<span class="hljs-comment">//只要有一个不为-1，说明就不是结束标识，就可以继续输入</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/OJ/">#OJ</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C-C/">#C/C++</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NOI-NOIP/">#NOI/NOIP</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/06/15/ruogu-p1478/">洛谷p1478-陶陶摘苹果（升级版）</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/06/10/luogu-p1038/">洛谷p1038-统计单词数</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
 
 
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/06/10/luogu-p1038/" itemprop="url">洛谷p1038-统计单词数</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-06-10T12:57:58.000Z" itemprop="datePublished">6月 10 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            4 分钟 读完 (约 642 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><a href="https://www.luogu.org/problemnew/show/P1308" target="_blank" rel="noopener">题目链接</a><br></p>
-        <p class="article-more-link">
-            <a href="/2019/06/10/luogu-p1038/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/06/10/ruogu-p1036/" itemprop="url">洛谷p1036-选数</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-06-10T03:36:27.000Z" itemprop="datePublished">6月 10 2019</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            4 分钟 读完 (约 596 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p><a href="https://www.luogu.org/problemnew/show/P1036" target="_blank" rel="noopener">题目链接</a><br></p>
-        <p class="article-more-link">
-            <a href="/2019/06/10/ruogu-p1036/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-    
     </div>
 </section>
     <footer class="footer">

@@ -109,6 +109,76 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/04/18/function-and-recursive/" itemprop="url">函数和递归例题</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-04-18T12:42:13.000Z" itemprop="datePublished">4月 18 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            7 分钟 读完 (约 1054 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>（持续更新）<br>list:<br><a href="#c1">1：救济金发放（The Dole Queue, UVa 133）</a><br><a href="#c2"> 2：刽子手问题（Hangman Judge, UVa 489）</a></p>
+        <p class="article-more-link">
+            <a href="/2019/04/18/function-and-recursive/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/04/15/array-and-string-exercises/" itemprop="url">数组和字符串例题</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-04-15T15:33:23.000Z" itemprop="datePublished">4月 15 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 读完 (约 314 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>(持续更新）<br>list:<br><a href="#c1">1：Score (ACM/ICPC Seoul2007,UVa1586)</a></p>
+        <p class="article-more-link">
+            <a href="/2019/04/15/array-and-string-exercises/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2018/10/15/data-structure-huffman/" itemprop="url">data-structure-huffman树及其编码</a>
         
     </h1>
@@ -420,75 +490,6 @@
         <p>1.设计一个算法指出在一个无序关键字序列中的某个关键字是该序列中的第几个关键字（从小到大数），序列中关键字均为整数类型，且各不相同，要求比较的次数尽可能的少。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getPos</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,j=n<span class="hljs-number">-1</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> temp;</span><br><span class="line">	<span class="hljs-keyword">while</span>(i&lt;=j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">while</span>(i&lt;n&amp;&amp;arr[i]&lt;=k) ++i; <span class="hljs-comment">//把比这个数小的放在左边</span></span><br><span class="line">		<span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;arr[j]&gt;k) --j; <span class="hljs-comment">//把比这个数大的放在右边</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=arr[i]; <span class="hljs-comment">//逻辑上为啥就能找到这个数的位置的原因不知道。。</span></span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			arr[j]=temp;</span><br><span class="line">			++i;</span><br><span class="line">			--j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> j+<span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
         <p class="article-more-link">
             <a href="/2018/05/23/data-structure-20/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/05/23/data-structure-19/" itemprop="url">多路归并排序</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-05-23T01:57:53.000Z" itemprop="datePublished">5月 23 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            几秒 读完 (约 20 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>之前有讲过一个二路归并排序</p>
-<p>置换-选择排序：</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/05/22/data-structure-18/" itemprop="url">基数排序</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-05-22T04:05:45.000Z" itemprop="datePublished">5月 22 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            2 分钟 读完 (约 296 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>基数排序要求比较数字的位数要一直，所以8要写成008,83要写成083等。<br><img src="https://github.com/fanandli/picblog/blob/master/jishupaixu1.png?raw=true" width="600" height="350" alt="jishupaixu" align="center"><br></p>
-        <p class="article-more-link">
-            <a href="/2018/05/22/data-structure-18/#more">阅读更多</a>
         </p>
     
     </div>
