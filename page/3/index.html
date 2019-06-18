@@ -109,6 +109,41 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2018/05/23/data-structure-20/" itemprop="url">排序算法习题</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-23T07:48:19.000Z" itemprop="datePublished">5月 23 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 读完 (约 284 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>1.设计一个算法指出在一个无序关键字序列中的某个关键字是该序列中的第几个关键字（从小到大数），序列中关键字均为整数类型，且各不相同，要求比较的次数尽可能的少。<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getPos</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arr[],<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,j=n<span class="hljs-number">-1</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> temp;</span><br><span class="line">	<span class="hljs-keyword">while</span>(i&lt;=j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">while</span>(i&lt;n&amp;&amp;arr[i]&lt;=k) ++i; <span class="hljs-comment">//把比这个数小的放在左边</span></span><br><span class="line">		<span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;arr[j]&gt;k) --j; <span class="hljs-comment">//把比这个数大的放在右边</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(i&lt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=arr[i]; <span class="hljs-comment">//逻辑上为啥就能找到这个数的位置的原因不知道。。</span></span><br><span class="line">			arr[i]=arr[j];</span><br><span class="line">			arr[j]=temp;</span><br><span class="line">			++i;</span><br><span class="line">			--j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> j+<span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p class="article-more-link">
+            <a href="/2018/05/23/data-structure-20/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2018/05/23/data-structure-19/" itemprop="url">多路归并排序</a>
         
     </h1>
@@ -419,43 +454,6 @@
 <p>用邻接表来存储图，且修改顶点结构体为<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> data;</span><br><span class="line">	<span class="hljs-keyword">int</span> count; <span class="hljs-comment">//指示当前结点的入度</span></span><br><span class="line">	ArcNode* first;</span><br><span class="line">&#125;VNode;</span><br></pre></td></tr></table></figure></p>
         <p class="article-more-link">
             <a href="/2018/05/15/data-structure-10/#more">阅读更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2018/05/15/data-structure-9/" itemprop="url">图——Floyd算法</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-05-15T01:00:44.000Z" itemprop="datePublished">5月 15 2018</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            7 分钟 读完 (约 989 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>最短路径：<br><strong>弗洛伊德算法</strong><br>我们先看一下我们举例的图，如下图中右边的图，其中左边的Av[]数组存储的任意两个顶点之间的当前最短路径长度，pathv[]数组存储了任意两个顶点他们所在最短路径之间的中间点(v为下标)。</p>
-<p><img src="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B71.png?raw=true" width="600" height="350" alt="floyd1" align="center"></p>
-<p>执行思路：<br>对于每个顶点v，和任意一顶点对（i,j）,i不等于j,v不等于i,v不等于j，如果A[i][j]&gt;A[i][v]+A[v][j],则将A[i][j]更新为A[i][v]+A[v][j]的值，并将path[i][j]改为v。<br></p>
-        <p class="article-more-link">
-            <a href="/2018/05/15/data-structure-9/#more">阅读更多</a>
         </p>
     
     </div>
