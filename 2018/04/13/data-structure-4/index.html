@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>data structure——串 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="生存还是毁灭，这是一个值得思考的问题。　　　　　　　　　　　——莎士比亚《哈姆雷特》  特点：串的逻辑结构和线性表类似，串是限定了元素为字符串的线性表，但是，两者在操作上有很大区别：线性表的操作主要是针对的表内的某一个元素，而串操作主要是对串内的一个子串。 定义：定长顺序存储定义： 12345typedef struct&amp;#123;	char str[maxsize+1];	int length">
+<meta property="og:type" content="article">
+<meta property="og:title" content="data structure——串">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/data-structure-4/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="生存还是毁灭，这是一个值得思考的问题。　　　　　　　　　　　——莎士比亚《哈姆雷特》  特点：串的逻辑结构和线性表类似，串是限定了元素为字符串的线性表，但是，两者在操作上有很大区别：线性表的操作主要是针对的表内的某一个元素，而串操作主要是对串内的一个子串。 定义：定长顺序存储定义： 12345typedef struct&amp;#123;	char str[maxsize+1];	int length">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-13T01:16:54.000Z">
+<meta property="article:modified_time" content="2019-03-31T15:49:27.202Z">
+<meta property="article:author" content="turlee">
+<meta property="article:tag" content="data-structure">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            data structure——串
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-13T01:16:54.000Z" itemprop="datePublished">4月 13 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 读完 (约 835 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <blockquote>
+<p><strong>生存还是毁灭，这是一个值得思考的问题。</strong><br>　　　　　　　　　　　——莎士比亚《哈姆雷特》</p>
+</blockquote>
+<p><strong>特点：</strong><br>串的逻辑结构和线性表类似，串是限定了元素为字符串的线性表，但是，两者在操作上有很大区别：线性表的操作主要是针对的表内的某一个元素，而串操作主要是对串内的一个子串。</p>
+<p><strong>定义：</strong><br>定长顺序存储定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> str[maxsize+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;Str;</span><br></pre></td></tr></table></figure>
+<p>定长存储结构不需要分配和释放空间，但是如果想要改变空间大小，需要重新定义结构体。</p>
+<a id="more"></a>
+<p>变长分配存储定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> *ch;  <span class="comment">//用malloc函数分配一个类型为char的连续存储空间,</span></span><br><span class="line">	<span class="keyword">int</span> length;  <span class="comment">//后用ch指针指向这个空间的起始地址</span></span><br><span class="line">&#125;Str;</span><br></pre></td></tr></table></figure>
+<p>可以通过这样来使用变长结构体</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Str S;  <span class="comment">//定义一个名为S的变量</span></span><br><span class="line">S.length=L;  <span class="comment">//将长度设置为L</span></span><br><span class="line">S.ch=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>((L+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">char</span>));  <span class="comment">//为其分配空间，指针ch指向这个空间的首地址</span></span><br></pre></td></tr></table></figure>
+<p><strong>操作：</strong><br>1.赋值操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strassign</span><span class="params">(Str&amp; str,<span class="keyword">char</span>* ch)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(str.ch)  <span class="comment">//这个我们将要赋值的串，如果已经指向某个存储空间了，</span></span><br><span class="line">		<span class="built_in">free</span>(str.ch);  <span class="comment">//那就先将他的存储空间释放掉</span></span><br><span class="line">	<span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> *c=ch;  <span class="comment">//定义一个指针c内容为ch的地址</span></span><br><span class="line">	<span class="keyword">while</span>(*c)  <span class="comment">//当指针c所指的元素的值不为0就执行该循环</span></span><br><span class="line">	&#123;</span><br><span class="line">		++len;  <span class="comment">//c指针不为空，长度加一</span></span><br><span class="line">		++c;  <span class="comment">//指针向后移动，再看是否为空</span></span><br><span class="line">	&#125;  <span class="comment">//求这个我们拿来赋值的数组中的字符的个数</span></span><br><span class="line">	<span class="keyword">if</span>(len==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		str.ch=<span class="literal">NULL</span>;</span><br><span class="line">		str.length=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		str.ch=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*(len+<span class="number">1</span>));</span><br><span class="line">		<span class="keyword">if</span>(str.ch==<span class="literal">NULL</span>)  <span class="comment">//防止分配不到内存</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			c=ch;  <span class="comment">//让c指针指向ch</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=len;++i,++c)</span><br><span class="line">				str.ch[i]=*c;</span><br><span class="line">			str.length=len;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.取串长度</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strlength</span><span class="params">(Str str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.串比较操作 (ASCII码和长度的“数值”比较)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strcompare</span><span class="params">(Str s1,Str s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1.length&amp;&amp;i&lt;s2.length,++i)</span><br><span class="line">		<span class="keyword">if</span>(s1.ch[i]!=s2.ch[i])</span><br><span class="line">			<span class="keyword">return</span> s1.ch[i]-s2.ch[i];  <span class="comment">//s1大于s2就返回一个大于0的数，反之同理</span></span><br><span class="line">	<span class="keyword">return</span> s1.length-s2.length;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.串连接操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">concat</span><span class="params">(Str&amp; str,Str str1,str2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(str.ch)  <span class="comment">//如果ch指针不为空就执行if语句</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">free</span>(str.ch);</span><br><span class="line">		str.ch=<span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	str.ch=(<span class="keyword">char</span>* )<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*(str1.length+str2.length+<span class="number">1</span>));</span><br><span class="line">	<span class="keyword">if</span> (str.ch==<span class="literal">NULL</span>)  <span class="comment">//如果存储空间分配失败就返回0</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;str1.length)</span><br><span class="line">	&#123;</span><br><span class="line">		str.ch[i]=str1.ch[i];</span><br><span class="line">		++i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(j&lt;=str2.length)</span><br><span class="line">	&#123;</span><br><span class="line">		str.ch[i+j]=str2.ch[j];</span><br><span class="line">		++j;</span><br><span class="line">	&#125;</span><br><span class="line">	str.length=str1.length+str2.length;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.求子串操作(以下是实现了求<code>str</code>串从<code>pos</code>位置开始，<code>len</code>长度的子串，由<code>substr</code>返回)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">substring</span><span class="params">(Str&amp; substr,Str str,<span class="keyword">int</span> pos,<span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos&lt;<span class="number">0</span>||pos&gt;=str.length||len&lt;<span class="number">0</span>||len&gt;str.length-pos)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(substr.ch)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">free</span>(substr.ch);</span><br><span class="line">		substr.ch=<span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(len==<span class="number">0</span>)  <span class="comment">//如果是空串的情况的话</span></span><br><span class="line">	&#123;</span><br><span class="line">		substr.ch=<span class="literal">NULL</span>;</span><br><span class="line">		substr.length=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		substr.ch=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*len+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> i=pos;</span><br><span class="line">		<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;pos+len)</span><br><span class="line">		&#123;</span><br><span class="line">			substr.ch[j]=str.ch[i];</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		substr.ch[j]=<span class="string">'\0'</span>;  <span class="comment">//这里j已经移到了一个空白位置，所以在这里加上\0就好</span></span><br><span class="line">		substr.length=len;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.串清空操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cleanstring</span><span class="params">(Str &amp;str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(str.ch)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">free</span>(str.ch);</span><br><span class="line">		str.ch=<span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	str.length=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>7.字符串模式匹配：</strong><br>简单模式匹配算法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">naive</span><span class="params">(Str str,Str substr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>,k=i;  <span class="comment">//从数组下标1开始存储，下标0不存储，k为主串中第一次匹配的位置</span></span><br><span class="line">	<span class="keyword">while</span>(i&lt;str.length &amp;&amp; j&lt;=substr.length)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(str.ch[i]==substr.[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			j=<span class="number">1</span>;</span><br><span class="line">			i=++k;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(j&gt;substr.length)</span><br><span class="line">		<span class="keyword">return</span> k;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<p>KMP算法</p>
+<p>在模式串<code>j</code>出发生不匹配时，只需要将<code>F</code>前移，使得<code>F_l</code>与<code>F_n</code>重合即可。<br>假如<code>F</code>串的左部和右部有不止一对<code>F_l</code>和<code>F-n</code>，我们取第一个满足条件的一对（即较长的一对）。</p>
+<p>若想直接由<code>s_k</code>状态跳转到<code>s_k+1</code>，只需要移动指针<code>j</code>即可，<code>i</code>指针可以保持不变。</p>
+<p><code>next</code>数组是用来存储，当发生模式串与主串不匹配的时候，下一需要跳转到的位置。</p>
+<p>模式串中第<code>j</code>个位置与主串中的第<code>i</code>个位置发生不匹配的时候，应从模式串中的第<code>next[j]</code>个位置与主串第<code>i</code>个位置重新比较。</p>
+<p>KMP算法实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(Str str, Str substr ,<span class="keyword">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;str.length&amp;&amp;j&lt;=substr.length)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">0</span>||str.ch[i]==substr.ch[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			j=next[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(j&gt;substr.length)</span><br><span class="line">		<span class="keyword">return</span> i-substr.length;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>next</code>数组的计算：</p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/04/13/plan/">计划表</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/04/10/data-structure-3/">data structure——栈和队列</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

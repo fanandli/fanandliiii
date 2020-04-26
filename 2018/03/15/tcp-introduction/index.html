@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>tcp协议概念辨析 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧想到再加。 主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。首先： tcp协议的特点:(这里只主要讲解tcp是面向字节流的这一特点)  首先tcp是面向连接的。在使用tcp协议之前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tcp协议概念辨析">
+<meta property="og:url" content="http://yoursite.com/2018/03/15/tcp-introduction/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧想到再加。 主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。首先： tcp协议的特点:(这里只主要讲解tcp是面向字节流的这一特点)  首先tcp是面向连接的。在使用tcp协议之前">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.lwn.net/images/2012/tfo/3whs.png">
+<meta property="article:published_time" content="2018-03-15T07:30:40.000Z">
+<meta property="article:modified_time" content="2019-03-31T15:49:27.208Z">
+<meta property="article:author" content="turlee">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="tcp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.lwn.net/images/2012/tfo/3whs.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            tcp协议概念辨析
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-03-15T07:30:40.000Z" itemprop="datePublished">3月 15 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 读完 (约 1220 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>之前学的网络这块的知识感觉都忘得差不多了，加之网络本来也比较理论抽象的。。。概念都有点模糊了。。趁复习之余就整理一下<del>暂时先准备从几个方面谈一下tcp协议吧。。。这个太多了，一点一点写吧</del>想到再加。</p>
+<p>主要从：特点，握手协议，arq协议，流量控制，拥塞控制，可靠传输的原理等方面去谈起。<br>首先：</p>
+<h3 id="tcp协议的特点"><a href="#tcp协议的特点" class="headerlink" title="tcp协议的特点:"></a>tcp协议的特点:</h3><p><strong>(这里只主要讲解tcp是面向字节流的这一特点)</strong></p>
+<ul>
+<li><p>首先tcp是面向连接的。在使用tcp协议之前一定要先建立tcp连接，传输数据完毕之后也要释放tcp的连接。</p>
+</li>
+<li><p>每一条tcp的连接只能有两个端点，每一个tcp的连接都是点对点的连接。</p>
+<a id="more"></a></li>
+<li><p>tcp连接是可靠交付的连接。目的是无差错，不丢失，不重复。</p>
+</li>
+</ul>
+<ul>
+<li><p>tcp提供<strong>全双工通信</strong>。tcp的两端都设有“接收缓存”和“发送缓存”，在发送时，应用程序把数据传送给tcp的缓存后就可以去做自己的事情，tcp在合适的时间再从缓存中去取自己需要的数据发送出去。在接收时，tcp将收到的数据放入缓存，上层的应用在合适的时间从缓存中取走自己需要的数据就好。</p>
+</li>
+<li><p>tcp是<strong>面向字节流</strong>的。<strong><em>这里详细讲一下“字节流”和“tcp报文段”的区别与联系。</em></strong>“tcp传送数据的单元是“tcp报文段””，这句话的意思准确来说是：tcp与应用进程在交互的时候的数据单元是“报文段”。从某种方面上来说字节流组成相应的报文段。应用程序和tcp进行交互的时候是按照一段一段的“报文段”，但是，tcp自身在接收到后，在处理这些“报文段”的时候是又将其分成一个一个的“字节流”去发送的。tcp不关心应用进程一次把多长的“报文段”发送到tcp的缓存中，他会将其分成更小的“字节流”，根据对方的窗口值和网络拥塞情况去决定选择多少“字节流”组成“报文段”再发送出去。（udp则是进程发送了多大的报文段他就传送多大的报文段）。再啰嗦一句，tcp和应用进程在接收和发送的时候都是以“报文段”为传送的数据单元，而tcp自己在处理这些“报文段”的时候，又会将其分成“字节”，整体上看就有了所谓的“字节流”，所以，“字节流”是tcp自身在处理时的数据单元。</p>
+</li>
+</ul>
+<h3 id="tcp的三次握手："><a href="#tcp的三次握手：" class="headerlink" title="tcp的三次握手："></a>tcp的三次握手：</h3><p>（这里依然一样，不讲解主要的细节流程，只讲解为什么要三次握手，为什么不是两次握手，四次握手？）</p>
+<p><img src="https://static.lwn.net/images/2012/tfo/3whs.png" alt=""></p>
+<p>（图片来源：Michael Kerrisk）</p>
+<p>这里，在客户机（client）收到服务器(server)发送的确认报文段后（SYN N,ACK M+1）,客户机还需要再发送一条确认报文段。为什么要再发送一条？假定之前，客户机向服务器发送一条请求报文段1（SYN M），由于某种原因这条请求报文段1没有及时送达，服务器自然就不会发送确认报文段，这时，客户机就会重新发送一条请求报文段2，后来成功建立了连接。但是，再重新建立连接后，假定之前发送的请求报文段1突然又成功的传到了服务器那里，那么服务器会误认为是客户机给他发送的请求报文段，这时他就会发送一个确认报文段给客户机，而客户机是不会响应这个确认报文段的（因为这个确认报文段是由先前认为他已经丢失的请求报文段1的回应），客户机还是会自己干自己的事情，而服务器却在那等待着客户机传送报文段。浪费了服务器的资源。</p>
+<p>考完试了更新一下网络中的各个数据报的结构吧，嗯。。挖个坑。</p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/network/">#network</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/tcp/">#tcp</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/03/18/html-learning-1/">html小笔记</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/03/09/windump-use/">windump使用注意事项</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

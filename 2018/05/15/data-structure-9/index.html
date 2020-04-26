@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>图——Floyd算法 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="最短路径：弗洛伊德算法我们先看一下我们举例的图，如下图中右边的图，其中左边的Av[]数组存储的任意两个顶点之间的当前最短路径长度，pathv[]数组存储了任意两个顶点他们所在最短路径之间的中间点(v为下标)。   执行思路：对于每个顶点v，和任意一顶点对（i,j）,i不等于j,v不等于i,v不等于j，如果A[i][j]&gt;A[i][v]+A[v][j],则将A[i][j]更新为A[i][v]+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图——Floyd算法">
+<meta property="og:url" content="http://yoursite.com/2018/05/15/data-structure-9/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="最短路径：弗洛伊德算法我们先看一下我们举例的图，如下图中右边的图，其中左边的Av[]数组存储的任意两个顶点之间的当前最短路径长度，pathv[]数组存储了任意两个顶点他们所在最短路径之间的中间点(v为下标)。   执行思路：对于每个顶点v，和任意一顶点对（i,j）,i不等于j,v不等于i,v不等于j，如果A[i][j]&gt;A[i][v]+A[v][j],则将A[i][j]更新为A[i][v]+">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B71.png?raw=true">
+<meta property="og:image" content="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B72.png?raw=true">
+<meta property="og:image" content="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B73.png?raw=true">
+<meta property="og:image" content="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B74.png?raw=true">
+<meta property="article:published_time" content="2018-05-15T01:00:44.000Z">
+<meta property="article:modified_time" content="2019-03-31T15:49:27.204Z">
+<meta property="article:author" content="turlee">
+<meta property="article:tag" content="data-structure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B71.png?raw=true">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            图——Floyd算法
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-15T01:00:44.000Z" itemprop="datePublished">5月 15 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            7 分钟 读完 (约 989 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>最短路径：<br><strong>弗洛伊德算法</strong><br>我们先看一下我们举例的图，如下图中右边的图，其中左边的Av[]数组存储的任意两个顶点之间的当前最短路径长度，pathv[]数组存储了任意两个顶点他们所在最短路径之间的中间点(v为下标)。</p>
+<img src="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B71.png?raw=true" width = "600" height = "350" alt="floyd1" align=center />
+
+<p>执行思路：<br>对于每个顶点v，和任意一顶点对（i,j）,i不等于j,v不等于i,v不等于j，如果A[i][j]&gt;A[i][v]+A[v][j],则将A[i][j]更新为A[i][v]+A[v][j]的值，并将path[i][j]改为v。</p>
+<a id="more"></a>
+
+<p>执行过程：<br><img src="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B72.png?raw=true" width = "600" height = "350" alt="floyd2" align=center /></p>
+<p>首先我们一共所有的情况为{0,1}，{0,2}……<br>初始化后，第一次，即当v=0时，发现所有情况中的{0,1}，此时i=0,j=1,v=0,v=i了，不满足条件，所以这个点跳过。很好理解，因为此时：式子”A[0][1]&gt;A[0][0]+A[0][1]”明显不成立，所以这种类型跳过，同样的{0,2}，{0,3}，{0,4}，这几个点也跳过，这也是为什么上面有说i不等于j,v不等于i,v不等于j的原因。接着我们来到{1,2},此时对应的式子为“A[1][2]&gt;A[1][0]+A[0][2]”,我们需要去判断大小，A[1][3]在A数组中为4，A[1][0]值为无穷，A[0][2]值也为无穷，所以式子不成立，不需要更新path数组。<br>接着再看下一个情况{1，3},i=V，所以跳过，再下一个{2,0},j=v所以也跳过。再下一个{2,1}，现在对应的式子为A[2][3]&gt;A[2][0]+A[0][3],对应的值分别为2,3,7，式子不成立，也不需要更新。再下一对{3,0}，j=v跳过。再下一对{3,1},A[3][1]值为无穷，式子一定不成立，所以也不需要更新。最后看{3，2}，A[3][0]也为无穷大，所以，对于v=0这一情况，path数组不需要更新。</p>
+<p>第二次，当v1时，也这样一个一个去比较，我就不细说了，其中，当为{0,2}时，式子为A[0][2]&gt;A[0][1]+A[1][2],其中的值分别为无穷大，5,4。明显，式子成立，所以，此时将A[0][2]更新为9，将path[0][2]更新为1，表示其中间结点为1。然后再一次一个一个的对比，不再赘述。</p>
+<img src="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B73.png?raw=true" width = "600" height = "350" alt="floyd3" align=center />
+
+
+<p>第三次，v=2,第四次，v=3，就这样循环比较，重复做上面的事情，更新A[]数组和path[]数组。</p>
+<p>接着我们再看一下如何通过更新过的path[]数组去查找任意两个点的最短路径。例如：如果我们要寻找从1到0的最短路径是什么：首先查path[1][0]=3,说明1和0之间的中间点为3，所以将3标出，然后查path[1][3]=-1，说明从1到3有直接的边（这里path数组的值为-1，都说明两个点之间有直接相连的点，算是一个标记）。然后查path[3][0]=2，说明3和0之间又有中间点2，所以将2标出，然后查path[3][2]=-1,说明3和2之间也有直接的线相连，然后再查path[2][0]=-1,说明也有直接相连的边。此时从1到0的最短路径已经找出来了，就是分别这些个-1的边，为1-&gt;3-&gt;2-&gt;0。</p>
+<img src="https://github.com/fanandli/picblog/blob/master/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B74.png?raw=true" width = "600" height = "350" alt="floyd4" align=center />
+
+
+<p>然后这个通过path数组查找是实现任意两个点之间的额最短路径的算法为（递归）：<br>u,v分别是从顶点u到顶点v</p>
+<p>然后我们再看一下弗洛伊德算法的实现代码：<br>n为图中顶点的个数，MGraph[][]是图的邻接矩阵存储。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Floyd</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">float</span> MGraph[][n],<span class="keyword">int</span> Path[][n])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,v;</span><br><span class="line">	<span class="keyword">int</span> A[n][n];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;++i)<span class="comment">//初始化</span></span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			A[i][j]=MGraph[i][j];</span><br><span class="line">			Path[i][j]=<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(v=<span class="number">0</span>;v&lt;n;++v)</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;++j)</span><br><span class="line">				<span class="keyword">if</span>(A[i][j]&gt;A[i][v]+A[v][j])</span><br><span class="line">				&#123;</span><br><span class="line">					A[i][j]=A[i][v]+A[v][j];</span><br><span class="line">					Path[i][j]=v;</span><br><span class="line">				&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/05/15/data-structure-10/">图——拓扑排序</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/05/11/data-structure-8/">图——Dijkstra算法</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

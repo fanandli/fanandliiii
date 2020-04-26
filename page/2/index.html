@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="turlee&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="turlee">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/05/23/c-chongzai/" itemprop="url">C++中的重载</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-23T12:35:42.000Z" itemprop="datePublished">5月 23 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            1 分钟 读完 (约 158 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h4 id="c-的重载的注意事项："><a href="#c-的重载的注意事项：" class="headerlink" title="c++的重载的注意事项：####"></a>c++的重载的注意事项：####</h4><p>1，引用作为重载的条件，举例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"func(int &amp;a)调用"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"func(const int &amp;a)调用"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用的是上面一个版本，但是如果main函数中是这样写的话:func(10);return 0;那么调用的就是下面这个版本，这里的原因主要通过引用的原理很好理解：int &amp;a=10;不合法，因为引用只能是栈或者堆中的数据，而10是常量，是放在常量区中的，所以不合法。而const int &amp;a=10;是合法的。</p>
+<p>2，函数重载碰到默认参数,举例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b=<span class="number">10</span>)</span></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"func(int a,int b=10)调用"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"func(int a)调用"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	func(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这种情况也会报错，因为默认参数在这种情况，上下两个func既能满足重载，又能因为默认参数导致编译器不知道调用谁。理解了默认参数的使用就可以避免。</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/05/13/some-articles/" itemprop="url">The Art of Unhappiness</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-13T03:02:30.000Z" itemprop="datePublished">5月 13 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 读完 (约 868 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <blockquote>
+<p>Sunday, Jan. 09, 2005 By James Poniewozik </p>
+</blockquote>
+<p>Many things make people think artists are weird–the odd hours, the nonconformity, the clove cigarettes. But the weirdest may be this: artists’ only job is to explore emotions, and yet they choose to focus on the ones that feel lousy. Art today can give you anomie, no problem. Bittersweetness? You got it. Tristesse? What size you want that in? But great art, as defined by those in the great-art-defining business, is almost never about simple, unironic happiness.</p>
+<p>This wasn’t always so. The earliest forms of art, like painting and music, are those best suited for expressing joy. But somewhere in the 19th century, more artists began seeing happiness as insipid, phony or, worst of all, boring–in Tolstoy’s words, “All happy families are alike.” We went from Wordsworth’s daffodils to Baudelaire’s flowers of evil. In the 20th century, classical music became more atonal, visual art more unsettling. Artists who focused on making their audiences feel good, from Usher to Thomas Kinkade, were labeled “pop.”</p>
+<p>Sure, there have been exceptions (say, Matisse’s The Dance), but it would not be a stretch to say that for the past century or so, serious art has been at war with happiness. In 1824, Beethoven completed the “Ode to Joy.” In 1962, novelist Anthony Burgess used it in A Clockwork Orange as the favorite piece of his ultraviolent antihero. If someone titles an art movie Happiness, it is a good bet that it will be–as the 1998 Todd Solondz film was–about deeply unhappy people, including a telephone pervert and a pedophile.</p>
+<p>You could argue that art became more skeptical of happiness because modern times have seen such misery. But it’s not as if earlier times didn’t know perpetual war, disaster and the massacre of innocents. The reason, in fact, may be just the opposite: there is too much damn happiness in the world today.</p>
+<p>After all, what is the one modern form of expression almost completely dedicated to depicting happiness? Advertising. The rise of anti-happy art almost exactly tracks the emergence of mass media, and with it, a commercial culture in which happiness is not just an ideal but an ideology.</p>
+<p>People in earlier eras were surrounded by reminders of misery. They worked gruelingly, lived with few protections and died young. In the West, before mass communication and literacy, the most powerful mass medium was the church, which reminded worshippers that their souls were in peril and that they would someday be meat for worms. On top of all this, they did not exactly need their art to be a bummer too.</p>
+<p>Today the messages your average Westerner is bombarded with are not religious but commercial, and relentlessly happy. Fast-food eaters, news anchors, text messengers, all smiling, smiling, smiling, except for that guy who keeps losing loans to Ditech. Our magazines feature beaming celebrities and happy families in perfect homes. (Tolstoy clearly never edited a shelter mag.) And since these messages have an agenda–to pry our wallets from our pockets–they make the very idea of happiness seem bogus. “Celebrate!” commanded the ads for the arthritis drug Celebrex, before we found out it could increase the risk of heart attacks.</p>
+<p>It gets exhausting, this constant goad to joy. If you’re not smiling–after we made all those wonderful pills and cell-phone plans!–what’s wrong with you? Not to smile is un-American. You can pick out the Americans in a crowd of tourists by their reflexive grins. The U.S. enshrined in its founding document the right to the pursuit of happiness. So we pursued it and–at least as commerce defines it–we caught it.</p>
+<p>Now, like the dog that chased and finally caught the car, we don’t know what the hell to do with it. We feel vaguely dissatisfied though we have what we should want, vaguely guilty for wanting it, vaguely angry because it didn’t come as advertised. People tsk-tsked over last month’s study in which women reported being happier having sex or watching TV than playing with their kids. But why shouldn’t they? This is how the market defines happiness. Happiness is feeling good. Kids, those who exist outside ads, make you feel bad–exhausted, frustrated, bored and poor. Then they move away and break your heart.</p>
+<p>What we forget–what our economy depends on us forgetting–is that happiness is more than pleasure sans pain. The things that bring the greatest joy carry the greatest potential for loss and disappointment. Today, surrounded by promises of easy happiness, we need someone to tell us that it is O.K. not to be happy, that sadness makes happiness deeper. As the wine-connoisseur movie Sideways tells us, it is the kiss of decay and mortality that makes grape juice into Pinot Noir. We need art to tell us, as religion once did, Memento mori: remember that you will die, that everything ends, and that happiness comes not in denying this but in living with it. It’s a message even more bitter than a clove cigarette, yet, somehow, a breath of fresh air.</p>
+<p><a href="http://content.time.com/time/printout/0,8816,1015857,00.html" target="_blank" rel="noopener">article link</a></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/05/07/pat-a-solution/" itemprop="url">PAT_A分类题解</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-07T10:53:22.000Z" itemprop="datePublished">5月 7 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            17 分钟 读完 (约 2516 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>list:</p>
+<h4 id="vector的使用"><a href="#vector的使用" class="headerlink" title="vector的使用"></a>vector的使用</h4><p><a href="#a1">1039 Course List for Student (25 分)</a><br><a href="#a2">1047 Student List for Course (25 分)</a></p>
+<h4 id="set的使用"><a href="#set的使用" class="headerlink" title="set的使用####"></a>set的使用####</h4><p><a href="#a3">1063 Set Similarity (25 分)</a></p>
+<h4 id="string的使用"><a href="#string的使用" class="headerlink" title="string的使用####"></a>string的使用####</h4><p><strong><a href="#a4">1060 Are They Equal (25 分)</a></strong></p>
+<h4 id="map的使用"><a href="#map的使用" class="headerlink" title="map的使用"></a>map的使用</h4><p><a href="#a5">1100 Mars Numbers (20 分)</a><br><a href="#a6">1054 The Dominant Color (20 分)</a><br><a href="#a7">1071 Speech Patterns (25 分)</a></p>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈####"></a>栈####</h4><p><a href="#b1">1051 Pop Sequence (25 分)</a></p>
+<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p><a href="#b2">1056 Mice and Rice (25 分)</a></p>
+<h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><p><a href="#b3">1052 Linked List Sorting (25 分)</a><br><a href="#b4">1074 Reversing Linked List (25 分)</a></p>
+<h4 id="简单模拟："><a href="#简单模拟：" class="headerlink" title="简单模拟："></a>简单模拟：</h4><p><a href="#c1">1042 Shuffling Machine (20 分)</a><br><a href="#c2">1046 Shortest Distance (20 common.points)</a><br><a href="#c3">1065 A+B and C (64bit) (20 分)</a><br><a href="#c4">1002 A+B for Polynomials (25 分)</a></p>
+        <p class="article-more-link">
+            <a href="/2019/05/07/pat-a-solution/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/04/21/pat-b-solution/" itemprop="url">PAT_B 分类题解</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-04-21T09:15:44.000Z" itemprop="datePublished">4月 21 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            33 分钟 读完 (约 4951 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>list:</p>
+<h4 id="简单模拟"><a href="#简单模拟" class="headerlink" title="简单模拟###"></a>简单模拟###</h4><p><a href="#c2">1:1001 害死人不偿命的(3n+1)猜想 （15 分)</a><br><a href="#c3">2:1008 数组元素循环右移问题 （20 分)</a><br><a href="#c4">3:1011 A+B 和 C （15 分)</a><br><a href="#c5">4:1016 部分A+B （15 分)</a><br><a href="#c6">5:1026 程序运行时间 （15 分)</a><br><a href="#c7">6:1046 划拳 （15 分)</a><br><a href="#c8">7:1012 数字分类 （20 分)</a><br><strong><a href="#c9">8:1018 锤子剪刀布 （20 分)</a></strong><br><strong><a href="#c10">9:1010 一元多项式求导 （25 分)</a></strong></p>
+<h4 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素###"></a>查找元素###</h4><p><a href="#b2">1:1041 考试座位号 （15 分)</a><br><a href="#b3">2:1004 成绩排名 （20 分)</a><br><a href="#b4">3:1028 人口普查 （20 分)</a><br><a href="#b5">4:1032 挖掘机技术哪家强 （20 分)</a></p>
+<h4 id="图形输出"><a href="#图形输出" class="headerlink" title="图形输出"></a>图形输出</h4><p><a href="#a1">1:1036 跟奥巴马一起编程 （15 分)</a><br><a href="#a2">2:1027 打印沙漏 （20 分)</a></p>
+<h4 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h4><p><a href="#d1">1:1022 D进制的A+B （20 分)</a><br><a href="#d2">2:1037 在霍格沃茨找零钱 （20 分)</a></p>
+<h4 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理####"></a>字符串处理####</h4><p><a href="#e1">1:1006 换个格式输出整数 （15 分)</a><br><a href="#e2">2:10211021 个位数统计 （15 分)</a><br><a href="#e3">3:1031 查验身份证 （15 分)</a><br><a href="#e4">4:1002 写出这个数 (20 分)</a><br><a href="#e5">5:1009 说反话 (20 分)</a><br><a href="#e6">6:1014 福尔摩斯的约会 (20 分)</a></p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序####"></a>排序####</h4><p><a href="#f1">1:1015 德才论 (25 分)</a></p>
+<h4 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h4><p><a href="#g1">1:1029 旧键盘 (20 分)</a><br><a href="#g2">2:1033 旧键盘打字 (20 分)</a><br><a href="#g3">3:1038 统计同成绩学生 (20 分)</a><br><a href="#g4">4:1039 到底买不买 (20 分)</a><br><a href="#g5">5:1042 字符统计 (20 分)</a></p>
+<h4 id="贪心"><a href="#贪心" class="headerlink" title="贪心####"></a>贪心####</h4><p><a href="#h1">1:1020 月饼 (25 分)</a><br><a href="#h2">2:1023 组个最小数 (20 分)</a></p>
+<h4 id="二分"><a href="#二分" class="headerlink" title="二分####"></a>二分####</h4><p><strong><a href="#i1">1:1030 完美数列 (25 分)</a></strong></p>
+<h4 id="two-pointers"><a href="#two-pointers" class="headerlink" title="two pointers"></a>two pointers</h4><p><strong><a href="#j1">1:1035 插入与归并 (25 分)</a></strong></p>
+<h4 id="递推"><a href="#递推" class="headerlink" title="递推####"></a>递推####</h4><p><strong><a href="#k1">1:1040 有几个PAT (25 分)</a></strong></p>
+<h4 id="快排"><a href="#快排" class="headerlink" title="快排####"></a>快排####</h4><p><a href="#l1">1:1045 快速排序 (25 分)</a></p>
+        <p class="article-more-link">
+            <a href="/2019/04/21/pat-b-solution/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/04/18/function-and-recursive/" itemprop="url">函数和递归例题</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-04-18T12:42:13.000Z" itemprop="datePublished">4月 18 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            7 分钟 读完 (约 1054 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>（持续更新）<br>list:<br><a href="#c1">1：救济金发放（The Dole Queue, UVa 133）</a><br><a href="#c2"> 2：刽子手问题（Hangman Judge, UVa 489）</a></p>
+        <p class="article-more-link">
+            <a href="/2019/04/18/function-and-recursive/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/04/15/array-and-string-exercises/" itemprop="url">数组和字符串例题</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-04-15T15:33:23.000Z" itemprop="datePublished">4月 15 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 读完 (约 314 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>(持续更新）<br>list:<br><a href="#c1">1：Score (ACM/ICPC Seoul2007,UVa1586)</a></p>
+        <p class="article-more-link">
+            <a href="/2019/04/15/array-and-string-exercises/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/10/15/data-structure-huffman/" itemprop="url">data-structure-huffman树及其编码</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-10-15T11:05:29.000Z" itemprop="datePublished">10月 15 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 读完 (约 1183 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong>二叉树的确定：</strong></p>
+<p>举例：如果我们知道了先序序列abdecfgh和中序序列dbeacgfh，求确定这个二叉树的结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BTNode *<span class="title">createBT</span><span class="params">(<span class="keyword">char</span> pre[],<span class="keyword">char</span> in[],<span class="keyword">int</span> L1,<span class="keyword">int</span> R1,<span class="keyword">int</span> L2,<span class="keyword">int</span> R2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L1&gt;R1)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">//递归出口</span></span><br><span class="line">	BTNode *s=(BTNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BTNode)); </span><br><span class="line">	s-&gt;lChild=s-&gt;rChild=<span class="literal">NULL</span>;</span><br><span class="line">	s-&gt;data=pre[L1];  <span class="comment">//先序序列的第一个结点是根结点</span></span><br><span class="line">	<span class="keyword">int</span> i;  <span class="comment">//找出根结点在中序序列中的位置</span></span><br><span class="line">	<span class="keyword">for</span>(i=L2;i&lt;=R2;++i)</span><br><span class="line">		<span class="keyword">if</span>(in[i]==pre[L1])</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	s-&gt;lChild=createBT(pre,in,L1+<span class="number">1</span>，L1+i-L2,L2,i<span class="number">-1</span>); </span><br><span class="line">	s-&gt;rChild=createBT(pre,in,L1+i-L2+<span class="number">1</span>,R1,i+<span class="number">1</span>,R2);</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p class="article-more-link">
+            <a href="/2018/10/15/data-structure-huffman/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/10/14/data-structure-6/" itemprop="url">data structure——树与二叉树</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-10-14T07:59:35.000Z" itemprop="datePublished">10月 14 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            17 分钟 读完 (约 2502 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<p>看一下知识点：</p>
+<ul>
+<li>树的存储结构</li>
+<li>二叉树的存储结构</li>
+<li>二叉树的性质</li>
+<li>树与二叉树的转换</li>
+<li>森林与二叉树的转换</li>
+<li>二叉树的遍历算法</li>
+<li>非递归的二叉树的遍历算法</li>
+<li>树的遍历算法</li>
+<li>森林的遍历算法</li>
+<li>线索二叉树，结构，遍历算法</li>
+<li>赫夫曼树和编码</li>
+<li>二叉树的确定</li>
+<li>二叉树的估计</li>
+<li>二叉树表达式</li>
+</ul>
+<hr>
+<p><strong>树的存储结构</strong></p>
+<ul>
+<li><p>顺序存储结构<br>即定义一个数组来存储，如：<code>int tree[maxsize];</code>。用<strong>数组下标</strong>来表示树中的结点，数组元素中的内容表示该结点的双亲结点。所以又称为<strong>双亲存储结构</strong>。</p>
+</li>
+<li><p>链式存储结构<br>主要有孩子存储结构和孩子兄弟存储结构两种。</p>
+</li>
+</ul>
+<p><strong>二叉树的定义</strong><br>满足条件：<br>1，每个结点最多只有两棵子树<br>2,子树有左右顺序之分。</p>
+<p><strong>二叉树的存储结构</strong></p>
+<ul>
+<li>顺序存储结构（适用于完全二叉树）<img src="https://github.com/fanandli/picblog/blob/master/erchashu-xingzhi.png?raw=true" width = "600" height = "350" alt="完全二叉树的顺序存储结构" align=center />
+图中右边的规则只是适合完全二叉树，（如果用来储存一般的二叉树会浪费大量的存储空间）且是从0开始编号的。
+        <p class="article-more-link">
+            <a href="/2018/10/14/data-structure-6/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/09/16/search-1/" itemprop="url">data-structure———查找</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-09-16T10:47:00.000Z" itemprop="datePublished">9月 16 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 读完 (约 893 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>注意一下有一个概念：平均查找长度：<strong>ASL</strong></p>
+<p><strong>顺序查找：</strong><br>举例如果从一个无序数组a（数组下标从1开始）中找到值为k的元素，查找成功就返回1，不成功就返回0，采用顺序查找的话：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Search</span><span class="params">(<span class="keyword">int</span> a[] ,<span class="keyword">int</span> n ,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i ;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">if</span>(a[i]==k)</span><br><span class="line">			<span class="keyword">return</span> 	<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上是使用顺序表的时候的情况，下面再看一下链式结构的情况：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LNode* <span class="title">search</span><span class="params">(LNode* head,<span class="keyword">int</span> key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LNode* p = head-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;data==key)</span><br><span class="line">			<span class="keyword">return</span> p;</span><br><span class="line">		p=p-&gt;next; <span class="comment">//注意一下</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//注意一下这个没有找到所要值得情况的位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个是使用循环递增i数组下标，还有一个是使用p=p-&gt;next，一个一个的顺序访问。<br><strong>折半查找：</strong><br>折半查找的要求是表中记录是按关键字<strong>有序</strong>的。用到的是递归的思想。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Bsearch</span><span class="params">(<span class="keyword">int</span> R[],<span class="keyword">int</span> low,<span class="keyword">int</span> high,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid;</span><br><span class="line">	<span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">	&#123;</span><br><span class="line">		mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(R[mid]==k)</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(R[mid]&gt;k)</span><br><span class="line">			high=mid<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(R[mid]&lt;k)</span><br><span class="line">			low=mid+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的low，high，mid是下标，不是值的大小</p>
+        <p class="article-more-link">
+            <a href="/2018/09/16/search-1/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/09/10/data-structure-Threaded-binary-tree/" itemprop="url">线索二叉树</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-09-10T12:07:34.000Z" itemprop="datePublished">9月 10 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 分钟 读完 (约 536 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong>线索二叉树</strong></p>
+<p>线索二叉树的结点定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TBTNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	<span class="keyword">int</span> ltag,rtaghy;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">TBTNode</span> *<span class="title">lchild</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">TBTNode</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;TBTNode;</span><br></pre></td></tr></table></figure>
+<p>通过中序遍历对二叉树线索化的递归算法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InThread</span><span class="params">(TBTNode *p,TBTNode *&amp;pre)</span>  <span class="comment">//p指向根结点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		InThread(p-&gt;lchild,pre); <span class="comment">//pre指针一直指向p指针指向的结点的前驱结点</span></span><br><span class="line">		<span class="keyword">if</span>(p-&gt;lchild==<span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			p-&gt;lchild=pre; <span class="comment">//左指针指向前驱结点，</span></span><br><span class="line">			p-&gt;ltag=<span class="number">1</span>;  <span class="comment">//且将ltag设为1</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(pre!=<span class="literal">NULL</span>&amp;&amp;pre-&gt;rchild==<span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			pre-&gt;rchild=p;  <span class="comment">//右指针指向后继结点，</span></span><br><span class="line">			pre-&gt;rtag=<span class="number">1</span>;  <span class="comment">//且将rtag设为1</span></span><br><span class="line">		&#125;</span><br><span class="line">		pre=p; <span class="comment">//p结点的要指向后继结点了，所以要将pre指向p，让他跟上来，这一句话要重点注意</span></span><br><span class="line">		p=p-&gt;rchild;  <span class="comment">//左子树全部访问完，开始访问右子树</span></span><br><span class="line">		InThread(p,pre); <span class="comment">//递归，右子树线索化</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p class="article-more-link">
+            <a href="/2018/09/10/data-structure-Threaded-binary-tree/#more">阅读更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+        
+<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+    <div class="pagination-previous">
+        <a href="/">上一页</a>
+    </div>
+    <div class="pagination-next">
+        <a href="/page/3/">下一页</a>
+    </div>
+    <ul class="pagination-list is-hidden-mobile">
+        
+        <li><a class="pagination-link" href="/">1</a></li>
+        
+        <li><a class="pagination-link is-current" href="/page/2/">2</a></li>
+        
+        <li><a class="pagination-link" href="/page/3/">3</a></li>
+        
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        
+        <li><a class="pagination-link" href="/page/6/">6</a></li>
+        
+    </ul>
+</nav>
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

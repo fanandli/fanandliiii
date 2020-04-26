@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>有关栈的问题 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="1、利用栈将中缀表达式求值：计算规则：设两个栈，s1用来存储操作数，s2用来存储运算符。从左往右扫描表达式，遇到操作数就将入栈s1,遇到运算符就入栈s2。当前扫描到的运算符优先级大于栈顶的运算符的优先级，则入栈，否则，就出栈s1中的两个操作数，进行计算，将计算结果入栈s1。且栈顶的操作数先出栈，放在运算符的右边，栈顶下面的一个操作数后出栈，放在运算符的左边。如果遇到左括号就直接入栈s2，直到遇到右">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有关栈的问题">
+<meta property="og:url" content="http://yoursite.com/2018/08/19/zhan-prc/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="1、利用栈将中缀表达式求值：计算规则：设两个栈，s1用来存储操作数，s2用来存储运算符。从左往右扫描表达式，遇到操作数就将入栈s1,遇到运算符就入栈s2。当前扫描到的运算符优先级大于栈顶的运算符的优先级，则入栈，否则，就出栈s1中的两个操作数，进行计算，将计算结果入栈s1。且栈顶的操作数先出栈，放在运算符的右边，栈顶下面的一个操作数后出栈，放在运算符的左边。如果遇到左括号就直接入栈s2，直到遇到右">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/fanandli/picblog/blob/master/%E6%A0%88%E7%9A%84%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98.jpg?raw=true">
+<meta property="article:published_time" content="2018-08-19T11:15:36.000Z">
+<meta property="article:modified_time" content="2019-03-31T15:49:27.209Z">
+<meta property="article:author" content="turlee">
+<meta property="article:tag" content="data-structure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/fanandli/picblog/blob/master/%E6%A0%88%E7%9A%84%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98.jpg?raw=true">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            有关栈的问题
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-08-19T11:15:36.000Z" itemprop="datePublished">8月 19 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            9 分钟 读完 (约 1412 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><strong>1、利用栈将中缀表达式求值：</strong><br>计算规则：设两个栈，s1用来存储操作数，s2用来存储运算符。从左往右扫描表达式，遇到操作数就将入栈s1,遇到运算符就入栈s2。<br>当前扫描到的运算符优先级大于栈顶的运算符的优先级，则入栈，否则，就出栈s1中的两个操作数，进行计算，将计算结果入栈s1。<strong>且栈顶的操作数先出栈，放在运算符的右边，栈顶下面的一个操作数后出栈，放在运算符的左边</strong>。<br>如果遇到左括号就直接入栈s2，直到遇到右括号，此时，从栈顶到左括号的运算符都出栈进行计算。出栈的运算符都不再入栈。<br>如果表达式全部扫描完毕，s2栈中还有运算符的话就挨个出栈进行计算，计算结果依次放入s1栈中。</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getpriority</span><span class="params">(<span class="keyword">char</span> op)</span> <span class="comment">//判断运算符的优先级</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="string">'+'</span>||op == <span class="string">'-'</span>) <span class="comment">// 规定只有+,-,*,/这四个运算</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//若是+，-，则返回0</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//若是*，/，则返回1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calSub</span><span class="params">(<span class="keyword">float</span> opandl,<span class="keyword">char</span>,op,<span class="keyword">float</span> opand2,<span class="keyword">float</span> &amp;result)</span>  <span class="comment">//出栈两个操作数和一个运算符进行运算</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="string">'+'</span>) result = opandl+opand2;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="string">'-'</span>) result = opandl-opand2;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="string">'*'</span>) result = opandl*opand2;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="string">'/'</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">fabs</span>(opand2)&lt;MIN) <span class="comment">//判断float型为0的标准语句</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//除数为0的情况返回0，意为运算失败</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			result = opandl / opand2; <span class="comment">// 如果除数不是0的话就相除</span></span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//成功运算返回1，且结果保存在result中。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">calInfix</span><span class="params">(<span class="keyword">char</span> <span class="built_in">exp</span>[])</span> <span class="comment">//计算中缀表达式</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> s1[maxSize];<span class="keyword">int</span> top1=<span class="number">-1</span>; <span class="comment">//顺序栈，来存操作数</span></span><br><span class="line">	<span class="keyword">char</span> s2[maxSize];<span class="keyword">int</span> top2=<span class="number">-1</span>;  <span class="comment">//存运算符</span></span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">exp</span>[i]!=<span class="string">'\0'</span>) <span class="comment">//串尾为\0 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">'0'</span>&lt;=<span class="built_in">exp</span>[i] &amp;&amp; <span class="built_in">exp</span>[i]&lt;=<span class="string">'9'</span>) <span class="comment">//这里的0，9都是字符，不是数字，且假设输入都是一位数字</span></span><br><span class="line">		&#123;                             <span class="comment">//所以字符的大小比较，是比较这个字符对应ascll码值</span></span><br><span class="line">			s1[++top1]=<span class="built_in">exp</span>[i] -<span class="string">'0'</span>; <span class="comment">//exp[i]-'0'就将字符转为这个字符对应的数值，入栈</span></span><br><span class="line">			++i;                    </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">exp</span>[i]==<span class="string">'('</span>)  <span class="comment">//如果扫描到了（,则直接入运算符栈</span></span><br><span class="line">		&#123;</span><br><span class="line">			s2=[++top2]=<span class="string">'('</span>;</span><br><span class="line">			++i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">exp</span>[i]==<span class="string">'+'</span>||<span class="built_in">exp</span>[i]==<span class="string">'-'</span>||<span class="built_in">exp</span>[i]==<span class="string">'*'</span>||<span class="built_in">exp</span>[i]==<span class="string">'/'</span>)  <span class="comment">//如果扫描到了运算符</span></span><br><span class="line">		&#123;                                                             <span class="comment">//一般有两种情况，一是直接入栈，二是弹出操作数进行运算后再入栈</span></span><br><span class="line">			<span class="keyword">if</span>(top2==<span class="number">-1</span>||s2[top2]==<span class="string">'('</span> || getpriority(<span class="built_in">exp</span>[i])&gt;getpriority(s2[top2])) <span class="comment">//如果栈空，</span></span><br><span class="line">                                                                                    <span class="comment">//如果为（，                                                          </span></span><br><span class="line">			&#123;                                                          <span class="comment">//如果当前扫描到的运算符的优先级大于栈顶的运算符的优先级</span></span><br><span class="line">				s2[++top2]=<span class="built_in">exp</span>[i];  <span class="comment">//就入栈</span></span><br><span class="line">				++i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>                           <span class="comment">//如果不满足，就弹出运算符，和一些运算符进行运算</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">float</span> opnd1,opnd2,result;  <span class="comment">//出栈的两个操作数，和结果</span></span><br><span class="line">				<span class="keyword">char</span> op;                 <span class="comment">//要进行运算的运算符</span></span><br><span class="line">				<span class="keyword">int</span> flag;                 <span class="comment">//接受calSub返回的标记</span></span><br><span class="line">				opnd2=s1[top--];   <span class="comment">//先出栈的为第二个操作数       </span></span><br><span class="line">				opnd1=s1[top--];   <span class="comment">//后出栈的为第一个操作数，顺序不能弄反了</span></span><br><span class="line">				op=s2[top2--];     <span class="comment">//弹出一个运算符</span></span><br><span class="line">				flag=calSub(opnd1,op,opnd2,result);  <span class="comment">//调用calSub函数，函数返回的是0,1，代表成不成功，结果是存在result中的</span></span><br><span class="line">				<span class="keyword">if</span>(flag==<span class="number">0</span>) <span class="comment">//0代表计算不成功</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"error"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				s1[++top1]=result;  <span class="comment">//求值成功了就将结果压栈</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">exp</span>[i]==<span class="string">')'</span>)  <span class="comment">//扫描遇到')'时，</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(s2[top2] !=<span class="string">'('</span>)  <span class="comment">//就不停的出栈，直到遇到'(',</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">float</span> opnd1,opnd2,result;  <span class="comment">//且对每一个出栈的运算符进行一次运算</span></span><br><span class="line">				<span class="keyword">char</span> op;</span><br><span class="line">				<span class="keyword">int</span> flag;</span><br><span class="line">				opnd2=s1[top--];</span><br><span class="line">				opnd1=s1[top--];</span><br><span class="line">				op=s2[top2--];</span><br><span class="line">				flag=calSub(opnd1,op,opnd2,result);</span><br><span class="line">				<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"error"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				s1[++top1]=result;</span><br><span class="line">			&#125;</span><br><span class="line">			--top2;  <span class="comment">//此时指向'(',出栈，去掉他</span></span><br><span class="line">			++i;  <span class="comment">//指向下一个字符</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(top2!=<span class="number">-1</span>)  <span class="comment">//当表达式全部扫描之后，如果栈中还有运算符剩余，就全部出栈，且取两个操作数进行计算</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">float</span> opnd1,opnd2,result;</span><br><span class="line">				<span class="keyword">char</span> op;</span><br><span class="line">				<span class="keyword">int</span> flag;</span><br><span class="line">				opnd2=s1[top--];</span><br><span class="line">				opnd1=s1[top--];</span><br><span class="line">				op=s2[top2--];</span><br><span class="line">				flag=calSub(opnd1,op,opnd2,result);</span><br><span class="line">				<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"error"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				s1[++top1]=result;</span><br><span class="line">	&#125;</span><br><span class="line">	retunr s1[top1]; <span class="comment">//操作数的结果在栈顶，返回即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2、用栈求后缀表达式值：</strong><br>从左往右扫描这个表达式串，当遇到操作数的时候就入栈，当遇到运算符就出栈两个操作数，进行运算，先出栈的操作数放在运算符的<strong>左边</strong>，后出战的操作数放在运算符的<strong>右边</strong>。计算出结果，然后将这个结果入栈。一直将运算符全部运算完，最后一个计算结果即所求的值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">calPostFix</span><span class="params">(<span class="keyword">char</span> <span class="built_in">exp</span>[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> s[maxsize];<span class="keyword">int</span> top=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;<span class="built_in">exp</span>[i]!=<span class="string">'\0'</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">'\0'</span>&lt;=<span class="built_in">exp</span>[i] &amp;&amp; <span class="built_in">exp</span>[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">				s[++top]=<span class="built_in">exp</span>[i]-<span class="string">'0'</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="comment">//else if (exp[i]=='+'||exp[i]=='-'||exp[i]=='*'||exp[i]=='/')</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">float</span> opnd1,opnd2,result;</span><br><span class="line">			<span class="keyword">char</span> op;</span><br><span class="line">			<span class="keyword">int</span> flag;</span><br><span class="line">			opnd2=s[top--];</span><br><span class="line">			opnd1=s[top--];</span><br><span class="line">			op=<span class="built_in">exp</span>[i];</span><br><span class="line">			flag=calSub(opnd1,op,opnd2,result);</span><br><span class="line">			<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"error"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">				<span class="keyword">break</span>;			</span><br><span class="line">			&#125;</span><br><span class="line">			s[++top]=result;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s[top];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3、用栈求前缀表达式：</strong><br>从右往左扫描这个表达式。当遇到操作数的时候就入栈，当遇到运算符就出栈两个操作数，进行运算，先出栈的数放在运算符的<strong>右边</strong>，后出栈的放在运算符的<strong>左边</strong>。其他操作和后缀表达式计算方式一样。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">calPreFix</span><span class="params">(<span class="keyword">char</span> <span class="built_in">exp</span>[],<span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> s[maxsize];<span class="keyword">int</span> top=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)  <span class="comment">//从右往左</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">'\0'</span>&lt;=<span class="built_in">exp</span>[i] &amp;&amp; <span class="built_in">exp</span>[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">				s[++top]=<span class="built_in">exp</span>[i]-<span class="string">'0'</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="comment">//else if (exp[i]=='+'||exp[i]=='-'||exp[i]=='*'||exp[i]=='/')</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">float</span> opnd1,opnd2,result;</span><br><span class="line">			<span class="keyword">char</span> op;</span><br><span class="line">			<span class="keyword">int</span> flag;</span><br><span class="line">			opnd1=s[top--]; <span class="comment">//这里的出栈操作数的顺序也不一样</span></span><br><span class="line">			opnd2=s[top--];</span><br><span class="line">			op=<span class="built_in">exp</span>[i];</span><br><span class="line">			flag=calSub(opnd1,op,opnd2,result);</span><br><span class="line">			<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"error"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;		</span><br><span class="line">			&#125;</span><br><span class="line">			s[++top]=result;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s[top];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里就可以看出，中缀形式求值明显比用后缀或者前缀来的复杂，所以，这就是为什么计算机中会出现在生活中不会使用到的后缀和前缀形式。就像十进制一样，为人们所习惯，而计算机中普遍使用的是二进制。所以我们也必须为计算机的发展创造出能被计算机所方便使用和接受的规则。</p>
+<p><strong>4、中缀转后缀：</strong><br>转化规则：从左到右扫描中缀表达式，如果遇到操作数就直接将其写入结果表达式，（这个结果表达式的书写顺序是从左往右书写）如果遇到运算符就将其入栈。<br>且如果这个即将入栈的运算符<strong>小于等于</strong>当前栈顶的运算符，则将当前栈顶的运算符出栈，写入当前得到的结果表达式中，<strong>这样一直比较下去</strong>，直到即将入栈的运算符的优先级大于当前栈顶的运算符，此时再将这个即将入栈的运算符入栈。如果栈空，就直接入栈，不需要上述的比较。<br>如果遇到左括号，就直接入栈，当栈顶元素是左括号的时候，所有扫描到的运算符都入栈。当扫描到右括号的时候，执行一系列的出栈操作。将当前栈顶到左括号的运算符全部出栈，并将其写入结果表达式中，其中出栈的括号直接扔掉，左右括号都不写入结果表达式。一个左括号配一个右括号。<br>此时如果全部扫描完表达式，栈中还有运算符，则将其全部出栈，写入结果表达式中即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">infixToPostFix</span><span class="params">(<span class="keyword">char</span> infix[],<span class="keyword">char</span> s2[],<span class="keyword">int</span> &amp;top2)</span><span class="comment">//infix为中缀表达式，s2这个栈用来存储转换后的后缀，top2作为栈顶</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">char</span> s1[maxSize];<span class="keyword">int</span> top1=<span class="number">-1</span>;<span class="comment">//再定义一个辅助栈</span></span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(infix[i]!=<span class="string">'\0'</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">'0'</span>&lt;=infix[i] &amp;&amp; infix[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[++top2]=infix[i];</span><br><span class="line">			++i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(infix[i]=<span class="string">'('</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s1[++top]=<span class="string">'('</span>;</span><br><span class="line">			++i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(infix[i]==<span class="string">'+'</span>||infix[i]==<span class="string">'-'</span>||infix[i]=<span class="string">'*'</span>||infix[i]=<span class="string">'/'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(top1==<span class="number">-1</span>||s1[top1]==<span class="string">'('</span> || getpriority(<span class="built_in">exp</span>[i])&gt;getpriority(s1[top1]))</span><br><span class="line">			&#123;</span><br><span class="line">				s1[++top1]=infix[i];</span><br><span class="line">				++i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				s2[++top2]=s1[top1--]; <span class="comment">//否则就从s1中出栈一个运算符入s2栈</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(infix[i]==<span class="string">')'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (s1[top1]!=<span class="string">'('</span>)</span><br><span class="line">				s2[++top2]=s1[top--];</span><br><span class="line">			--top1;  <span class="comment">//(出栈</span></span><br><span class="line">			++i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(top1!=<span class="number">1</span>)</span><br><span class="line">		s2[++top2]=s1[top1--];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>5、中缀转前缀：</strong><br>转化规则：<br>从右往左扫描，书写结果表达式的方向是从右往左写。遇到右括号直接入栈，遇到左括号就将当前栈顶到右括号的运算符出栈。<br>当前运算符如果<strong>小于</strong>栈顶的运算符时，则当前栈顶的运算符出栈。<br>其他的操作和中缀转后缀式一样的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">infixToPreFix</span><span class="params">(<span class="keyword">char</span> infix[],<span class="keyword">char</span> s2[],<span class="keyword">int</span> &amp;top2,<span class="keyword">int</span> len)</span><span class="comment">//infix为中缀表达式，s2这个栈用来存储转换后的后缀，top2作为栈顶</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">char</span> s1[maxSize];<span class="keyword">int</span> top1=<span class="number">-1</span>;<span class="comment">//再定义一个辅助栈</span></span><br><span class="line">	<span class="keyword">int</span> i=len<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&gt;=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">'0'</span>&lt;=infix[i] &amp;&amp; infix[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[++top2]=infix[i];</span><br><span class="line">			--i;  <span class="comment">//注意</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(infix[i]=<span class="string">')'</span>) <span class="comment">//注意</span></span><br><span class="line">		&#123;</span><br><span class="line">			s1[++top]=<span class="string">')'</span>;</span><br><span class="line">			--i;  <span class="comment">//注意</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(infix[i]==<span class="string">'+'</span>||infix[i]==<span class="string">'-'</span>||infix[i]=<span class="string">'*'</span>||infix[i]=<span class="string">'/'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(top1==<span class="number">-1</span>||s1[top1]==<span class="string">'）'</span> || getpriority(<span class="built_in">exp</span>[i])&gt;=getpriority(s1[top1]))  <span class="comment">//注意，为&gt;=，不是&gt;</span></span><br><span class="line">			&#123;</span><br><span class="line">				s1[++top1]=infix[i];</span><br><span class="line">				--i;  <span class="comment">//注意</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				s2[++top2]=s1[top1--]; <span class="comment">//否则就从s1中出栈一个运算符入s2栈</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(infix[i]==<span class="string">'('</span>)  <span class="comment">//注意</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (s1[top1]!=<span class="string">')'</span>)  <span class="comment">//注意</span></span><br><span class="line">				s2[++top2]=s1[top--];</span><br><span class="line">			--top1;  <span class="comment">//(出栈</span></span><br><span class="line">			--i;  <span class="comment">//注意</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(top1!=<span class="number">1</span>)</span><br><span class="line">		s2[++top2]=s1[top1--];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>6、括号匹配问题：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isMatched</span><span class="params">(<span class="keyword">char</span> left,<span class="keyword">char</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(left==<span class="string">'('</span> &amp;&amp; right==<span class="string">')'</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(left==<span class="string">'['</span> &amp;&amp; right==<span class="string">']'</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(left==<span class="string">'&#123;'</span> &amp;&amp; right==<span class="string">'&#125;'</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isParenthesesBalanced</span><span class="params">(<span class="keyword">char</span> <span class="built_in">exp</span>[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s[maxSize];<span class="keyword">int</span> top=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;<span class="built_in">exp</span>[i]!=<span class="string">'\0'</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">exp</span>[i]==<span class="string">'('</span>||<span class="built_in">exp</span>[i]==<span class="string">'['</span>||<span class="built_in">exp</span>[i]==<span class="string">'&#123;'</span>)</span><br><span class="line">			s[++top]=<span class="built_in">exp</span>[i];</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">exp</span>[i]==<span class="string">')'</span>||<span class="built_in">exp</span>[i]==<span class="string">']'</span>||<span class="built_in">exp</span>[i]==<span class="string">'&#125;'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(top==<span class="number">-1</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//如果栈空就不匹配，返回0</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">char</span> left =s[top--];</span><br><span class="line">			<span class="keyword">if</span>(isMatched(left,<span class="built_in">exp</span>[i])==<span class="number">0</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(top&gt;<span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 栈不空，则不匹配</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//栈为空，则匹配。返回1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>7、计算问题：</strong><br>类似于这类问题，可以用递归去处理，不过递归的实质也是用栈，只是这个栈是系统分配的栈，我们这里是自己定义了一个栈。</p>
+<p><img src="https://github.com/fanandli/picblog/blob/master/%E6%A0%88%E7%9A%84%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98.jpg?raw=true" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calF</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cum=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> s[maxSize],top=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(m!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		s[++top]=m;</span><br><span class="line">		m /= <span class="number">3</span>;  <span class="comment">//m=m/3</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(top!=<span class="number">-1</span>)</span><br><span class="line">		cum *=s[top--];</span><br><span class="line">	<span class="keyword">return</span> cum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>8、共享栈：</strong><br>这样来定义共享栈：(假设共享栈由s1和s2两个栈共享)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> satck[maxsize];</span><br><span class="line"><span class="keyword">int</span> top1=<span class="number">-1</span>,top2=maxsize;</span><br></pre></td></tr></table></figure>
+<p>可以看到，无非就是在栈尾<strong>后面</strong>一个位置定义一个top2去指向他，在栈首的<strong>前</strong>一个位置定义一个top1去指向他。<br>一般的，为了更好的同一形式，不用定义两个新的量去指向这些位置，而是定义一个数组，数组中有两个值，分别指向这两个位置。即：top[2]={-1,maxsize};就可以了。分别用top[0],top[1]去使用它们。</p>
+<p>s1栈为空：top[0]==-1;s2栈为空：top[1]==maxsize;<br>s1入栈：stack[++top[0]] = x;<br>s2入栈：stack[–top[1]] = x;<br>栈满判断：top[0]+1==top[1];</p>
+<p><strong>9、用栈来模拟队列：</strong><br>用两个栈来实现，即要将栈的“先进后出”变为队列的“先进先出”。</p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/data-structure/">#data-structure</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/09/10/data-structure-Threaded-binary-tree/">线索二叉树</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/08/03/xianxingbiao-prac1/">线性表问题总结</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

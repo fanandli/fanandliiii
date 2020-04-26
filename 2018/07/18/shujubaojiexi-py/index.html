@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>贴一个用python实现了一个解析pcap文件的小工具 - turlee&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="作为学习了一段时间的py和复习了一段网络有关的知识，就实现了如下的一个小工具，输入时pcap格式的文件，后序的话在实现用哈希来更好的存储吧。。嗯。。写的有点乱。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贴一个用python实现了一个解析pcap文件的小工具">
+<meta property="og:url" content="http://yoursite.com/2018/07/18/shujubaojiexi-py/index.html">
+<meta property="og:site_name" content="turlee&#39;s blog">
+<meta property="og:description" content="作为学习了一段时间的py和复习了一段网络有关的知识，就实现了如下的一个小工具，输入时pcap格式的文件，后序的话在实现用哈希来更好的存储吧。。嗯。。写的有点乱。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-07-18T10:07:27.000Z">
+<meta property="article:modified_time" content="2019-03-31T15:49:27.207Z">
+<meta property="article:author" content="turlee">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="tcp&#x2F;ip">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            贴一个用python实现了一个解析pcap文件的小工具
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-07-18T10:07:27.000Z" itemprop="datePublished">7月 18 2018</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 读完 (约 1212 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>作为学习了一段时间的py和复习了一段网络有关的知识，就实现了如下的一个小工具，输入时pcap格式的文件，后序的话在实现用哈希来更好的存储吧。。<br>嗯。。写的有点乱。。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment">#x=os.system('cls')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">()</span>:</span>os.system(<span class="string">'cls'</span>)</span><br><span class="line"><span class="comment">#def clear():	</span></span><br><span class="line"><span class="comment">#   os.system('clear')</span></span><br><span class="line"><span class="comment">#huanying</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">welcome</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'\t******************************\n'</span>)</span><br><span class="line">    <span class="keyword">print</span>    (<span class="string">'\t*                            *\n'</span>)</span><br><span class="line">    <span class="keyword">print</span>    (<span class="string">'\t*     oneturle sniffer       *\n'</span>)</span><br><span class="line">    <span class="keyword">print</span>    (<span class="string">'\t*                            *\n'</span>)</span><br><span class="line">    print(<span class="string">'\n\t******************************\n'</span>)</span><br><span class="line">    print(<span class="string">'你想要了解什么呢?\n'</span>)</span><br><span class="line">    print(<span class="string">'1.报文总数统计\n'</span>)</span><br><span class="line">    print(<span class="string">'2.平均每秒字节数和每秒报文数的统计\n'</span>)</span><br><span class="line">    print(<span class="string">'3.各种协议的每秒报文数统计和每秒字节数统计\n'</span>)</span><br><span class="line">    print(<span class="string">'4.各种协议数据在流量中所占的比例\n'</span>)</span><br><span class="line">    print(<span class="string">'5.退出\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化参数</span></span><br><span class="line">input_file=input(<span class="string">'请输入文件名：\n'</span>)</span><br><span class="line">output_file=input(<span class="string">'请输出文件名：\n'</span>)</span><br><span class="line">print(<span class="string">"\n"</span>*<span class="number">15</span>)</span><br><span class="line">m=<span class="number">0</span></span><br><span class="line">n=<span class="number">0</span></span><br><span class="line">tcp_n=<span class="number">0</span></span><br><span class="line">udp_n=<span class="number">0</span></span><br><span class="line">tcp_n=<span class="number">0</span></span><br><span class="line">udp_n=<span class="number">0</span></span><br><span class="line">egp_n=<span class="number">0</span></span><br><span class="line">igp_n=<span class="number">0</span></span><br><span class="line">ipv6_n=<span class="number">0</span></span><br><span class="line">ospf_n=<span class="number">0</span></span><br><span class="line">icmp_n=<span class="number">0</span></span><br><span class="line">igmp_n=<span class="number">0</span></span><br><span class="line">tcp_l=<span class="number">0</span></span><br><span class="line">udp_l=<span class="number">0</span></span><br><span class="line">tcp_l=<span class="number">0</span></span><br><span class="line">udp_l=<span class="number">0</span></span><br><span class="line">egp_l=<span class="number">0</span></span><br><span class="line">igp_l=<span class="number">0</span></span><br><span class="line">ipv6_l=<span class="number">0</span></span><br><span class="line">ospf_l=<span class="number">0</span></span><br><span class="line">icmp_l=<span class="number">0</span></span><br><span class="line">igmp_l=<span class="number">0</span></span><br><span class="line">ftime=<span class="number">0</span></span><br><span class="line">ltime=<span class="number">0</span></span><br><span class="line">ip_tlen=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(output_file,<span class="string">'w'</span>) <span class="keyword">as</span> g:</span><br><span class="line">    <span class="keyword">with</span> open(input_file,<span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        total=f.read(<span class="number">24</span>)</span><br><span class="line">        total=struct.unpack(<span class="string">'LHHLLLL'</span>,total)<span class="comment">#BHL</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            b=f.read(<span class="number">16</span>)</span><br><span class="line">            <span class="keyword">if</span> b==<span class="string">b''</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="comment">#for i in range(18):</span></span><br><span class="line">            <span class="comment">#b=f.read(16)  #shujutou</span></span><br><span class="line">            b=struct.unpack(<span class="string">'4i'</span>,b)</span><br><span class="line">            <span class="keyword">if</span> m==<span class="number">0</span>:</span><br><span class="line">                ftime=b[<span class="number">0</span>] <span class="comment">#shujudaodashijian</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ltime=b[<span class="number">0</span>]</span><br><span class="line">            <span class="comment">#n=n+b[3]  #jisuanshujuchangdu</span></span><br><span class="line">            <span class="comment">#g.write('%d     '%b[1])</span></span><br><span class="line">            <span class="comment">#print('%d'%b[3])</span></span><br><span class="line">            f.read(<span class="number">12</span>)  <span class="comment">#mac</span></span><br><span class="line">            frametype=f.read(<span class="number">2</span>) <span class="comment">#panbianip leixing</span></span><br><span class="line">            <span class="keyword">if</span> frametype!=<span class="string">b'\x08\x00'</span>:</span><br><span class="line">                f.read(b[<span class="number">2</span>]<span class="number">-14</span>)</span><br><span class="line">            <span class="comment">#if frametype!=b'\x08\x00':</span></span><br><span class="line">                <span class="comment">#f.read(b[2]-14)</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                g.write(<span class="string">'%6d     '</span>%b[<span class="number">1</span>])</span><br><span class="line">                n=n+b[<span class="number">2</span>]</span><br><span class="line">                version=f.read(<span class="number">1</span>)  <span class="comment">#ipv4 or ipv6</span></span><br><span class="line">                g.write(<span class="string">'IPV'</span>+str(int(struct.unpack(<span class="string">'B'</span>,version)[<span class="number">0</span>]/<span class="number">16</span>))+<span class="string">'     '</span>)</span><br><span class="line">                TOS=f.read(<span class="number">1</span>) <span class="comment">#fuwu lei xing</span></span><br><span class="line">                total_length=f.read(<span class="number">2</span>)  <span class="comment"># chang du</span></span><br><span class="line">                ip_tlen=ip_tlen+total_length[<span class="number">1</span>] <span class="comment">#jisuan changdu</span></span><br><span class="line">                ID=f.read(<span class="number">2</span>)</span><br><span class="line">                Flag_segment=f.read(<span class="number">2</span>)</span><br><span class="line">                life=f.read(<span class="number">1</span>)</span><br><span class="line">                xieyi=f.read(<span class="number">1</span>)</span><br><span class="line">            <span class="comment">#print(xieyi)</span></span><br><span class="line">                check=f.read(<span class="number">2</span>)  </span><br><span class="line">            <span class="comment">#xieyi=struct.unpack('B',xieyi)</span></span><br><span class="line">            <span class="comment">#print('%d'%xieyi)</span></span><br><span class="line">                ip_from=f.read(<span class="number">4</span>) <span class="comment">#ip address</span></span><br><span class="line">                ip_from=struct.unpack(<span class="string">'4B'</span>,ip_from)</span><br><span class="line">                ip_to=f.read(<span class="number">4</span>)</span><br><span class="line">                ip_to=struct.unpack(<span class="string">'4B'</span>,ip_to)</span><br><span class="line">                port_from=f.read(<span class="number">2</span>) <span class="comment">#duan kou</span></span><br><span class="line">                port_to=f.read(<span class="number">2</span>)</span><br><span class="line">                port_from=port_from[<span class="number">0</span>]*<span class="number">256</span>+port_from[<span class="number">1</span>]</span><br><span class="line">                port_to=port_to[<span class="number">0</span>]*<span class="number">256</span>+port_to[<span class="number">1</span>]     </span><br><span class="line">            <span class="comment">#port_from=struct.unpack('H',port_from)</span></span><br><span class="line">            <span class="comment">#port_to=struct.unpack('H',port_to)</span></span><br><span class="line">                seq=f.read(<span class="number">4</span>) <span class="comment">#xu lie hao</span></span><br><span class="line">                ac=f.read(<span class="number">4</span>) <span class="comment">#ack renzheng</span></span><br><span class="line">                g.write(<span class="string">'.'</span>.join([<span class="string">'%3d'</span>%i <span class="keyword">for</span> i <span class="keyword">in</span> ip_from])+<span class="string">':%d'</span>%port_from)</span><br><span class="line">                g.write(<span class="string">'==&gt;'</span>)</span><br><span class="line">                g.write(<span class="string">'.'</span>.join([<span class="string">'%3d'</span>%i <span class="keyword">for</span> i <span class="keyword">in</span> ip_to])+<span class="string">':%d     '</span>%port_to)</span><br><span class="line">                f.read(b[<span class="number">3</span>]<span class="number">-34</span><span class="number">-12</span>)<span class="comment">#shuju chang du -shuju tou -shuju neirong</span></span><br><span class="line">            <span class="comment">#if frametype==b'\x08\x00':</span></span><br><span class="line">                m=m+<span class="number">1</span> <span class="comment">#ip bao geshu</span></span><br><span class="line">                <span class="keyword">if</span> xieyi==<span class="string">b'\x06'</span>:</span><br><span class="line">                    g.write(<span class="string">'TCP'</span>)</span><br><span class="line">                    tcp_n=tcp_n+<span class="number">1</span></span><br><span class="line">                    tcp_l=tcp_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x11'</span>:</span><br><span class="line">                    g.write(<span class="string">'UDP'</span>)</span><br><span class="line">                    udp_n=udp_n+<span class="number">1</span></span><br><span class="line">                    udp_l=udp_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x01'</span>:</span><br><span class="line">                    g.write(<span class="string">'ICMP'</span>)</span><br><span class="line">                    icmp_n=icmp_n+<span class="number">1</span></span><br><span class="line">                    icmp_l=icmp_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x02'</span>:</span><br><span class="line">                    g.write(<span class="string">'IGMP'</span>)</span><br><span class="line">                    igmp_n=igmp_n+<span class="number">1</span></span><br><span class="line">                    igmp_l=igmp_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x08'</span>:</span><br><span class="line">                    g.write(<span class="string">'EGP'</span>)</span><br><span class="line">                    egp_n=egp_n+<span class="number">1</span></span><br><span class="line">                    egp_l=egp_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x09'</span>:</span><br><span class="line">                    g.write(<span class="string">'IGP'</span>)</span><br><span class="line">                    igp_n=igp_n+<span class="number">1</span></span><br><span class="line">                    igp_l=igp_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x29'</span>:</span><br><span class="line">                    g.write(<span class="string">'IPV6'</span>)</span><br><span class="line">                    ipv6_n=ipv6_n+<span class="number">1</span></span><br><span class="line">                    ipv6_l=ipv6_l+b[<span class="number">2</span>]</span><br><span class="line">                <span class="keyword">elif</span> xieyi==<span class="string">b'\x4f'</span>:</span><br><span class="line">                    g.write(<span class="string">'OSPF'</span>)</span><br><span class="line">                    ospf_n=ospf_n+<span class="number">1</span></span><br><span class="line">                    ospf_l=ospf_l+b[<span class="number">2</span>]<span class="comment">#3</span></span><br><span class="line">                g.write(<span class="string">'     '</span>)</span><br><span class="line">                g.write(<span class="string">'%dbyte'</span>%b[<span class="number">2</span>]) <span class="comment">#dan ge baowen changdu</span></span><br><span class="line">                g.write(<span class="string">'\n'</span>)</span><br><span class="line">                <span class="comment">#print('%d'%f.tell())</span></span><br><span class="line">welcome()</span><br><span class="line">k=m</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        f=input(<span class="string">'请输入：\n'</span>)</span><br><span class="line">        f=int(f)</span><br><span class="line">        <span class="keyword">if</span> f==<span class="number">1</span>:</span><br><span class="line">            print(<span class="string">'\n\n\n报文大小为: %ld byte\n'</span>%n)</span><br><span class="line">            flag=input(<span class="string">'是否继续,y or n?\n'</span>)</span><br><span class="line">            <span class="keyword">if</span> flag==<span class="string">'y'</span>:</span><br><span class="line">                    print(<span class="string">"\n"</span>*<span class="number">15</span>)</span><br><span class="line">                    welcome()</span><br><span class="line">            <span class="keyword">elif</span> flag==<span class="string">'n'</span>:</span><br><span class="line">                    exit(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> f==<span class="number">2</span>:</span><br><span class="line">            print(<span class="string">"\n\n\n平均每秒字节数为:%4.2f b/s\n"</span>%(n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"平均每秒报文数为:%8.6f m/s\n"</span>%(k/(ltime-ftime)))</span><br><span class="line">            flag=input(<span class="string">'是否继续,y or n?\n'</span>)</span><br><span class="line">            <span class="keyword">if</span> flag==<span class="string">'y'</span>:</span><br><span class="line">                    print(<span class="string">"\n"</span>*<span class="number">15</span>)</span><br><span class="line">                    welcome()</span><br><span class="line">            <span class="keyword">elif</span> flag==<span class="string">'n'</span>:</span><br><span class="line">                    exit(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> f==<span class="number">3</span>:</span><br><span class="line">            print(<span class="string">"\n"</span>*<span class="number">5</span>)</span><br><span class="line">            print(<span class="string">'\n\n\nICM2P:协议的每秒报文数统计:%4.2f b/s\n'</span>%(icmp_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(icmp_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"IGMP:\t协议的每秒报文数统计:%4.2f b/s\n"</span>%(igmp_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(igmp_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">'TCP:协议的每秒报文数统计:%4.2f b/s\n'</span>%(tcp_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(tcp_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"EGP:\t协议的每秒报文数统计:%4.2f b/s\n"</span>%(egp_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(egp_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">'IGP:协议的每秒报文数统计:%4.2f b/s\n'</span>%(igp_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(igp_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"UDP:\t协议的每秒报文数统计:%4.2f b/s\n"</span>%(udp_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(udp_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">'IPV6:协议的每秒报文数统计:%4.2f b/s\n'</span>%(ipv6_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(ipv6_n/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"OSPF:\t协议的每秒报文数统计:%4.2f b/s\n"</span>%(ospf_l/(ltime-ftime)))</span><br><span class="line">            print(<span class="string">"每秒字节数统计:%4.2f m/s\n"</span>%(ospf_n/(ltime-ftime)))</span><br><span class="line">            flag=input(<span class="string">'是否继续,y or n?\n'</span>)</span><br><span class="line">            <span class="keyword">if</span> flag==<span class="string">'y'</span>:</span><br><span class="line">                    print(<span class="string">"\n"</span>*<span class="number">15</span>)</span><br><span class="line">                    welcome()</span><br><span class="line">            <span class="keyword">elif</span> flag==<span class="string">'n'</span>:</span><br><span class="line">                    exit(<span class="number">0</span>)</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> f==<span class="number">4</span>:</span><br><span class="line">            print(<span class="string">"\n"</span>*<span class="number">18</span>)</span><br><span class="line">            print(<span class="string">'\n\n\nICMP :%4.2f'</span>%(icmp_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'IGMP :%4.2f'</span>%(igmp_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'TCP :%4.2f'</span>%(tcp_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'EGP :%4.2f'</span>%(egp_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'IGP :%4.2f'</span>%(igp_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'UDP :%4.2f'</span>%(udp_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'IPV6 :%4.2f'</span>%(ipv6_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            print(<span class="string">'OSPF :%4.2f'</span>%(ospf_n/k*<span class="number">100</span>)+<span class="string">'%\n'</span>)</span><br><span class="line">            flag=input(<span class="string">'是否继续,y or n?\n'</span>)</span><br><span class="line">            <span class="keyword">if</span> flag==<span class="string">'y'</span>:</span><br><span class="line">                    print(<span class="string">"\n"</span>*<span class="number">15</span>)</span><br><span class="line">                    welcome()</span><br><span class="line">            <span class="keyword">elif</span> flag==<span class="string">'n'</span>:</span><br><span class="line">                    exit(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> f==<span class="number">5</span>:</span><br><span class="line">            print(<span class="string">'\n\n再见~\n\n'</span>)</span><br><span class="line">            exit(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/python/">#python</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/tcp-ip/">#tcp/ip</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2018/08/03/xianxingbiao-prac1/">线性表问题总结</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2018/05/23/data-structure-20/">排序算法习题</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 turlee&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/fanandli" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
